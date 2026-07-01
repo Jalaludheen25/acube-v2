@@ -705,11 +705,15 @@ Milestone 05
 
 Entry Experience
 
+✅ Completed
+
 ------------------------------------------------------------
 
 Milestone 06
 
 Hero Experience
+
+✅ Completed
 
 ------------------------------------------------------------
 
