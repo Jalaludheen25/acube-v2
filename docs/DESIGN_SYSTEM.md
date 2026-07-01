@@ -1,0 +1,915 @@
+# ============================================================
+#
+# ACUBE V2
+#
+# DESIGN SYSTEM
+#
+# Version 2.0
+#
+# ============================================================
+
+# DESIGN PHILOSOPHY
+
+The ACUBE website is not a traditional corporate website.
+
+It is a luxury digital experience.
+
+Every visual decision should communicate
+
+Luxury
+
+↓
+
+Trust
+
+↓
+
+Innovation
+
+↓
+
+Precision
+
+↓
+
+Professionalism
+
+↓
+
+Business Growth
+
+Users should immediately feel
+
+"This company is different."
+
+------------------------------------------------------------
+
+# DESIGN PRINCIPLES
+
+Every screen should satisfy
+
+Minimal
+
+Elegant
+
+Modern
+
+Architectural
+
+Interactive
+
+Premium
+
+Professional
+
+Timeless
+
+Never
+
+Busy
+
+Generic
+
+Template
+
+Corporate
+
+Old Fashioned
+
+------------------------------------------------------------
+
+# VISUAL STYLE
+
+Think
+
+Apple
+
+↓
+
+Porsche
+
+↓
+
+Nothing
+
+↓
+
+Linear
+
+↓
+
+Dubai
+
+↓
+
+Museum of the Future
+
+↓
+
+Luxury Architecture
+
+Not
+
+Bootstrap
+
+WordPress
+
+Corporate Theme
+
+Business Template
+
+------------------------------------------------------------
+
+# COLOR PHILOSOPHY
+
+The website color palette must come from the ACUBE logo.
+
+Never invent a new identity.
+
+Primary Accent
+
+Logo Red
+
+Secondary Accent
+
+Logo Green
+
+Background
+
+Deep Black
+
+Support
+
+White
+
+Luxury Highlight
+
+Small Gold
+
+Maximum 5%
+
+------------------------------------------------------------
+
+# PRIMARY COLORS
+
+Background
+
+#050505
+
+Secondary Background
+
+#101214
+
+Surface
+
+#15171A
+
+Card Background
+
+rgba(255,255,255,0.04)
+
+Glass
+
+rgba(255,255,255,0.06)
+
+Primary Text
+
+#FFFFFF
+
+Secondary Text
+
+#AEB4BC
+
+Border
+
+rgba(255,255,255,0.08)
+
+Divider
+
+rgba(255,255,255,0.05)
+
+------------------------------------------------------------
+
+# BRAND COLORS
+
+Logo Red
+
+#E53935
+
+Logo Green
+
+#2E7D32
+
+Gold
+
+#D4AF37
+
+Success
+
+#22C55E
+
+Warning
+
+#F59E0B
+
+Danger
+
+#EF4444
+
+------------------------------------------------------------
+
+# COLOR RULES
+
+95%
+
+Dark Theme
+
+5%
+
+Accent Colors
+
+Never create colorful interfaces.
+
+Never use gradients everywhere.
+
+Accent colors should guide attention.
+
+------------------------------------------------------------
+
+# TYPOGRAPHY
+
+Heading
+
+Space Grotesk
+
+Body
+
+Inter
+
+Code
+
+JetBrains Mono
+
+Only three font families.
+
+------------------------------------------------------------
+
+# TYPOGRAPHY SCALE
+
+Hero
+
+Clamp
+
+64px–120px
+
+Section Title
+
+56px
+
+Section Subtitle
+
+22px
+
+Body
+
+18px
+
+Card Title
+
+24px
+
+Caption
+
+14px
+
+Button
+
+16px
+
+------------------------------------------------------------
+
+# FONT WEIGHTS
+
+Hero
+
+700
+
+Heading
+
+600
+
+Body
+
+400
+
+CTA
+
+600
+
+------------------------------------------------------------
+
+# LINE HEIGHT
+
+Hero
+
+1.0
+
+Heading
+
+1.2
+
+Paragraph
+
+1.7
+
+------------------------------------------------------------
+
+# GRID SYSTEM
+
+Maximum Width
+
+1440px
+
+Content Width
+
+1280px
+
+Desktop
+
+12 Columns
+
+Tablet
+
+8 Columns
+
+Mobile
+
+4 Columns
+
+------------------------------------------------------------
+
+# SPACING SYSTEM
+
+Base Unit
+
+8px
+
+Allowed Values
+
+8
+
+16
+
+24
+
+32
+
+40
+
+48
+
+56
+
+64
+
+80
+
+96
+
+128
+
+160
+
+192
+
+Never use random spacing.
+
+------------------------------------------------------------
+
+# SECTION SPACING
+
+Desktop
+
+160px
+
+Tablet
+
+120px
+
+Mobile
+
+96px
+
+------------------------------------------------------------
+
+# BORDER RADIUS
+
+Buttons
+
+18px
+
+Inputs
+
+18px
+
+Cards
+
+28px
+
+Sections
+
+40px
+
+Floating Panels
+
+32px
+
+------------------------------------------------------------
+
+# SHADOW SYSTEM
+
+Small
+
+0 10px 30px rgba(0,0,0,.15)
+
+Medium
+
+0 20px 50px rgba(0,0,0,.25)
+
+Large
+
+0 40px 80px rgba(0,0,0,.35)
+
+Never use harsh shadows.
+
+------------------------------------------------------------
+
+# GLASS SYSTEM
+
+Glass is used only for
+
+Navigation
+
+Hero Cards
+
+Floating Panels
+
+Contact Card
+
+Statistics
+
+Not entire pages.
+
+Backdrop Blur
+
+24px
+
+Border
+
+1px rgba(255,255,255,.08)
+
+------------------------------------------------------------
+
+# SURFACE SYSTEM
+
+Background
+
+↓
+
+Glass
+
+↓
+
+Floating Card
+
+↓
+
+Content
+
+↓
+
+Button
+
+↓
+
+Micro Elements
+
+Every layer must have visual hierarchy.
+
+------------------------------------------------------------
+
+# BUTTON SYSTEM
+
+Primary
+
+Logo Red
+
+White Text
+
+Hover
+
+Lift
+
+Glow
+
+Transition
+
+250ms
+
+Secondary
+
+Glass
+
+White Border
+
+White Text
+
+Hover
+
+White Background
+
+Dark Text
+
+Ghost
+
+Transparent
+
+Underline Hover
+
+------------------------------------------------------------
+
+# BUTTON STATES
+
+Default
+
+Hover
+
+Focus
+
+Active
+
+Disabled
+
+Loading
+
+Success
+
+Every button supports every state.
+
+------------------------------------------------------------
+
+# INPUT SYSTEM
+
+Height
+
+60px
+
+Radius
+
+18px
+
+Glass Background
+
+Placeholder
+
+Gray
+
+Focus
+
+Logo Red Border
+
+Error
+
+Red Border
+
+Success
+
+Green Border
+
+------------------------------------------------------------
+
+# CARD SYSTEM
+
+Padding
+
+32px
+
+Radius
+
+28px
+
+Glass
+
+Optional
+
+Hover
+
+TranslateY(-10px)
+
+Glow
+
+Border Highlight
+
+Cards should feel like floating architectural panels.
+
+------------------------------------------------------------
+
+# ICON SYSTEM
+
+Library
+
+Lucide
+
+Stroke Width
+
+2
+
+Sizes
+
+20
+
+24
+
+28
+
+40
+
+Icons should never dominate content.
+
+------------------------------------------------------------
+
+# IMAGE STYLE
+
+Use
+
+Luxury
+
+Professional
+
+Editorial
+
+Architectural
+
+Business
+
+Avoid
+
+Cheap Stock Images
+
+Smiling Call Center Photos
+
+Fake Handshakes
+
+Generic Offices
+
+------------------------------------------------------------
+
+# ILLUSTRATION STYLE
+
+Minimal
+
+3D
+
+Glass
+
+Geometric
+
+Dark
+
+Elegant
+
+------------------------------------------------------------
+
+# PATTERN SYSTEM
+
+Very subtle
+
+Grid
+
+Noise
+
+Gradient
+
+Reflection
+
+Never distracting.
+
+------------------------------------------------------------
+
+# BACKGROUND SYSTEM
+
+Layer 1
+
+Solid Background
+
+↓
+
+Gradient
+
+↓
+
+Noise
+
+↓
+
+Particles
+
+↓
+
+Light
+
+↓
+
+Content
+
+Background should feel alive.
+
+------------------------------------------------------------
+
+# MOTION DESIGN
+
+Every animation should
+
+Guide
+
+Reveal
+
+Emphasize
+
+Never entertain.
+
+------------------------------------------------------------
+
+# HOVER EFFECTS
+
+Cards
+
+Lift
+
+Buttons
+
+Glow
+
+Images
+
+Zoom
+
+Icons
+
+Rotate
+
+Links
+
+Underline
+
+Glass
+
+Reflection
+
+------------------------------------------------------------
+
+# DEPTH
+
+Depth comes from
+
+Lighting
+
+↓
+
+Blur
+
+↓
+
+Parallax
+
+↓
+
+Glass
+
+↓
+
+Motion
+
+Not huge shadows.
+
+------------------------------------------------------------
+
+# RESPONSIVE RULES
+
+Desktop
+
+1920
+
+1600
+
+1440
+
+1280
+
+1024
+
+Tablet
+
+768
+
+Mobile
+
+430
+
+390
+
+375
+
+360
+
+320
+
+Every layout begins mobile-first.
+
+------------------------------------------------------------
+
+# ACCESSIBILITY
+
+Contrast Ratio
+
+WCAG AA
+
+Keyboard Navigation
+
+Visible Focus
+
+Readable Typography
+
+Motion Reduction
+
+Semantic HTML
+
+Accessible Forms
+
+------------------------------------------------------------
+
+# DESIGN TOKENS
+
+Create
+
+src/constants/design.ts
+
+Store
+
+Colors
+
+Spacing
+
+Radius
+
+Typography
+
+Shadows
+
+Breakpoints
+
+Animation Timing
+
+Never hardcode design values.
+
+------------------------------------------------------------
+
+# UI QUALITY CHECKLIST
+
+Every screen must satisfy
+
+✓ Premium
+
+✓ Minimal
+
+✓ Luxury
+
+✓ Responsive
+
+✓ Accessible
+
+✓ Fast
+
+✓ Consistent
+
+✓ Readable
+
+✓ Beautiful
+
+✓ Professional
+
+------------------------------------------------------------
+
+# FINAL DESIGN RULE
+
+If a section looks like a template,
+
+rebuild it.
+
+If it looks like a premium digital product,
+
+ship it.
+
+------------------------------------------------------------
+
+END OF DOCUMENT

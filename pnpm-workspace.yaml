@@ -1,0 +1,7 @@
+# pnpm build-script approvals (pnpm 11 format).
+# Allow these packages to run install scripts / fetch native binaries:
+#   - sharp:         next/image optimizer (needed on the Hostinger server)
+#   - unrs-resolver: ESLint's native import resolver
+allowBuilds:
+  sharp: true
+  unrs-resolver: true
