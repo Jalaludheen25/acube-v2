@@ -1,5 +1,6 @@
 import { EntryExperienceClient } from "@/components/entry";
 import { Hero } from "@/features/hero";
+import { ServicesExperience } from "@/features/services";
 import { BusinessStory } from "@/features/story";
 
 /**
@@ -12,8 +13,8 @@ import { BusinessStory } from "@/features/story";
  * Section mount order (22-milestone roadmap):
  *   EntryExperienceClient  M05 ✅
  *   Hero (#hero)           M06 ✅
- *   BusinessStory (#business-story) M07 ✅ (this milestone)
- *   #services              M08 — Services Experience
+ *   BusinessStory (#business-story) M07 ✅
+ *   ServicesExperience (#services)  M08 ✅ (this milestone)
  *   #process               M09 · #industries M10 · #why-acube M11 · #packages M12
  *   #testimonials          M13 · #faq M14 · #contact M15 · Footer M16
  */
@@ -23,6 +24,7 @@ export default function HomePage() {
       <EntryExperienceClient />
       <Hero />
       <BusinessStory />
+      <ServicesExperience />
     </main>
   );
 }
