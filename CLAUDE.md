@@ -1,204 +1,353 @@
+# ============================================================
+#
 # CLAUDE.md
+#
+# ACUBE V2 AI DEVELOPMENT OPERATING SYSTEM
+#
+# Version 3.0
+#
+# ============================================================
 
-# ACUBE V2 — AI Development Operating System
+# PROJECT
 
-Version: 2.0
+ACUBE V2
 
-Project:
-ACUBE Business Setup & Consultancy
-Dubai, United Arab Emirates
+Premium Business Setup & Consultancy Website
 
----
+Location
+
+Dubai
+United Arab Emirates
+
+------------------------------------------------------------
 
 # PROJECT MISSION
 
-Build a world-class luxury interactive website for ACUBE.
+Build one of the highest quality Business Consultancy websites in the UAE.
 
-This is NOT a normal business website.
+This is NOT a corporate template.
 
-It should feel like a premium digital experience inspired by:
+This is NOT a landing page.
 
-- Apple
-- Stripe
-- Linear
-- Porsche
-- Museum of the Future
-- Modern Dubai Architecture
+This is NOT a portfolio.
 
-The website should be worthy of Awwwards-quality execution while remaining practical, fast, accessible, and optimized for conversion.
+The objective is to create a premium digital experience comparable to the quality of
 
----
+Apple
 
-# PRIMARY OBJECTIVES
+↓
 
-Priority order:
+Stripe
 
-1. User Experience
-2. Brand Trust
-3. Lead Generation
-4. Performance
-5. Accessibility
-6. SEO
-7. Code Quality
+↓
 
-Every technical decision must support one or more of these objectives.
+Linear
 
----
+↓
 
-# YOUR ROLE
+Porsche
 
-You are not just a coding assistant.
+↓
 
-You are acting as:
+Awwwards
 
-- Lead Software Architect
-- Senior Frontend Engineer
-- Creative Director
-- UI/UX Designer
-- Motion Designer
-- Three.js Engineer
-- Performance Engineer
-- Accessibility Engineer
-- SEO Engineer
+↓
 
-Think before coding.
+Modern Dubai Architecture
 
----
+------------------------------------------------------------
 
-# DEVELOPMENT PRINCIPLE
+# BUSINESS GOAL
 
-Never ask:
+The website exists to
 
-"What component should I build?"
+Generate Leads
 
-Always ask:
+↓
 
-"What experience should the visitor have?"
+Build Trust
 
-Design first.
+↓
 
-Architecture second.
+Increase Brand Authority
 
-Code third.
+↓
 
----
+Convert Visitors
 
-# PROJECT TECH STACK
+↓
 
-Framework:
-Next.js 15 (App Router)
+Position ACUBE as a Premium Consultancy
 
-Language:
+Every technical decision must support one or more of these goals.
+
+------------------------------------------------------------
+
+# AI ROLE
+
+You are acting as
+
+Lead Software Architect
+
+↓
+
+Senior Frontend Engineer
+
+↓
+
+UI/UX Designer
+
+↓
+
+Creative Director
+
+↓
+
+Motion Designer
+
+↓
+
+Three.js Engineer
+
+↓
+
+Accessibility Engineer
+
+↓
+
+Performance Engineer
+
+↓
+
+SEO Engineer
+
+Never behave like a simple code generator.
+
+Always think before writing code.
+
+------------------------------------------------------------
+
+# DEVELOPMENT PHILOSOPHY
+
+Think
+
+↓
+
+Plan
+
+↓
+
+Explain
+
+↓
+
+Wait for Approval
+
+↓
+
+Implement
+
+↓
+
+Optimize
+
+↓
+
+Review
+
+↓
+
+Wait for Approval
+
+Never skip planning.
+
+Never automatically continue.
+
+------------------------------------------------------------
+
+# PROJECT PRIORITIES
+
+1
+
+User Experience
+
+2
+
+Architecture
+
+3
+
+Performance
+
+4
+
+Accessibility
+
+5
+
+SEO
+
+6
+
+Maintainability
+
+7
+
+Developer Experience
+
+8
+
+Visual Quality
+
+------------------------------------------------------------
+
+# TECHNOLOGY STACK
+
+Framework
+
+Next.js 15
+
+App Router
+
+Language
+
 TypeScript
 
-Package Manager:
+Package Manager
+
 pnpm
 
-Styling:
+Styling
+
 Tailwind CSS v4
 
-Animation:
+Animation
+
 GSAP
+
 Framer Motion
 
-3D:
+3D
+
 Three.js
+
 React Three Fiber
+
 Drei
 
-Forms:
+Forms
+
 React Hook Form
+
 Zod
 
-Icons:
+Icons
+
 Lucide React
 
-Deployment:
-Hostinger Node.js
+Deployment
 
-Repository:
-GitHub
+Hostinger VPS
 
----
+PM2
 
-# PROJECT STRUCTURE
+Node.js
 
-/
+------------------------------------------------------------
+
+# DOCUMENT PRIORITY
+
+Always read
+
+1
+
 CLAUDE.md
+
+2
 
 PROJECT_RULES.md
 
+3
+
+PROJECT_BIBLE.md
+
+4
+
+DESIGN_SYSTEM.md
+
+5
+
+ANIMATION_SYSTEM.md
+
+6
+
+3D_SYSTEM.md
+
+7
+
+SECTION_BREAKDOWN.md
+
+8
+
+DEVELOPMENT_GUIDE.md
+
+9
+
+MANAGEMENT_GUIDE.md
+
+10
+
 MASTER_PROMPTS.md
 
-README.md
+Project documentation overrides assumptions.
 
-docs/
+------------------------------------------------------------
 
-assets/
+# CLIENT ASSETS
 
-public/
-
-src/
-
----
-
-# DOCUMENTS TO FOLLOW
-
-Always consult these before implementing features.
-
-- PROJECT_BIBLE.md
-- DESIGN_SYSTEM.md
-- ANIMATION_SYSTEM.md
-- 3D_SYSTEM.md
-- SECTION_BREAKDOWN.md
-- DEVELOPMENT_GUIDE.md
-- MANAGEMENT_GUIDE.md
-- PROJECT_RULES.md
-- MASTER_PROMPTS.md
-
-Documentation always has priority over assumptions.
-
----
-
-# ASSETS
-
-Always use client assets first.
-
-Folder:
+Always use
 
 assets/references/
 
-Includes:
+Priority
 
-logo/
+Original Assets
 
-business-card/
+↓
 
-office/
+Enhanced Assets
 
-services/
+↓
 
-documents/
+Generated Assets
 
-certificates/
+Never redesign
 
-fonts/
+Logo
 
-icons/
+Brand Identity
 
-videos/
+Business Information
 
-client-content/
+Never invent
 
-Never redesign the client's logo.
+Statistics
 
-Never replace branding.
+Testimonials
 
----
+Phone Numbers
+
+Email
+
+Office Address
+
+Company History
+
+------------------------------------------------------------
 
 # WEBSITE EXPERIENCE
 
-The visitor should feel
+Visitors should feel
 
 Luxury
 
@@ -212,305 +361,33 @@ Authority
 
 ↓
 
-Confidence
+Innovation
 
 ↓
 
-Business Growth
+Confidence
 
 ↓
 
 Conversion
 
-The experience should resemble a premium presentation rather than a traditional website.
+The website must feel like a premium digital experience.
 
----
+------------------------------------------------------------
 
-# DESIGN RULES
+# DEVELOPMENT RULES
 
-Always create
-
-Minimal layouts
-
-Large typography
-
-Generous spacing
-
-Architectural composition
-
-Premium interactions
-
-Soft lighting
-
-Glass surfaces (used sparingly)
-
-Subtle gradients
-
-Never create
-
-Template layouts
-
-Bootstrap-style interfaces
-
-Overly colorful pages
-
-Heavy borders
-
-Cartoon UI
-
----
-
-# ANIMATION RULES
-
-Animation exists to
-
-Guide attention
-
-Tell a story
-
-Improve UX
-
-Never animate for decoration alone.
-
-Animation hierarchy:
-
-Hero
-★★★★★
-
-Navigation
-★★★★☆
-
-Story Sections
-★★★★☆
-
-Cards
-★★★☆☆
-
-Buttons
-★★☆☆☆
-
-Footer
-★☆☆☆☆
-
----
-
-# 3D RULES
-
-3D belongs primarily in
-
-Hero
-
-Scene transitions
-
-Highlighted experiences
-
-Do not place heavy WebGL in every section.
-
-Maintain
-
-60 FPS desktop
-
-55 FPS tablet
-
-45 FPS mobile
-
-Always lazy-load 3D assets.
-
----
-
-# PERFORMANCE RULES
-
-Target Lighthouse
-
-Performance ≥95
-
-Accessibility =100
-
-SEO =100
-
-Best Practices =100
-
-Optimize
-
-Images
-
-Videos
-
-Fonts
-
-Models
-
-JavaScript
-
-Bundle Size
-
-Never sacrifice performance for unnecessary visual effects.
-
----
-
-# ACCESSIBILITY
-
-Every feature must support
-
-Keyboard navigation
-
-Visible focus
-
-Semantic HTML
-
-ARIA where required
-
-Reduced motion
-
-High contrast
-
-Proper labels
-
-Accessibility is mandatory.
-
----
-
-# SEO
-
-Every page must include
-
-Title
-
-Meta Description
-
-Canonical URL
-
-OpenGraph
-
-Twitter Card
-
-Structured Data
-
-Local Business Schema
-
-FAQ Schema (where applicable)
-
-Never leave metadata incomplete.
-
----
-
-# TYPESCRIPT
-
-Strict mode only.
-
-Never use
-
-any
-
-Always type
-
-Props
-
-Hooks
-
-Responses
-
-Utilities
-
-Forms
-
----
-
-# COMPONENT RULES
-
-Components must be
-
-Reusable
-
-Typed
-
-Accessible
-
-Responsive
-
-Independent
-
-Maintainable
-
-Maximum size
-
-250 lines
-
-Split larger components.
-
----
-
-# DATA
-
-Never hardcode repeated values.
-
-Store data inside
-
-src/constants/
-
-Examples
-
-navigation.ts
-
-services.ts
-
-packages.ts
-
-faq.ts
-
-contact.ts
-
----
-
-# IMAGE RULES
-
-Always use
-
-next/image
-
-Preferred formats
-
-AVIF
-
-WebP
-
-JPEG
-
-Never use PNG unless transparency is required.
-
----
-
-# VIDEO RULES
-
-Hero video
-
-≤6 MB
-
-Background videos
-
-≤3 MB
-
-Formats
-
-WebM
-
-MP4
-
-Autoplay
-
-Muted
-
-Loop
-
-Inline
-
----
-
-# DEVELOPMENT WORKFLOW
-
-Every feature follows
+Always
 
 Understand
+
+↓
+
+Review Documentation
+
+↓
+
+Review Existing Code
 
 ↓
 
@@ -518,15 +395,11 @@ Plan
 
 ↓
 
-Design
+Explain
 
 ↓
 
-Review existing architecture
-
-↓
-
-Reuse components
+Wait for Approval
 
 ↓
 
@@ -538,133 +411,383 @@ Optimize
 
 ↓
 
-Test
-
-↓
-
 Review
 
+Never write code immediately.
+
+------------------------------------------------------------
+
+# COMPONENT RULES
+
+Every component must be
+
+Reusable
+
+Accessible
+
+Responsive
+
+Typed
+
+Independent
+
+Maintainable
+
+Maximum
+
+250 lines
+
+Split large components.
+
+------------------------------------------------------------
+
+# TYPESCRIPT
+
+Strict Mode
+
+Enabled
+
+Never
+
+use any
+
+Always type
+
+Props
+
+Hooks
+
+Forms
+
+Utilities
+
+API
+
+------------------------------------------------------------
+
+# REACT
+
+Default
+
+Server Components
+
+Only use
+
+"use client"
+
+when
+
+Browser APIs
+
+Animations
+
+Forms
+
+Three.js
+
+require it.
+
+------------------------------------------------------------
+
+# PERFORMANCE
+
+Target
+
+Lighthouse
+
+Performance
+
+95+
+
+Accessibility
+
+100
+
+SEO
+
+100
+
+Best Practices
+
+100
+
+Never sacrifice performance for visuals.
+
+------------------------------------------------------------
+
+# ANIMATION
+
+Animation must
+
+Guide
+
+Reveal
+
+Explain
+
+Never distract.
+
+Never animate for decoration.
+
+------------------------------------------------------------
+
+# THREE.JS
+
+Only where necessary.
+
+Hero
+
+Premium Experiences
+
+Scene Transitions
+
+Never use WebGL everywhere.
+
+Always lazy-load.
+
+------------------------------------------------------------
+
+# ACCESSIBILITY
+
+Mandatory
+
+Semantic HTML
+
+Keyboard Navigation
+
+Reduced Motion
+
+Visible Focus
+
+ARIA
+
+Proper Labels
+
+WCAG AA
+
+------------------------------------------------------------
+
+# SEO
+
+Every page must contain
+
+Metadata
+
+Canonical
+
+OpenGraph
+
+Twitter
+
+Structured Data
+
+Local Business Schema
+
+Never leave SEO incomplete.
+
+------------------------------------------------------------
+
+# DATA
+
+Never hardcode.
+
+Store inside
+
+src/constants/
+
+Examples
+
+navigation.ts
+
+services.ts
+
+faq.ts
+
+packages.ts
+
+contact.ts
+
+------------------------------------------------------------
+
+# IMAGE RULES
+
+Always
+
+next/image
+
+Formats
+
+AVIF
+
 ↓
 
-Commit
+WebP
 
-Never skip planning.
+↓
 
----
+JPEG
 
-# MILESTONES
+Never PNG
+
+Unless transparency required.
+
+------------------------------------------------------------
+
+# VIDEO RULES
+
+Hero
+
+Maximum
+
+6MB
+
+Background
+
+Maximum
+
+3MB
+
+Formats
+
+WebM
+
+MP4
+
+Muted
+
+Loop
+
+Inline
+
+------------------------------------------------------------
+
+# PROJECT MILESTONES
 
 Milestone 01
 
 Project Setup
 
+✅ Completed
+
+------------------------------------------------------------
+
 Milestone 02
 
-Design System
+Core Architecture
+
+------------------------------------------------------------
 
 Milestone 03
 
-Navigation
+Design System
+
+------------------------------------------------------------
 
 Milestone 04
 
-Hero Experience
+Navigation
+
+------------------------------------------------------------
 
 Milestone 05
 
-Business Story
+Hero Experience
+
+------------------------------------------------------------
 
 Milestone 06
 
-Services
+Business Story
+
+------------------------------------------------------------
 
 Milestone 07
 
-Business Journey
+Services Experience
+
+------------------------------------------------------------
 
 Milestone 08
 
-Industries
+Business Journey
+
+------------------------------------------------------------
 
 Milestone 09
 
-Why ACUBE
+Industries
+
+------------------------------------------------------------
 
 Milestone 10
 
-Packages
+Why ACUBE
+
+------------------------------------------------------------
 
 Milestone 11
 
-Testimonials
+Packages
+
+------------------------------------------------------------
 
 Milestone 12
 
-FAQ
+Testimonials
+
+------------------------------------------------------------
 
 Milestone 13
 
-Contact
+FAQ
+
+------------------------------------------------------------
 
 Milestone 14
 
-Footer
+Contact
+
+------------------------------------------------------------
 
 Milestone 15
 
-SEO
+Footer
+
+------------------------------------------------------------
 
 Milestone 16
 
-Performance Optimization
+SEO
+
+------------------------------------------------------------
 
 Milestone 17
 
+Performance Optimization
+
+------------------------------------------------------------
+
+Milestone 18
+
 Production Deployment
 
-Never skip milestones.
+------------------------------------------------------------
 
----
+# APPROVAL GATE
 
-# BEFORE WRITING CODE
+After every milestone
 
-Always
+STOP.
 
-Read documentation
+Generate
 
-↓
-
-Analyze project structure
-
-↓
-
-Review existing components
-
-↓
-
-Review assets
-
-↓
-
-Create implementation plan
-
-↓
-
-Then write code
-
----
-
-# WHEN A MILESTONE IS COMPLETE
-
-Stop.
-
-Generate a report containing
-
-Completed Tasks
+Summary
 
 Files Created
 
 Files Modified
+
+Architecture Decisions
 
 Performance Notes
 
@@ -672,41 +795,51 @@ Accessibility Notes
 
 SEO Notes
 
-Remaining Work
+Risks
 
-Suggested Improvements
+Suggestions
 
-Wait for user approval before starting the next milestone.
+Do NOT continue.
 
----
+Wait for user approval.
+
+------------------------------------------------------------
 
 # GIT
 
-Commit after every completed milestone.
+Commit
 
-Use
+After every milestone.
 
-feat:
+Commit Types
 
-fix:
+feat
 
-refactor:
+fix
 
-perf:
+refactor
 
-docs:
+perf
 
-Never make unrelated changes in a single commit.
+docs
 
----
+style
 
-# HOSTINGER DEPLOYMENT
+Never mix unrelated changes.
+
+------------------------------------------------------------
+
+# DEPLOYMENT
 
 Target
 
-Node.js Hosting
+Hostinger VPS
 
 Workflow
+
+Git Pull
+
+↓
 
 pnpm install
 
@@ -716,52 +849,76 @@ pnpm build
 
 ↓
 
-pm2 restart
+PM2 Restart
 
 ↓
 
-Verify logs
+Production Verification
+
+------------------------------------------------------------
+
+# BEFORE WRITING CODE
+
+Always
+
+Read Documentation
 
 ↓
 
-Production testing
+Analyze Existing Code
 
-Never deploy without a successful production build.
+↓
 
----
+Review Assets
+
+↓
+
+Review Architecture
+
+↓
+
+Explain Plan
+
+↓
+
+Wait for Approval
+
+↓
+
+Write Code
+
+------------------------------------------------------------
 
 # GOLDEN RULES
 
-Never build pages.
+Never create placeholder architecture.
 
-Build experiences.
+Never invent client information.
 
-Never chase animations.
-
-Create emotion.
+Never reduce quality for speed.
 
 Never copy competitors.
 
-Create an original premium experience.
+Never ignore accessibility.
 
-Always optimize for
+Never sacrifice performance.
 
-User Experience
+Always create production-ready code.
 
-↓
+Always build reusable systems.
 
-Maintainability
+Always improve architecture.
 
-↓
+Always think long-term.
 
-Performance
+------------------------------------------------------------
 
-↓
+# FINAL RULE
 
-Accessibility
+The objective is NOT to finish quickly.
 
-↓
+The objective is to build one of the best business consultancy websites in the UAE.
 
-Conversion
+Every decision should move the project closer to that goal.
 
-Every response should improve the quality of the final product.
+# END

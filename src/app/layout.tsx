@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 
+import { colors, siteConfig } from "@/constants";
+import { Providers } from "@/providers";
+
 import "./globals.css";
 
 /**
@@ -26,42 +29,29 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://acube.ae";
-
+/**
+ * Site-level metadata is driven entirely by `siteConfig` (no hardcoded copy).
+ * `description`/`keywords` are null until client-approved in the SEO milestone,
+ * so they are omitted here rather than invented (Decision b).
+ */
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: "ACUBE — Business Setup & Corporate Consultancy in the UAE",
-    template: "%s | ACUBE",
-  },
-  description:
-    "ACUBE helps entrepreneurs and investors establish and grow businesses in the UAE — " +
-    "company formation, business setup, visas, banking assistance and corporate services.",
-  applicationName: "ACUBE",
-  keywords: [
-    "business setup UAE",
-    "company formation Dubai",
-    "business consultancy UAE",
-    "UAE company registration",
-    "PRO services Dubai",
-    "corporate services UAE",
-  ],
+  metadataBase: new URL(siteConfig.url),
+  title: siteConfig.title,
+  description: siteConfig.description ?? undefined,
+  applicationName: siteConfig.name,
+  ...(siteConfig.keywords ? { keywords: siteConfig.keywords } : {}),
   openGraph: {
     type: "website",
-    siteName: "ACUBE",
-    title: "ACUBE — Business Setup & Corporate Consultancy in the UAE",
-    description:
-      "Establish and grow your business in the UAE with expert consultation, company " +
-      "formation, visas and corporate services.",
-    url: siteUrl,
-    locale: "en_US",
+    siteName: siteConfig.name,
+    title: siteConfig.title.default,
+    description: siteConfig.description ?? undefined,
+    url: siteConfig.url,
+    locale: siteConfig.locale,
   },
   twitter: {
     card: "summary_large_image",
-    title: "ACUBE — Business Setup & Corporate Consultancy in the UAE",
-    description:
-      "Establish and grow your business in the UAE with expert consultation, company " +
-      "formation, visas and corporate services.",
+    title: siteConfig.title.default,
+    description: siteConfig.description ?? undefined,
   },
   robots: {
     index: true,
@@ -70,7 +60,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050505",
+  themeColor: colors.background,
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -85,7 +75,9 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="font-body antialiased">{children}</body>
+      <body className="font-body antialiased">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
