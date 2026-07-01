@@ -6,3 +6,4 @@ export * from "./useScrollState";
 export * from "./useActiveSection";
 export * from "./useAppReady";
 export * from "./useEntrySequence";
+export * from "./useDeviceCapability";

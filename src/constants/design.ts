@@ -45,6 +45,19 @@ export const colors = {
  */
 export const themeColorHex = "#050505";
 
+/**
+ * Raw hex mirrors for WebGL / Three.js consumers (materials, Lightformer colors),
+ * which cannot parse CSS `var()`. Same documented CSS↔JS bridge as themeColorHex.
+ * KEEP IN SYNC with --color-* in globals.css.
+ */
+export const webglColors = {
+  brandRed: "#E53935",
+  brandGreen: "#2E7D32",
+  background: themeColorHex,
+  surface: "#16181D",
+  foreground: "#FFFFFF",
+} as const;
+
 /* ---------- Fonts (var references) ---------- */
 export const fonts = {
   heading: "var(--font-heading)",
