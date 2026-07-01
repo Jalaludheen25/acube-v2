@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 
+import { Navbar } from "@/components/navigation";
 import { siteConfig, themeColorHex } from "@/constants";
 import { Providers } from "@/providers";
 
@@ -76,7 +77,16 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-body antialiased">
-        <Providers>{children}</Providers>
+        <Providers>
+          <a
+            href="#main"
+            className="sr-only rounded-md bg-surface px-4 py-2 text-foreground focus-visible:not-sr-only focus-visible:fixed focus-visible:left-4 focus-visible:top-4 focus-visible:z-[var(--z-max)]"
+          >
+            Skip to content
+          </a>
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
