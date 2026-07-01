@@ -86,68 +86,75 @@ pnpm
 
 # PROJECT STRUCTURE
 
+The structure below reflects the implemented architecture as of Milestone 04.
+Folders marked (M05+) exist with .gitkeep placeholders and are populated in the noted milestone.
+
 ```
-
-acube/
-
-├── CLAUDE.md
-├── PROJECT_RULES.md
-├── package.json
-├── next.config.ts
-├── tsconfig.json
+acube-v2/
+├── CLAUDE.md                    # AI operating brief (highest priority)
+├── PROJECT_RULES.md             # Decisions & change log
+├── MASTER_PROMPTS.md            # Prompt library
+├── package.json · pnpm-lock.yaml · pnpm-workspace.yaml
+├── next.config.ts · tsconfig.json · postcss.config.mjs
+├── eslint.config.mjs · .prettierrc · .editorconfig
+├── .gitignore · .gitattributes · .nvmrc · .npmrc · .env.example
+├── docs/                        # All specification documents
+├── assets/                      # Client brand assets (source files, not served)
+│   ├── logo/                    # Acube logo.png (source)
+│   ├── business-cards/          # acb.jpeg (contact data source)
+│   ├── office/                  # (awaiting client supply)
+│   ├── services/                # (awaiting client supply)
+│   └── certificates/            # (awaiting client supply)
 ├── public/
-├── docs/
-├── assets/
-├── src/
-│
-├── app/
-├── components/
-├── features/
-├── hooks/
-├── lib/
-├── services/
-├── providers/
-├── constants/
-├── types/
-├── utils/
-├── animations/
-├── styles/
-└── data/
-
+│   ├── brand/                   # acube-logo.png (served by next/image)
+│   └── models/ textures/ hdr/ og/ favicons/   (M05+)
+└── src/
+    ├── app/
+    │   ├── layout.tsx            # Root: fonts, metadata, Providers, Navbar, skip-link
+    │   ├── page.tsx              # Home composition root (sections added M05–M16)
+    │   ├── globals.css           # @theme static tokens + @utility glass/container/section
+    │   ├── loading.tsx · error.tsx · not-found.tsx
+    │   └── api/ services/ industries/ packages/ contact/   (route shells, M07+)
+    ├── components/
+    │   ├── ui/                   # Logo (shared) · Button, Card, etc. (M05+)
+    │   └── navigation/           # Navbar, DesktopNav, MobileNav, MobileMenu,
+    │                             # NavLink, NavCta, navMotion.ts
+    ├── features/                 # hero/ services/ contact/ faq/ testimonials/
+    │                             # timeline/ consultation/   (M05+)
+    ├── hooks/                    # useMounted, useMediaQuery, usePrefersReducedMotion,
+    │                             # useScrollLock, useScrollState, useActiveSection
+    ├── lib/                      # cn(), typography presets, layout helpers
+    ├── providers/                # Providers.tsx — Framer LazyMotion + MotionConfig
+    ├── constants/                # design.ts (token mirror), site.ts, contact.ts,
+    │                             # navigation.ts · services/faq/packages/etc. (M07+)
+    ├── types/                    # Typed contracts: Service, Contact, Nav, FAQ, Package,
+    │                             # Testimonial, Industry, ProcessStep, SeoMeta, Site
+    ├── utils/                    # telHref, whatsappHref, mailtoHref
+    ├── animations/               # GSAP + Framer shared config (M05+)
+    └── styles/ data/ services/   # (M05+)
 ```
 
 ------------------------------------------------------------
 
 # APP ROUTER
 
+Route shells exist; page content is added in their respective milestones.
+
 ```
-
 app/
-
-layout.tsx
-
-page.tsx
-
-loading.tsx
-
-error.tsx
-
-not-found.tsx
-
-about/
-
-services/
-
-industries/
-
-packages/
-
-contact/
-
-blog/
-
-api/
-
+├── layout.tsx          # Root layout — implemented (M01–M04)
+├── page.tsx            # Home — composition root (sections M05–M16)
+├── loading.tsx         # Accessible baseline loader (M05 adds branded Entry Experience)
+├── error.tsx           # Root error boundary
+├── not-found.tsx       # 404
+├── services/           # (M08)
+├── industries/         # (M10)
+├── packages/           # (M12)
+├── contact/            # (M15)
+└── api/
+    ├── contact/        # (M15)
+    ├── newsletter/     # (M16)
+    └── consultation/   # (M15)
 ```
 
 ------------------------------------------------------------
@@ -331,6 +338,49 @@ Utils
 ↓
 
 Styles
+
+------------------------------------------------------------
+
+# IMPLEMENTED TOKEN ARCHITECTURE
+
+The design system is CSS-first (Milestone 03). The rule is:
+
+Single source of truth
+→ @theme static block in src/app/globals.css
+
+Typed JS mirror (var references + documented raw bridge)
+→ src/constants/design.ts
+
+Utility helpers
+→ src/lib/typography.ts (semantic class presets)
+→ src/lib/layout.ts (container, grid, glass variants)
+
+Class composition
+→ src/lib/cn.ts — cn() = clsx + tailwind-merge
+
+Raw values mirrored in design.ts (JS cannot use var() for these):
+→ motion durations & easing curves (GSAP/Framer)
+→ breakpoints (matchMedia)
+→ z-index (numeric logic)
+→ opacity (numeric logic)
+→ themeColorHex (meta tag)
+
+Never hardcode a color, spacing, radius, shadow, or timing value in a component.
+Always use a token utility or cn() with a token class.
+
+------------------------------------------------------------
+
+# PROVIDERS PATTERN
+
+src/providers/Providers.tsx wraps the app in:
+
+LazyMotion (features loaded on demand, strict mode for m.* discipline)
+
+MotionConfig reducedMotion="user" (WCAG 2.3.3 for all Framer animations)
+
+Server children pass through unchanged (no server cost).
+GSAP and Three.js are NOT initialized in Providers.
+GSAP is set up per-component in the features that use it (M05+).
 
 ------------------------------------------------------------
 

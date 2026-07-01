@@ -398,31 +398,42 @@ src/constants/navigation.ts
 
 # ASSETS
 
-All client assets belong inside
+All client source assets belong inside assets/ (NOT inside public/).
+Only web-ready assets served by next/image go into public/.
+
+Current asset structure (as supplied by client):
 
 assets/
+├── logo/             Acube logo.png · Acube logo.jpeg (source)
+├── business-cards/   acb.jpeg (front — contact data) · acbb.jpeg (back — services list)
+├── office/           (awaiting client supply)
+├── services/         (awaiting client supply)
+└── certificates/     (awaiting client supply)
 
-references/
+Public (served):
 
-logo/
+public/
+└── brand/            acube-logo.png (copied from assets/logo — do not modify)
 
-office/
+Awaiting from client (needed before their milestone):
+• Office photography (M15 Contact, M16 Footer)
+• Staff portraits (M13 Testimonials)
+• Trade license / certificates (M15 Contact)
+• Service imagery (M08)
+• Social media profile URLs (M16 Footer)
+• WhatsApp number (contact.ts whatsapp field — currently null)
+• Business hours (contact.ts businessHours field — currently null)
+• Google Maps URL (contact.ts googleMapsUrl field — currently null)
 
-staff/
+Asset priority:
 
-services/
+1 Original Client Files
+↓
+2 AI Enhanced Versions
+↓
+3 Generated Assets
 
-business-card/
-
-documents/
-
-certificates/
-
-videos/
-
-fonts/
-
-icons/
+Never replace client branding.
 
 ------------------------------------------------------------
 
@@ -688,13 +699,56 @@ Luxury Hotels
 
 # CHANGE LOG
 
-Version
+----
 
-Date
+v1.0 | 2026-07-01 | M01 Project Setup
 
-Author
+Provisioned toolchain: Node 24.18.0, pnpm 11.9.0, git 2.54.0 (via winget).
+Hand-built Next.js 15 + TypeScript 5 strict scaffold (no create-next-app).
+Installed full approved stack: GSAP, Framer Motion, Three.js/R3F/Drei, RHF+Zod, Lucide.
+BUILD_STANDALONE=true gating for Hostinger (Windows symlink limitation).
+ESLint 9 + TypeScript 5 pinned for eslint-config-next@15 compatibility.
 
-Description
+----
+
+v1.1 | 2026-07-01 | M02 Core Architecture
+
+Typed contracts for all data shapes (types/index.ts).
+Verified contact data from business card (contact.ts — whatsapp: null pending).
+Site config and navigation constants. Providers: Framer LazyMotion + MotionConfig.
+Hooks: useMounted, useMediaQuery, usePrefersReducedMotion, useScrollLock.
+Utilities: cn() (clsx+tailwind-merge), telHref, whatsappHref, mailtoHref.
+DECISION: services/packages/faq/testimonials/industries data deferred to their milestone.
+DECISION: description + keywords null until client-approved (SEO milestone).
+DECISION: NEXT_PUBLIC_SITE_URL empty locally, set in production.
+
+----
+
+v1.2 | 2026-07-01 | M03 Design System
+
+CSS-first @theme static in globals.css is the single source of truth.
+Typed TS mirror in constants/design.ts (var refs + documented raw bridge).
+Full token set: colors, fluid typography (clamp), radius, shadows, blur, glass,
+spacing (8px base), breakpoints, containers, easings, spring, motion presets.
+@utility: glass, glass-floating, glass-interactive, container-*, section-y, touch-target.
+lib/typography.ts and lib/layout.ts for semantic class composition.
+DECISION: No build-time token generator. Documented CSS↔JS bridge is acceptable
+for the small set of runtime primitives (motion, breakpoints, z-index, opacity, themeColor).
+
+----
+
+v1.3 | 2026-07-01 | M04 Premium Navigation
+
+Floating glass Navbar: transparent+expanded at top → glass+compact on scroll.
+Logo scales 0.9 via Framer transform token on scroll. Framer-only (no GSAP in nav).
+Mobile: fullscreen glass overlay, focus trap, Esc + backdrop + link close, scroll lock.
+Shared Logo component in components/ui/Logo.tsx — single implementation.
+Hooks: useScrollState (rAF-throttled), useActiveSection (IntersectionObserver scrollspy).
+DECISION: WhatsApp CTA rendered conditionally — absent until contact.whatsapp verified.
+DECISION: About in nav maps to #business-story; Business Journey not in primary nav.
+DECISION: All nav links are real anchors in SSR HTML (crawlable).
+
+----
 
 Every important project decision should be recorded here.
 

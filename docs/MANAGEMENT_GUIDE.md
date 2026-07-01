@@ -169,71 +169,107 @@ Approved Design System
 
 # PHASE 04
 
-DEVELOPMENT
+DEVELOPMENT — 22 MILESTONES
 
-Milestone 01
+----
+
+PHASE 0 — FOUNDATION
+
+✅ Milestone 01
 
 Project Setup
 
-Milestone 02
+✅ Milestone 02
 
-Navigation
+Core Architecture
 
-Milestone 03
+✅ Milestone 03
 
-Hero
+Design System
 
-Milestone 04
+✅ Milestone 04
 
-Business Story
+Premium Navigation
+
+----
+
+PHASE 1 — EXPERIENCE
 
 Milestone 05
 
-Services
+Entry Experience
 
 Milestone 06
 
-Business Process
+Hero Experience
 
 Milestone 07
 
-Industries
+Business Story
 
 Milestone 08
 
-Why ACUBE
+Services Experience
 
 Milestone 09
 
-Packages
+Business Journey
 
 Milestone 10
 
-Testimonials
+Industries
 
 Milestone 11
 
-FAQ
+Why ACUBE
 
 Milestone 12
 
-Contact
+Packages
 
 Milestone 13
 
-Footer
+Testimonials
 
 Milestone 14
 
-SEO
+FAQ
 
 Milestone 15
 
-Performance
+Contact Experience
 
 Milestone 16
 
-Deployment
+Footer
+
+----
+
+PHASE 2 — LAUNCH
+
+Milestone 17
+
+SEO
+
+Milestone 18
+
+Animation Optimization
+
+Milestone 19
+
+Performance Optimization
+
+Milestone 20
+
+Quality Assurance
+
+Milestone 21
+
+Production Deployment
+
+Milestone 22
+
+Launch & Client Handover
 
 ------------------------------------------------------------
 
@@ -717,9 +753,10 @@ Content Review
 
 ------------------------------------------------------------
 
-# FUTURE ROADMAP
+# POST-LAUNCH ENHANCEMENTS
 
-Phase 2
+The following features are candidates for a future V3 engagement after the V2 launch
+(Milestone 22). They are intentionally deferred and must not influence V2 architecture.
 
 Blog
 

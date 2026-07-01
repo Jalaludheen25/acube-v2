@@ -42,7 +42,7 @@ Every section has
 
 # WEBSITE FLOW
 
-Loader
+Entry Experience
 
 ↓
 
@@ -106,23 +106,26 @@ Footer
 SECTION 01
 ============================================================
 
-# LOADER
+# ENTRY EXPERIENCE
+
+Milestone 05
 
 Purpose
 
-Create premium first impression.
+Create a premium cinematic first impression before the Hero is visible.
+This is NOT the Hero. It is the branded transition from loading into the experience.
 
 Duration
 
-1.5–2 sec
+1.5–2 seconds maximum
 
 Animation
 
-Logo
+Logo appears
 
 ↓
 
-Cube
+Cube assembles
 
 ↓
 
@@ -130,23 +133,24 @@ Glow
 
 ↓
 
-Open
+Cube opens
 
 ↓
 
-Website
+Reveal website
 
 Background
 
-#050505
+#050505 (--color-background)
 
 Skip
 
-Second visit
+Automatically skipped on second and subsequent visits (sessionStorage flag).
 
 Performance
 
-Maximum 2 seconds
+Maximum 2 seconds total.
+Must not block Hero content from loading.
 
 ------------------------------------------------------------
 
@@ -1022,41 +1026,49 @@ Lighthouse
 
 ------------------------------------------------------------
 
-# CLAUDE IMPLEMENTATION ORDER
+# IMPLEMENTATION ORDER
 
-1 Loader
+Aligned with the canonical 22-milestone roadmap.
+Do not advance to the next milestone until the current one passes all quality gates
+(visual · performance · accessibility · responsive).
 
-2 Navigation
+----
 
-3 Hero
+PHASE 0 — FOUNDATION (Completed)
 
-4 Trust
+✅ M01 Project Setup
+✅ M02 Core Architecture
+✅ M03 Design System
+✅ M04 Premium Navigation
 
-5 Business Story
+----
 
-6 Why UAE
+PHASE 1 — EXPERIENCE
 
-7 Services
+M05  Entry Experience       (Section 01)
+M06  Hero Experience        (Section 02)
+     Trust Bar              (Section 03 — part of Hero milestone)
+M07  Business Story         (Section 04 + Why UAE, Section 05)
+M08  Services Experience    (Section 06)
+M09  Business Journey       (Section 07)
+M10  Industries             (Section 08)
+M11  Why ACUBE              (Section 09)
+M12  Packages               (Section 10 + Success Metrics, Section 11)
+M13  Testimonials           (Section 12)
+M14  FAQ                    (Section 13)
+M15  Contact Experience     (Section 14 Consultation CTA + Section 15 Contact)
+M16  Footer                 (Section 16)
 
-8 Timeline
+----
 
-9 Industries
+PHASE 2 — LAUNCH
 
-10 Why ACUBE
-
-11 Packages
-
-12 Testimonials
-
-13 FAQ
-
-14 CTA
-
-15 Contact
-
-16 Footer
-
-Only move to the next section after the current one passes visual, performance, accessibility, and responsive checks.
+M17  SEO
+M18  Animation Optimization
+M19  Performance Optimization
+M20  Quality Assurance
+M21  Production Deployment
+M22  Launch & Client Handover
 
 ------------------------------------------------------------
 

@@ -35,7 +35,7 @@ PROJECT_RULES.md
 All client assets
 
 ------------------------------------------------------------
-PROJECT INITIALIZATION
+PHASE 0 — FOUNDATION (✅ Completed — Milestones 01–04)
 ------------------------------------------------------------
 
 # PROMPT 01
@@ -100,7 +100,7 @@ Documents
 before generating placeholders.
 
 ------------------------------------------------------------
-PROJECT SETUP
+PROJECT SETUP (✅ Completed — M01 + M02)
 ------------------------------------------------------------
 
 # PROMPT 04
@@ -152,7 +152,7 @@ Lucide
 Configure production-ready settings.
 
 ------------------------------------------------------------
-LAYOUT
+LAYOUT (✅ Completed — M03 Design System + M04 Premium Navigation)
 ------------------------------------------------------------
 
 # PROMPT 06
@@ -208,7 +208,35 @@ Container
 Every component must follow the design system.
 
 ------------------------------------------------------------
-HERO
+PHASE 1 — EXPERIENCE (M05–M16)
+------------------------------------------------------------
+
+# PROMPT 07B
+
+Build the premium Entry Experience (M05).
+
+Requirements
+
+Full-screen branded loading sequence
+
+ACUBE logo → cube → glow → expand → reveal
+
+Maximum 2 seconds total
+
+Skip on return visits (sessionStorage)
+
+Framer Motion for the reveal / transition out
+
+GSAP for the internal logo→cube timeline
+
+Mobile-friendly
+
+Reduced motion: instant reveal
+
+Do not block Hero content from loading.
+
+------------------------------------------------------------
+HERO (M06)
 ------------------------------------------------------------
 
 # PROMPT 08
@@ -237,35 +265,49 @@ Follow every project document.
 
 # PROMPT 09
 
-Create the Hero timeline.
+Create the Hero cinematic timeline (M06).
 
-Loader
+The Entry Experience (M05) has already completed before this runs.
 
-↓
+Hero timeline sequence:
 
-Cube
-
-↓
-
-Dubai
+Environment + Cube
 
 ↓
 
-Headline
+Cube opens / Camera moves
 
 ↓
 
-Buttons
+Dubai Skyline appears
 
 ↓
 
-Statistics
+Global Network forms
 
 ↓
 
-Scroll
+Headline reveals (already in DOM — never gated on animation)
 
-Use GSAP.
+↓
+
+Description fades up
+
+↓
+
+CTA buttons slide up
+
+↓
+
+Statistics count up
+
+↓
+
+Scroll indicator appears
+
+Use GSAP for the timeline.
+Use Framer Motion for small component reveals.
+Consume motion tokens from src/constants/design.ts.
 
 ------------------------------------------------------------
 
@@ -308,12 +350,12 @@ Particles
 Without changing visuals.
 
 ------------------------------------------------------------
-SECTIONS
+CONTENT SECTIONS (M07–M16)
 ------------------------------------------------------------
 
 # PROMPT 12
 
-Build the Business Story section.
+Build the Business Story section (M07).
 
 Focus
 

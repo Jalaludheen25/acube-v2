@@ -230,7 +230,9 @@ Every element appears sequentially.
 
 ------------------------------------------------------------
 
-# LOADING EXPERIENCE
+# ENTRY EXPERIENCE
+
+Milestone 05.
 
 Black Background
 
@@ -262,7 +264,7 @@ Maximum Duration
 
 2 seconds
 
-Skip on future visits.
+Skip on future visits (sessionStorage flag).
 
 ------------------------------------------------------------
 
@@ -918,27 +920,37 @@ Never trigger layout recalculation.
 
 ------------------------------------------------------------
 
+# TOOL SPLIT
+
+The following split is now codified (implemented in Milestone 04).
+
+Never mix tools for the same job.
+
+------------------------------------------------------------
+
 # GSAP
 
 Use Only
 
-Hero
+Entry Experience timeline
 
-Pinned Sections
+Hero cinematic timeline
 
-Timeline
+Pinned / ScrollTrigger sections
 
-Story Scroll
+Story Scroll (Business Story, etc.)
 
 Horizontal Scroll
 
-Complex Sequences
+Complex multi-step sequences
 
 ------------------------------------------------------------
 
 # FRAMER MOTION
 
 Use
+
+Navigation (implemented — M04)
 
 Cards
 
@@ -950,7 +962,16 @@ Modals
 
 Lists
 
+Page-level micro-interactions
+
 Small Components
+
+Implementation: LazyMotion (strict, domAnimation loaded on demand)
++ MotionConfig reducedMotion="user" (global reduced-motion).
+Always use m.* components, never motion.* (enforced by LazyMotion strict).
+
+Motion tokens live in: src/constants/design.ts
+(duration · easing · spring · stagger · delay · motionPresets)
 
 ------------------------------------------------------------
 
