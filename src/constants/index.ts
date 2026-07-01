@@ -6,3 +6,4 @@ export * from "./hero";
 export * from "./story";
 export * from "./services";
 export * from "./journey";
+export * from "./industries";

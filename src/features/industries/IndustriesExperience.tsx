@@ -1,0 +1,51 @@
+import { RevealRoot } from "@/components/motion";
+import { Button } from "@/components/ui";
+import { industries } from "@/constants";
+import { cn, container, typography } from "@/lib";
+
+import { IndustryRoster } from "./IndustryRoster";
+
+/**
+ * Industries Experience — answers "Who do you help?".
+ *
+ * The quietest section of the site: a large-typographic editorial roster where
+ * every sector is instantly scannable. Framed as "we help businesses establish
+ * themselves in these sectors" — no claim of exclusive expertise. Grouped
+ * reveals only (opener / roster / CTA), no per-item motion, no icons/cards/glass.
+ * Server Component; RevealRoot enhances the DOM. One concise CTA at the end.
+ *
+ * Semantics: section <h2>; sectors are a <ul> (not sub-headings).
+ */
+export function IndustriesExperience() {
+  return (
+    <section id="industries" aria-labelledby="industries-heading" className="relative bg-background">
+      <RevealRoot>
+        <div className={cn(container.content, "py-24 lg:py-32")}>
+          <div data-reveal className="max-w-3xl">
+            <p className={cn(typography.label, "text-brand-green")}>{industries.eyebrow}</p>
+            <h2
+              id="industries-heading"
+              className={cn(typography.h2, "mt-6 text-balance text-foreground")}
+            >
+              {industries.framing}
+            </h2>
+          </div>
+
+          <IndustryRoster className="mt-16" />
+
+          <div data-reveal className="mt-16 max-w-3xl border-t border-divider pt-12">
+            <p className={cn(typography.body, "text-muted")}>{industries.notListed}</p>
+            <Button
+              href={industries.cta.href}
+              variant="primary"
+              size="lg"
+              className="mt-6"
+            >
+              {industries.cta.label}
+            </Button>
+          </div>
+        </div>
+      </RevealRoot>
+    </section>
+  );
+}
