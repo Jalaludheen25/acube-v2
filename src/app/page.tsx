@@ -1,5 +1,6 @@
 import { EntryExperienceClient } from "@/components/entry";
 import { Hero } from "@/features/hero";
+import { BusinessJourney } from "@/features/journey";
 import { ServicesExperience } from "@/features/services";
 import { BusinessStory } from "@/features/story";
 
@@ -14,9 +15,10 @@ import { BusinessStory } from "@/features/story";
  *   EntryExperienceClient  M05 ✅
  *   Hero (#hero)           M06 ✅
  *   BusinessStory (#business-story) M07 ✅
- *   ServicesExperience (#services)  M08 ✅ (this milestone)
- *   #process               M09 · #industries M10 · #why-acube M11 · #packages M12
- *   #testimonials          M13 · #faq M14 · #contact M15 · Footer M16
+ *   ServicesExperience (#services)  M08 ✅
+ *   BusinessJourney (#process)      M09 ✅ (this milestone)
+ *   #industries M10 · #why-acube M11 · #packages M12
+ *   #testimonials M13 · #faq M14 · #contact M15 · Footer M16
  */
 export default function HomePage() {
   return (
@@ -25,6 +27,7 @@ export default function HomePage() {
       <Hero />
       <BusinessStory />
       <ServicesExperience />
+      <BusinessJourney />
     </main>
   );
 }

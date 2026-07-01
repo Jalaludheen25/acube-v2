@@ -5,3 +5,4 @@ export * from "./navigation";
 export * from "./hero";
 export * from "./story";
 export * from "./services";
+export * from "./journey";
