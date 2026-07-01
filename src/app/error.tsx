@@ -24,7 +24,7 @@ export default function Error({
       <button
         type="button"
         onClick={reset}
-        className="rounded-[18px] border border-white/15 px-6 py-3 font-medium transition-colors hover:bg-white hover:text-background"
+        className="rounded-md border border-white/15 px-6 py-3 font-medium transition-colors hover:bg-white hover:text-background"
       >
         Try again
       </button>

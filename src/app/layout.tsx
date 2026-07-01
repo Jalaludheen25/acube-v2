@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 
-import { colors, siteConfig } from "@/constants";
+import { siteConfig, themeColorHex } from "@/constants";
 import { Providers } from "@/providers";
 
 import "./globals.css";
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: colors.background,
+  themeColor: themeColorHex,
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,

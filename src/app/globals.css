@@ -1,63 +1,234 @@
 @import "tailwindcss";
 
 /* ============================================================
-   ACUBE V2 — Design Tokens (ARCHITECTURE)
+   ACUBE V2 — DESIGN SYSTEM (Milestone 03)
 
-   Milestone 01 establishes the token STRUCTURE and the confirmed
-   brand values only. The full design system — complete type scale,
-   spacing extensions, radius scale, shadow system, motion easings
-   and durations — is implemented in Milestone 03 (Design System).
+   SINGLE SOURCE OF TRUTH.
+   The `@theme` block defines every design value ONCE. Tailwind v4
+   emits both the CSS variables (usable as var(--…) anywhere) and the
+   matching utilities (bg-*, text-*, rounded-*, shadow-*, ease-*, …).
+   TypeScript consumers read these via var() in src/constants/design.ts.
 
-   Canonical source of truth: this @theme block.
-   Typed mirror for JS/GSAP/Three.js consumers: src/constants/design.ts
+   Only runtime primitives that JS cannot express as var() — motion
+   durations/curves, breakpoints, z-index, opacity, theme-color — are
+   additionally mirrored as raw values in design.ts (documented bridge).
    ============================================================ */
-@theme {
-  /* --- Brand palette (confirmed from the ACUBE logo) --- */
-  --color-background: #050505;
-  --color-surface: #16181d;
-  --color-foreground: #ffffff;
-  --color-muted: #b4bac3;
 
-  --color-brand-red: #e53935;
-  --color-brand-green: #2e7d32;
-  --color-gold: #d4af37;
+/* `static` forces ALL theme variables into :root (even if a matching utility
+   isn't used yet) so the token contract — and every TS var() reference — always
+   resolves at runtime. This is the correct trade-off for a design system. */
+@theme static {
+  /* ---------------------------------------------------------
+     COLORS — 95% dark surfaces, ≤5% accent. Palette derives from
+     the ACUBE logo (red/green) plus a gold luxury highlight.
+     Contrast on #050505: #FFFFFF ≈ 20:1, #AEB4BC ≈ 9:1 (AA/AAA).
+     --------------------------------------------------------- */
+  --color-background: #050505; /* page base */
+  --color-background-secondary: #111111; /* alternating sections */
+  --color-surface: #16181d; /* raised solid surfaces */
+  --color-foreground: #ffffff; /* primary text */
+  --color-muted: #aeb4bc; /* secondary text */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-divider: rgba(255, 255, 255, 0.05);
+  --color-glass: rgba(255, 255, 255, 0.06);
 
-  /* --- Typography families (bound to next/font CSS variables) --- */
+  --color-brand-red: #e53935; /* primary accent / primary CTA */
+  --color-brand-green: #2e7d32; /* growth / success / business */
+  --color-gold: #d4af37; /* luxury highlight — use sparingly (≤5%) */
+
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
+  /* ---------------------------------------------------------
+     TYPOGRAPHY — 3 families. Sizes are fluid clamp() so a single
+     token spans mobile → desktop (no per-breakpoint duplication).
+     Paired --line-height keeps rhythm consistent.
+     --------------------------------------------------------- */
   --font-heading: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
-  /* --- Milestone 03 (Design System) will implement below ---
-     - type scale (hero / section / body / caption)
-     - spacing extensions on the 8px base
-     - radius scale (button 18 / card 28 / section 40 …)
-     - shadow system (sm / md / lg — soft, no harsh shadows)
-     - motion durations + easings (easeOutExpo / easeOutQuart …)
-     - explicit responsive breakpoints
-  */
+  --text-hero: clamp(3.5rem, 8vw, 7.5rem); /* 56 → 120 */
+  --text-hero--line-height: 1;
+  --text-display: clamp(2.75rem, 6vw, 4.5rem); /* 44 → 72 */
+  --text-display--line-height: 1.05;
+  --text-h1: clamp(2.25rem, 5vw, 3.5rem); /* 36 → 56 */
+  --text-h1--line-height: 1.1;
+  --text-h2: clamp(1.75rem, 3.5vw, 2.5rem); /* 28 → 40 */
+  --text-h2--line-height: 1.2;
+  --text-h3: clamp(1.375rem, 2.4vw, 1.75rem); /* 22 → 28 */
+  --text-h3--line-height: 1.3;
+  --text-body: 1.125rem; /* 18 */
+  --text-body--line-height: 1.7;
+  --text-body-sm: 1rem; /* 16 */
+  --text-body-sm--line-height: 1.6;
+  --text-caption: 0.875rem; /* 14 */
+  --text-caption--line-height: 1.5;
+  --text-button: 1rem; /* 16 */
+  --text-button--line-height: 1;
+  --text-label: 0.8125rem; /* 13 */
+  --text-label--line-height: 1.4;
+  --text-code: 0.875rem; /* 14 */
+  --text-code--line-height: 1.6;
+
+  /* Letter-spacing scale */
+  --tracking-tighter: -0.04em;
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.02em;
+  --tracking-wider: 0.08em;
+
+  /* Line-height scale (min 1.5 for body copy — readability) */
+  --leading-none: 1;
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  /* ---------------------------------------------------------
+     RADIUS — components consume tokens only.
+     --------------------------------------------------------- */
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 18px; /* buttons, inputs */
+  --radius-lg: 28px; /* cards */
+  --radius-xl: 32px; /* floating panels */
+  --radius-2xl: 40px; /* sections */
+  /* rounded-full (9999px) provided by Tailwind default */
+
+  /* ---------------------------------------------------------
+     SHADOWS — soft & elegant only (never harsh).
+     --------------------------------------------------------- */
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.15);
+  --shadow-medium: 0 20px 50px rgba(0, 0, 0, 0.25);
+  --shadow-large: 0 40px 80px rgba(0, 0, 0, 0.35);
+  --shadow-floating: 0 30px 60px rgba(0, 0, 0, 0.35);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.25);
+  --shadow-glow: 0 0 40px rgba(229, 57, 53, 0.35); /* brand-red glow */
+
+  /* ---------------------------------------------------------
+     BLUR — glass + depth.
+     --------------------------------------------------------- */
+  --blur-xs: 4px;
+  --blur-sm: 8px;
+  --blur-md: 16px;
+  --blur-glass: 24px;
+  --blur-lg: 40px;
+
+  /* ---------------------------------------------------------
+     BREAKPOINTS — extend Tailwind defaults (sm 640 … 2xl 1536)
+     with wide-desktop stops. Raw px mirrored in TS for matchMedia.
+     --------------------------------------------------------- */
+  --breakpoint-3xl: 1600px;
+  --breakpoint-4xl: 1920px;
+
+  /* ---------------------------------------------------------
+     CONTAINERS — reusable content widths.
+     --------------------------------------------------------- */
+  --container-content: 80rem; /* 1280 — standard content */
+  --container-wide: 90rem; /* 1440 — wide layouts */
+  --container-hero: 100rem; /* 1600 — expansive hero */
+
+  /* ---------------------------------------------------------
+     EASING — motion curves. Also mirrored raw in TS (GSAP/Framer).
+     No bounce/elastic/overshoot (premium, controlled motion).
+     --------------------------------------------------------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 /* ============================================================
-   Base layer — minimal foundation only (NOT the design system).
+   REFERENCE-ONLY TOKENS
+   Not tied to a Tailwind utility namespace, so declared in :root
+   to guarantee emission. Mirrored raw in TS where JS needs them.
    ============================================================ */
-:root {
-  color-scheme: dark;
+@layer base {
+  :root {
+    color-scheme: dark;
+
+    /* Motion durations (ms) — CSS transitions + mirrored in TS */
+    --duration-fast: 150ms;
+    --duration-normal: 250ms;
+    --duration-medium: 450ms;
+    --duration-slow: 700ms;
+    --duration-hero: 1200ms;
+    --duration-page: 600ms;
+    --duration-scene: 1500ms;
+
+    /* Z-index scale — layering contract */
+    --z-base: 0;
+    --z-content: 10;
+    --z-sticky: 20;
+    --z-nav: 50;
+    --z-overlay: 60;
+    --z-drawer: 70;
+    --z-modal: 80;
+    --z-toast: 90;
+    --z-max: 100;
+
+    /* Opacity tokens */
+    --opacity-disabled: 0.5;
+    --opacity-muted: 0.7;
+    --opacity-glass: 0.06;
+
+    /* Border widths */
+    --border-hairline: 1px;
+    --border-thick: 2px;
+
+    /* Minimum interactive touch target (WCAG 2.5.5 — 44px) */
+    --touch-target: 2.75rem;
+
+    /* GLASS SYSTEM — the signature ACUBE surface language.
+       Inherited by every future card, nav, and modal. */
+    --glass-bg: rgba(255, 255, 255, 0.06);
+    --glass-bg-hover: rgba(255, 255, 255, 0.09);
+    --glass-bg-active: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.14);
+    --glass-blur: 24px;
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    --glass-shadow-floating: 0 30px 60px rgba(0, 0, 0, 0.4);
+    --glass-reflection: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 45%
+    );
+
+    /* Section vertical rhythm (fluid 96 → 160) */
+    --section-y: clamp(6rem, 12vw, 10rem);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Visible keyboard focus (WCAG 2.4.7) */
+  :focus-visible {
+    outline: var(--border-thick) solid var(--color-brand-red);
+    outline-offset: 2px;
+    border-radius: var(--radius-xs);
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-brand-red) 30%, transparent);
+    color: var(--color-foreground);
+  }
 }
 
-html {
-  -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
-}
-
-body {
-  min-height: 100dvh;
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-/* Respect user motion preferences globally (WCAG 2.3.3). */
+/* Respect reduced-motion globally (WCAG 2.3.3) */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -70,4 +241,84 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ============================================================
+   UTILITY HELPERS
+   Glass system, containers, section rhythm, touch target.
+   Future components inherit these unchanged.
+   ============================================================ */
+@utility glass {
+  background-color: var(--glass-bg);
+  background-image: var(--glass-reflection);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--border-hairline) solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+@utility glass-floating {
+  background-color: var(--glass-bg);
+  background-image: var(--glass-reflection);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--border-hairline) solid var(--glass-border);
+  box-shadow: var(--glass-shadow-floating);
+}
+
+@utility glass-interactive {
+  background-color: var(--glass-bg);
+  background-image: var(--glass-reflection);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--border-hairline) solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+  transition:
+    background-color var(--duration-normal) var(--ease-out-quart),
+    border-color var(--duration-normal) var(--ease-out-quart),
+    box-shadow var(--duration-normal) var(--ease-out-quart);
+
+  &:hover {
+    background-color: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+
+  &:active {
+    background-color: var(--glass-bg-active);
+  }
+}
+
+@utility container-content {
+  width: 100%;
+  max-width: var(--container-content);
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+}
+
+@utility container-wide {
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+}
+
+@utility container-hero {
+  width: 100%;
+  max-width: var(--container-hero);
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+}
+
+@utility container-full {
+  width: 100%;
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+}
+
+@utility section-y {
+  padding-block: var(--section-y);
+}
+
+@utility touch-target {
+  min-height: var(--touch-target);
+  min-width: var(--touch-target);
 }
