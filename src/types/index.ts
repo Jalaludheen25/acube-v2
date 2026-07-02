@@ -12,3 +12,4 @@ export * from "./hero";
 export * from "./story";
 export * from "./journey";
 export * from "./why";
+export * from "./footer";

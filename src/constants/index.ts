@@ -11,3 +11,4 @@ export * from "./why";
 export * from "./packages";
 export * from "./testimonials";
 export * from "./faq";
+export * from "./footer";

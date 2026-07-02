@@ -1,0 +1,30 @@
+import { footerContent, mainNav } from "@/constants";
+import { cn, typography } from "@/lib";
+
+const headingClass = cn(typography.label, "text-brand-green");
+const linkClass = cn(
+  typography.bodySmall,
+  "text-muted transition-colors duration-[var(--duration-normal)] ease-out-quart hover:text-foreground",
+);
+
+/**
+ * Footer navigation — reuses the primary `mainNav` section anchors (single
+ * source of truth; labels stay consistent with the header). Plain anchors keep
+ * the footer pure HTML (no hydration).
+ */
+export function FooterNavigation() {
+  return (
+    <nav aria-label={footerContent.headings.navigation}>
+      <h2 className={headingClass}>{footerContent.headings.navigation}</h2>
+      <ul className="mt-6 flex flex-col gap-3">
+        {mainNav.map((item) => (
+          <li key={item.href}>
+            <a href={item.href} className={linkClass}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}

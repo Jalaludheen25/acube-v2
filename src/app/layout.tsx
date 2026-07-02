@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 
 import { Navbar } from "@/components/navigation";
 import { siteConfig, themeColorHex } from "@/constants";
+import { FooterExperience } from "@/features/footer";
 import { Providers } from "@/providers";
 
 import "./globals.css";
@@ -86,6 +87,7 @@ export default function RootLayout({
           </a>
           <Navbar />
           {children}
+          <FooterExperience />
         </Providers>
       </body>
     </html>
