@@ -37,7 +37,9 @@ export function Button({
     "touch-target inline-flex items-center justify-center rounded-md font-semibold transition duration-[var(--duration-normal)] ease-out-quart",
     size === "md" && "px-5 text-button",
     size === "lg" && "px-7 py-4 text-button",
-    variant === "primary" && "bg-brand-red text-foreground hover:shadow-glow",
+    // `text-white` (not text-foreground) so the label stays legible even inside
+    // a `.section-exhale` where --color-foreground is remapped to dark ink.
+    variant === "primary" && "bg-brand-red text-white hover:shadow-glow",
     variant === "secondary" && "glass-interactive text-foreground",
     className,
   );
