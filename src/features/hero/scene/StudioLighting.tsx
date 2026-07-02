@@ -7,10 +7,10 @@ import { webglColors } from "@/constants";
 /**
  * Studio lighting via Lightformers — no HDR file downloaded.
  *
- * A soft white key + fill establish premium metal reflections; brand-red and
- * brand-green rim lights graze the cube's edges (the only place brand color
- * appears — through reflection, never emissive faces). `frames={1}` bakes the
- * environment once (static lights) for performance.
+ * A soft white key + fill establish premium metal reflections; a champagne-gold
+ * key rim and a restrained lacquer-red accent graze the cube's edges (the only
+ * place brand color appears — through reflection, never emissive faces).
+ * `frames={1}` bakes the environment once (static lights) for performance.
  */
 export function StudioLighting() {
   return (
@@ -35,21 +35,21 @@ export function StudioLighting() {
           scale={[5, 5, 1]}
           target={[0, 0, 0]}
         />
-        {/* Brand-red rim */}
+        {/* Champagne-gold key rim — the lead accent, grazing the top edges */}
         <Lightformer
           form="rect"
-          intensity={2.6}
-          color={webglColors.brandRed}
-          position={[-3, -2, -3]}
-          scale={[3, 3, 1]}
+          intensity={3}
+          color={webglColors.gold}
+          position={[4, 3, -2]}
+          scale={[4, 4, 1]}
           target={[0, 0, 0]}
         />
-        {/* Brand-green rim */}
+        {/* Lacquer-red accent rim — restrained, from below */}
         <Lightformer
           form="rect"
           intensity={2}
-          color={webglColors.brandGreen}
-          position={[4, -1, -3]}
+          color={webglColors.brandRed}
+          position={[-3, -2, -3]}
           scale={[3, 3, 1]}
           target={[0, 0, 0]}
         />

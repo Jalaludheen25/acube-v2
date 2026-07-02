@@ -55,7 +55,7 @@ export function NetworkLines() {
         <mesh key={`node-${i}`} position={node}>
           <sphereGeometry args={[0.03, 12, 12]} />
           <meshBasicMaterial
-            color={i % 2 === 0 ? webglColors.brandRed : webglColors.brandGreen}
+            color={i % 3 === 0 ? webglColors.brandRed : webglColors.gold}
             transparent
             opacity={0.7}
           />

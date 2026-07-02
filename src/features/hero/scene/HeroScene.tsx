@@ -1,15 +1,16 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
+import { MathUtils } from "three";
 
 import type { DeviceCapability } from "@/hooks";
 
 import { CameraRig } from "./CameraRig";
-import { Cube } from "./Cube";
 import { NetworkLines } from "./NetworkLines";
 import { Particles } from "./Particles";
 import { StudioLighting } from "./StudioLighting";
+import { UnfoldingCube } from "./UnfoldingCube";
 
 interface HeroSceneProps {
   capability: DeviceCapability;
@@ -17,10 +18,33 @@ interface HeroSceneProps {
 
 /**
  * The procedural Hero WebGL scene. Transparent canvas (alpha) composites over
- * the page's deep-black background for a seamless hand-off from the Entry
+ * the page's warm-obsidian background for a seamless hand-off from the Entry
  * Experience. DPR and particle count are tiered by device capability.
+ *
+ * Scroll progress through the first viewport is captured here (passive listener,
+ * off the render thread) and handed to `UnfoldingCube`, which opens the cube
+ * into its structural net as the visitor descends.
  */
 export function HeroScene({ capability }: HeroSceneProps) {
+  const progressRef = useRef(0);
+
+  useEffect(() => {
+    const update = () => {
+      progressRef.current = MathUtils.clamp(
+        window.scrollY / (window.innerHeight * 0.9),
+        0,
+        1,
+      );
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
   return (
     <Canvas
       className="!absolute inset-0"
@@ -32,7 +56,7 @@ export function HeroScene({ capability }: HeroSceneProps) {
       <Suspense fallback={null}>
         <StudioLighting />
         <CameraRig enableParallax={capability.enableParallax} />
-        <Cube />
+        <UnfoldingCube progressRef={progressRef} />
         <NetworkLines />
         <Particles count={capability.particleCount} />
       </Suspense>
