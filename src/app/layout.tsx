@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 
 import { Navbar } from "@/components/navigation";
+import { OrganizationSchema } from "@/components/seo";
 import { siteConfig, themeColorHex } from "@/constants";
 import { FooterExperience } from "@/features/footer";
 import { Providers } from "@/providers";
@@ -41,6 +42,8 @@ export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description ?? undefined,
   applicationName: siteConfig.name,
+  alternates: { canonical: "/" },
+  icons: { icon: "/brand/acube-logo.png" },
   ...(siteConfig.keywords ? { keywords: siteConfig.keywords } : {}),
   openGraph: {
     type: "website",
@@ -51,7 +54,7 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: siteConfig.title.default,
     description: siteConfig.description ?? undefined,
   },
@@ -78,6 +81,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-body antialiased">
+        <OrganizationSchema />
         <Providers>
           <a
             href="#main"
