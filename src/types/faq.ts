@@ -4,3 +4,9 @@ export interface FaqItem {
   answer: string;
   category?: string;
 }
+
+export interface FaqContent {
+  eyebrow: string;
+  headline: string;
+  items: readonly FaqItem[];
+}
