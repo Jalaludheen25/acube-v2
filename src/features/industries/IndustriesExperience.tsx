@@ -1,4 +1,5 @@
 import { RevealRoot } from "@/components/motion";
+import { SectionIntro } from "@/components/sections";
 import { Button } from "@/components/ui";
 import { industries } from "@/constants";
 import { cn, container, typography } from "@/lib";
@@ -21,15 +22,12 @@ export function IndustriesExperience() {
     <section id="industries" aria-labelledby="industries-heading" className="relative bg-background">
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
-          <div data-reveal className="max-w-3xl">
-            <p className={cn(typography.label, "text-gold")}>{industries.eyebrow}</p>
-            <h2
-              id="industries-heading"
-              className={cn(typography.h2, "mt-6 text-balance text-foreground")}
-            >
-              {industries.framing}
-            </h2>
-          </div>
+          <SectionIntro
+            eyebrow={industries.eyebrow}
+            title={industries.framing}
+            titleId="industries-heading"
+            size="h2"
+          />
 
           <IndustryRoster className="mt-16" />
 

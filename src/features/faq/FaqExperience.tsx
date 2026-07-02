@@ -1,6 +1,7 @@
 import { RevealRoot } from "@/components/motion";
+import { SectionIntro } from "@/components/sections";
 import { faqContent } from "@/constants";
-import { cn, container, typography } from "@/lib";
+import { cn, container } from "@/lib";
 
 import { FaqItem } from "./FaqItem";
 
@@ -16,15 +17,11 @@ export function FaqExperience() {
     <section id="faq" aria-labelledby="faq-heading" className="relative bg-background">
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
-          <div data-reveal className="max-w-3xl">
-            <p className={cn(typography.label, "text-gold")}>{faqContent.eyebrow}</p>
-            <h2
-              id="faq-heading"
-              className={cn(typography.display, "mt-6 text-balance text-foreground")}
-            >
-              {faqContent.headline}
-            </h2>
-          </div>
+          <SectionIntro
+            eyebrow={faqContent.eyebrow}
+            title={faqContent.headline}
+            titleId="faq-heading"
+          />
 
           <div data-reveal className="mt-16">
             {faqContent.items.map((item) => (

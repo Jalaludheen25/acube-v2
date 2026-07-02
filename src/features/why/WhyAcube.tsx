@@ -1,4 +1,5 @@
 import { RevealRoot } from "@/components/motion";
+import { SectionIntro } from "@/components/sections";
 import { why } from "@/constants";
 import { cn, container, typography } from "@/lib";
 
@@ -16,19 +17,15 @@ import { WhyPrinciples } from "./WhyPrinciples";
  */
 export function WhyAcube() {
   return (
-    <section id="why-acube" aria-labelledby="why-heading" className="relative bg-background">
+    <section id="why-acube" aria-labelledby="why-heading" className="relative section-exhale">
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
-          <div data-reveal className="max-w-3xl">
-            <p className={cn(typography.label, "text-gold")}>{why.eyebrow}</p>
-            <h2
-              id="why-heading"
-              className={cn(typography.display, "mt-6 text-balance text-foreground")}
-            >
-              {why.headline}
-            </h2>
-            <p className={cn(typography.body, "mt-6 text-muted")}>{why.intro}</p>
-          </div>
+          <SectionIntro
+            eyebrow={why.eyebrow}
+            title={why.headline}
+            titleId="why-heading"
+            lede={why.intro}
+          />
 
           <WhyPrinciples />
 

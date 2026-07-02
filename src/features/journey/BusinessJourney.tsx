@@ -1,4 +1,5 @@
 import { RevealRoot } from "@/components/motion";
+import { SectionIntro } from "@/components/sections";
 import { Button } from "@/components/ui";
 import { journey } from "@/constants";
 import { cn, container, typography } from "@/lib";
@@ -23,19 +24,11 @@ export function BusinessJourney() {
     <section id="process" aria-labelledby="journey-heading" className="relative bg-background">
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
-          <div data-reveal className="max-w-3xl">
-            <p className={cn(typography.label, "text-gold")}>{journey.eyebrow}</p>
-            <h2
-              id="journey-heading"
-              className={cn(typography.display, "mt-6 text-balance text-foreground")}
-            >
-              {journey.framing.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-            </h2>
-          </div>
+          <SectionIntro
+            eyebrow={journey.eyebrow}
+            title={journey.framing}
+            titleId="journey-heading"
+          />
 
           <div className="relative mt-16 lg:mt-24">
             <JourneyPath />

@@ -1,4 +1,5 @@
 import { RevealRoot } from "@/components/motion";
+import { SectionIntro } from "@/components/sections";
 import { Button } from "@/components/ui";
 import { servicesContent } from "@/constants";
 import { cn, container, typography } from "@/lib";
@@ -20,18 +21,12 @@ export function ServicesExperience() {
     <section id="services" aria-labelledby="services-heading" className="relative bg-background">
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
-          <div className="max-w-3xl">
-            <p data-reveal className={cn(typography.label, "text-gold")}>
-              What We Do
-            </p>
-            <h2
-              id="services-heading"
-              data-reveal
-              className={cn(typography.h2, "mt-6 text-balance text-foreground")}
-            >
-              {servicesContent.framing}
-            </h2>
-          </div>
+          <SectionIntro
+            eyebrow="What We Do"
+            title={servicesContent.framing}
+            titleId="services-heading"
+            size="h2"
+          />
 
           <div className="mt-16 lg:flex lg:gap-16">
             <div className="lg:w-56 lg:shrink-0">

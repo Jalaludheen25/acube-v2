@@ -1,6 +1,7 @@
 import { RevealRoot } from "@/components/motion";
+import { SectionIntro } from "@/components/sections";
 import { contactContent } from "@/constants";
-import { cn, container, typography } from "@/lib";
+import { cn, container } from "@/lib";
 
 import { ContactDetails } from "./ContactDetails";
 import { ContactForm } from "./ContactForm";
@@ -16,16 +17,12 @@ export function ContactExperience() {
     <section id="contact" aria-labelledby="contact-heading" className="relative bg-background">
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
-          <div data-reveal className="max-w-3xl">
-            <p className={cn(typography.label, "text-gold")}>{contactContent.eyebrow}</p>
-            <h2
-              id="contact-heading"
-              className={cn(typography.display, "mt-6 text-balance text-foreground")}
-            >
-              {contactContent.headline}
-            </h2>
-            <p className={cn(typography.body, "mt-6 text-muted")}>{contactContent.invitation}</p>
-          </div>
+          <SectionIntro
+            eyebrow={contactContent.eyebrow}
+            title={contactContent.headline}
+            titleId="contact-heading"
+            lede={contactContent.invitation}
+          />
 
           <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-16">
             <div data-reveal>
