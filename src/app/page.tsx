@@ -2,6 +2,7 @@ import { EntryExperienceClient } from "@/components/entry";
 import { Hero } from "@/features/hero";
 import { IndustriesExperience } from "@/features/industries";
 import { BusinessJourney } from "@/features/journey";
+import { PackagesExperience } from "@/features/packages";
 import { ServicesExperience } from "@/features/services";
 import { BusinessStory } from "@/features/story";
 import { WhyAcube } from "@/features/why";
@@ -20,8 +21,9 @@ import { WhyAcube } from "@/features/why";
  *   ServicesExperience (#services)  M08 ✅
  *   BusinessJourney (#process)      M09 ✅
  *   IndustriesExperience (#industries) M10 ✅
- *   WhyAcube (#why-acube)           M11 ✅ (this milestone)
- *   #packages M12 · #testimonials M13 · #faq M14 · #contact M15 · Footer M16
+ *   WhyAcube (#why-acube)           M11 ✅
+ *   PackagesExperience (#packages)  M12 ✅ (this milestone)
+ *   #testimonials M13 · #faq M14 · #contact M15 · Footer M16
  */
 export default function HomePage() {
   return (
@@ -33,6 +35,7 @@ export default function HomePage() {
       <BusinessJourney />
       <IndustriesExperience />
       <WhyAcube />
+      <PackagesExperience />
     </main>
   );
 }
