@@ -5,6 +5,7 @@ import { BusinessJourney } from "@/features/journey";
 import { PackagesExperience } from "@/features/packages";
 import { ServicesExperience } from "@/features/services";
 import { BusinessStory } from "@/features/story";
+import { TrustExperience } from "@/features/testimonials";
 import { WhyAcube } from "@/features/why";
 
 /**
@@ -22,8 +23,9 @@ import { WhyAcube } from "@/features/why";
  *   BusinessJourney (#process)      M09 ✅
  *   IndustriesExperience (#industries) M10 ✅
  *   WhyAcube (#why-acube)           M11 ✅
- *   PackagesExperience (#packages)  M12 ✅ (this milestone)
- *   #testimonials M13 · #faq M14 · #contact M15 · Footer M16
+ *   PackagesExperience (#packages)  M12 ✅
+ *   TrustExperience (#testimonials) M13 ✅ (this milestone)
+ *   #faq M14 · #contact M15 · Footer M16
  */
 export default function HomePage() {
   return (
@@ -36,6 +38,7 @@ export default function HomePage() {
       <IndustriesExperience />
       <WhyAcube />
       <PackagesExperience />
+      <TrustExperience />
     </main>
   );
 }
