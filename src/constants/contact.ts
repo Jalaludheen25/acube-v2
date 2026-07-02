@@ -37,3 +37,34 @@ export const contact: ContactInfo = {
   googleMapsUrl: null,
   socialLinks: [],
 };
+
+/**
+ * Contact section copy. All values here are UI copy (data-driven, no hardcoded
+ * strings in components); verified contact facts live in `contact` above. Copy
+ * is subject to client review.
+ */
+export const contactContent = {
+  eyebrow: "Contact",
+  headline: "Let's build your business.",
+  invitation:
+    "Tell us where you are, and we'll take it from there — no pressure, no obligation.",
+  detailsLabels: {
+    email: "Email",
+    phone: "Phone",
+    office: "Office",
+  },
+  form: {
+    fields: {
+      name: { label: "Name" },
+      email: { label: "Email", hint: "So we can reply." },
+      phone: { label: "Phone", hint: "Optional — if you'd prefer a call." },
+      message: { label: "Message", hint: "Tell us a little about your plans." },
+    },
+    sending: "Sending…",
+    success: {
+      title: "Thank you.",
+      body: "We've received your message and will get back to you as soon as possible.",
+    },
+    error: "Something went wrong sending your message. Please email us directly:",
+  },
+} as const;
