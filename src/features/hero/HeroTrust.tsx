@@ -31,7 +31,7 @@ export function HeroTrust({ className }: HeroTrustProps) {
     <ul className={cn("flex flex-wrap gap-x-6 gap-y-3", className)}>
       {hero.trustSignals.map((signal) => (
         <li key={signal.id} className="inline-flex items-center gap-2 text-muted">
-          <signal.Icon className="size-4 shrink-0 text-brand-green" aria-hidden />
+          <signal.Icon className="size-4 shrink-0 text-gold" aria-hidden />
           <span className="text-caption">{signal.label}</span>
         </li>
       ))}

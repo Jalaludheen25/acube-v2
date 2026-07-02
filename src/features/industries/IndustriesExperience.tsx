@@ -22,7 +22,7 @@ export function IndustriesExperience() {
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
           <div data-reveal className="max-w-3xl">
-            <p className={cn(typography.label, "text-brand-green")}>{industries.eyebrow}</p>
+            <p className={cn(typography.label, "text-gold")}>{industries.eyebrow}</p>
             <h2
               id="industries-heading"
               className={cn(typography.h2, "mt-6 text-balance text-foreground")}

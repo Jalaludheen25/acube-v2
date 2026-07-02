@@ -12,7 +12,7 @@ interface WhyUaeCardProps {
 export function WhyUaeCard({ benefit }: WhyUaeCardProps) {
   return (
     <div className={cn(glassVariants.interactive, "rounded-lg p-6")}>
-      <benefit.Icon className="size-6 text-brand-green" aria-hidden />
+      <benefit.Icon className="size-6 text-gold" aria-hidden />
       <h3 className="mt-4 font-heading text-body font-semibold text-foreground">{benefit.title}</h3>
       <p className={cn(typography.bodySmall, "mt-2 text-muted")}>{benefit.description}</p>
     </div>

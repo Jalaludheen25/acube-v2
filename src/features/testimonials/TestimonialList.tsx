@@ -13,7 +13,7 @@ export function TestimonialList() {
 
   return (
     <div data-reveal>
-      <p className={cn(typography.label, "text-brand-green")}>{quotes.eyebrow}</p>
+      <p className={cn(typography.label, "text-gold")}>{quotes.eyebrow}</p>
       <h2 className={cn(typography.display, "mt-6 text-foreground")}>{quotes.headline}</h2>
 
       <div className="mt-16">

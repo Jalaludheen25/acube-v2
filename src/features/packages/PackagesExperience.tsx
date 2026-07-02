@@ -20,7 +20,7 @@ export function PackagesExperience() {
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
           <div data-reveal className="max-w-3xl">
-            <p className={cn(typography.label, "text-brand-green")}>{packagesContent.eyebrow}</p>
+            <p className={cn(typography.label, "text-gold")}>{packagesContent.eyebrow}</p>
             <h2
               id="packages-heading"
               className={cn(typography.display, "mt-6 text-balance text-foreground")}

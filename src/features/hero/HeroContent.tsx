@@ -21,7 +21,7 @@ export function HeroContent() {
   return (
     <div className="container-wide relative z-[var(--z-content)] flex min-h-dvh flex-col justify-center py-32">
       <m.div variants={heroContentVariants} initial="hidden" animate="visible" className="max-w-3xl">
-        <m.p variants={heroItemVariants} className={cn(typography.label, "text-brand-green")}>
+        <m.p variants={heroItemVariants} className={cn(typography.label, "text-gold")}>
           {hero.eyebrow}
         </m.p>
 

@@ -2,9 +2,9 @@ import { contact, contactContent } from "@/constants";
 import { cn, typography } from "@/lib";
 import { mailtoHref, telHref, whatsappHref } from "@/utils";
 
-const dtClass = cn(typography.label, "text-brand-green");
+const dtClass = cn(typography.label, "text-gold");
 const linkClass =
-  "text-body text-foreground transition-colors duration-[var(--duration-normal)] ease-out-quart hover:text-brand-green";
+  "text-body text-foreground transition-colors duration-[var(--duration-normal)] ease-out-quart hover:text-gold";
 
 /**
  * Verified contact details as an editorial definition list — hairline dividers,

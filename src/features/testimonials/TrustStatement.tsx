@@ -12,7 +12,7 @@ export function TrustStatement() {
 
   return (
     <div data-reveal className="max-w-3xl">
-      <p className={cn(typography.label, "text-brand-green")}>{statement.eyebrow}</p>
+      <p className={cn(typography.label, "text-gold")}>{statement.eyebrow}</p>
       <h2 className={cn(typography.display, "mt-6 text-balance text-foreground")}>
         {statement.headline}
       </h2>

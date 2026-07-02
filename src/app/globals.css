@@ -19,22 +19,31 @@
    resolves at runtime. This is the correct trade-off for a design system. */
 @theme static {
   /* ---------------------------------------------------------
-     COLORS — 95% dark surfaces, ≤5% accent. Palette derives from
-     the ACUBE logo (red/green) plus a gold luxury highlight.
-     Contrast on #050505: #FFFFFF ≈ 20:1, #AEB4BC ≈ 9:1 (AA/AAA).
+     COLORS — Creative Reboot palette. Warm obsidian, lit by
+     champagne GOLD (the lead accent), with lacquer RED reserved
+     for action and a deep emerald whisper. Two warm "exhale"
+     tones (ivory/ink) drive rare light sections.
+     Contrast on #0A0A0B: #F5F3EF ≈ 18:1, #A8A29A ≈ 7.5:1,
+     gold #C9A96A ≈ 8:1 (all AA+). Deep emerald is decorative only.
      --------------------------------------------------------- */
-  --color-background: #050505; /* page base */
-  --color-background-secondary: #111111; /* alternating sections */
-  --color-surface: #16181d; /* raised solid surfaces */
-  --color-foreground: #ffffff; /* primary text */
-  --color-muted: #aeb4bc; /* secondary text */
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-divider: rgba(255, 255, 255, 0.05);
-  --color-glass: rgba(255, 255, 255, 0.06);
+  --color-background: #0a0a0b; /* warm obsidian — page base */
+  --color-background-secondary: #121214; /* alternating sections */
+  --color-surface: #17171a; /* raised solid surfaces */
+  --color-foreground: #f5f3ef; /* warm off-white — primary text */
+  --color-muted: #a8a29a; /* warm gray — secondary text */
+  --color-border: rgba(245, 243, 239, 0.09);
+  --color-divider: rgba(245, 243, 239, 0.06);
+  --color-glass: rgba(245, 243, 239, 0.05);
 
-  --color-brand-red: #e53935; /* primary accent / primary CTA */
-  --color-brand-green: #2e7d32; /* growth / success / business */
-  --color-gold: #d4af37; /* luxury highlight — use sparingly (≤5%) */
+  --color-brand-red: #c8321f; /* lacquer red — ACTION only (CTAs) */
+  --color-brand-green: #1f5c3a; /* deep emerald — decorative whisper */
+  --color-gold: #c9a96a; /* champagne gold — LEAD accent */
+  --color-gold-ink: #9a7b3a; /* deeper gold — for light/ivory contexts */
+
+  /* Warm "exhale" light-section palette */
+  --color-ivory: #f3eee4; /* light-section background */
+  --color-ink: #1a1714; /* text on ivory */
+  --color-ink-muted: #5b554c; /* secondary text on ivory */
 
   --color-success: #22c55e;
   --color-warning: #f59e0b;
@@ -45,7 +54,8 @@
      token spans mobile → desktop (no per-breakpoint duplication).
      Paired --line-height keeps rhythm consistent.
      --------------------------------------------------------- */
-  --font-heading: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", ui-serif, serif;
+  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
@@ -105,7 +115,8 @@
   --shadow-large: 0 40px 80px rgba(0, 0, 0, 0.35);
   --shadow-floating: 0 30px 60px rgba(0, 0, 0, 0.35);
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.25);
-  --shadow-glow: 0 0 40px rgba(229, 57, 53, 0.35); /* brand-red glow */
+  --shadow-glow: 0 0 40px rgba(200, 50, 31, 0.32); /* lacquer-red glow (CTA) */
+  --shadow-glow-gold: 0 0 48px rgba(201, 169, 106, 0.28); /* champagne-gold glow */
 
   /* ---------------------------------------------------------
      BLUR — glass + depth.
@@ -211,6 +222,7 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
+    font-optical-sizing: auto;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -321,4 +333,39 @@
 @utility touch-target {
   min-height: var(--touch-target);
   min-width: var(--touch-target);
+}
+
+/* ============================================================
+   MATERIAL & LIGHT-SECTION SYSTEM (Creative Reboot — Phase A)
+   ============================================================ */
+
+/* Film-grain overlay — subtle material texture across the page.
+   Static (no animation), non-interactive; painted above page content
+   but below nav/drawer/modal so overlays stay clean. Reduced to a
+   whisper; purely atmospheric. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+}
+
+/* "Exhale" — warm ivory light sections. Locally re-maps the neutral
+   tokens so every token-driven child inherits correct light-mode
+   contrast (foreground → ink, muted → ink-muted, gold → deeper gold).
+   Brand red stays for action; deep emerald stays decorative. */
+.section-exhale {
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+  color-scheme: light;
+  --color-foreground: var(--color-ink);
+  --color-muted: var(--color-ink-muted);
+  --color-gold: var(--color-gold-ink);
+  --color-border: rgba(26, 23, 20, 0.12);
+  --color-divider: rgba(26, 23, 20, 0.08);
+  --color-glass: rgba(26, 23, 20, 0.04);
 }

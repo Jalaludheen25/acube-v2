@@ -23,7 +23,7 @@ export function IndustryRoster({ className }: IndustryRosterProps) {
       {industries.sectors.map((sector) => (
         <li
           key={sector.id}
-          className="border-t border-divider py-6 font-heading text-h3 font-medium text-foreground transition-colors duration-[var(--duration-normal)] ease-out-quart hover:text-brand-green"
+          className="border-t border-divider py-6 font-heading text-h3 font-medium text-foreground transition-colors duration-[var(--duration-normal)] ease-out-quart hover:text-gold"
         >
           {sector.name}
         </li>

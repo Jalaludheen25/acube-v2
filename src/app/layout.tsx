@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 
 import { Navbar } from "@/components/navigation";
 import { OrganizationSchema } from "@/components/seo";
@@ -14,9 +14,9 @@ import "./globals.css";
  * Each font is exposed as a CSS variable consumed by the Tailwind v4 @theme
  * token layer (see src/app/globals.css).
  */
-const spaceGrotesk = Space_Grotesk({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-fraunces",
   display: "swap",
 });
 
@@ -77,11 +77,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <body className="font-body antialiased">
         <OrganizationSchema />
+        <div className="grain" aria-hidden="true" />
         <Providers>
           <a
             href="#main"

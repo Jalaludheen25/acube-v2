@@ -9,16 +9,19 @@
  * (mobile → desktop) with no per-breakpoint overrides.
  */
 export const typography = {
-  hero: "font-heading text-hero font-bold tracking-tight",
-  display: "font-heading text-display font-bold tracking-tight",
-  h1: "font-heading text-h1 font-semibold tracking-tight",
-  h2: "font-heading text-h2 font-semibold tracking-tight",
+  // Editorial serif (Fraunces) for display-scale headings — the "voice".
+  hero: "font-display text-hero font-semibold tracking-tight",
+  display: "font-display text-display font-semibold tracking-tight",
+  h1: "font-display text-h1 font-semibold tracking-tight",
+  h2: "font-display text-h2 font-semibold tracking-tight",
+  // Grotesk (Inter) for smaller headings/UI — the "system".
   h3: "font-heading text-h3 font-semibold",
   body: "font-body text-body font-normal",
   bodySmall: "font-body text-body-sm font-normal",
   caption: "font-body text-caption text-muted",
   button: "font-body text-button font-semibold",
-  label: "font-body text-label font-medium uppercase tracking-wider",
+  // Officialdom accent: mono, uppercase, tracked — echoes document/reference type.
+  label: "font-mono text-label font-medium uppercase tracking-wider",
   code: "font-mono text-code",
 } as const;
 

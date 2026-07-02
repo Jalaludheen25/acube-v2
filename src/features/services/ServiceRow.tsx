@@ -17,13 +17,13 @@ export function ServiceRow({ service }: ServiceRowProps) {
 
   return (
     <div className="group flex gap-4 border-t border-divider py-6">
-      <Icon className="mt-1 size-6 shrink-0 text-brand-green" aria-hidden />
+      <Icon className="mt-1 size-6 shrink-0 text-gold" aria-hidden />
       <div>
         <h4 className="font-heading text-body font-semibold text-foreground">{service.title}</h4>
         <p className={cn(typography.bodySmall, "mt-1 max-w-xl text-muted")}>{service.description}</p>
         {service.idealFor ? (
           <p className="mt-2 text-caption text-muted">
-            <span className="text-brand-green">Ideal for</span> · {service.idealFor}
+            <span className="text-gold">Ideal for</span> · {service.idealFor}
           </p>
         ) : null}
       </div>

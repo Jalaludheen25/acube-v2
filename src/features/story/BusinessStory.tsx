@@ -61,7 +61,7 @@ export function BusinessStory() {
             <ul data-reveal-stagger className="mt-8 flex max-w-2xl flex-col gap-4">
               {story.complexity.points.map((point) => (
                 <li key={point} className="flex items-start gap-3">
-                  <Check className="mt-1 size-4 shrink-0 text-brand-green" aria-hidden />
+                  <Check className="mt-1 size-4 shrink-0 text-gold" aria-hidden />
                   <span className={cn(typography.body, "text-muted")}>{point}</span>
                 </li>
               ))}

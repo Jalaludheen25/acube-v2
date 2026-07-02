@@ -1,7 +1,7 @@
 import { footerContent, mainNav } from "@/constants";
 import { cn, typography } from "@/lib";
 
-const headingClass = cn(typography.label, "text-brand-green");
+const headingClass = cn(typography.label, "text-gold");
 const linkClass = cn(
   typography.bodySmall,
   "text-muted transition-colors duration-[var(--duration-normal)] ease-out-quart hover:text-foreground",

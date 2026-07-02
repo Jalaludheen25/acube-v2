@@ -21,7 +21,7 @@ export function ServicesExperience() {
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
           <div className="max-w-3xl">
-            <p data-reveal className={cn(typography.label, "text-brand-green")}>
+            <p data-reveal className={cn(typography.label, "text-gold")}>
               What We Do
             </p>
             <h2

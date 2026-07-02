@@ -27,10 +27,14 @@ export const colors = {
   border: "var(--color-border)",
   divider: "var(--color-divider)",
   glass: "var(--color-glass)",
+  ivory: "var(--color-ivory)",
+  ink: "var(--color-ink)",
+  inkMuted: "var(--color-ink-muted)",
   brand: {
     red: "var(--color-brand-red)",
     green: "var(--color-brand-green)",
     gold: "var(--color-gold)",
+    goldInk: "var(--color-gold-ink)",
   },
   status: {
     success: "var(--color-success)",
@@ -43,7 +47,7 @@ export const colors = {
  * Raw hex required by <meta name="theme-color"> (var() is invalid there).
  * KEEP IN SYNC with --color-background in globals.css.
  */
-export const themeColorHex = "#050505";
+export const themeColorHex = "#0A0A0B";
 
 /**
  * Raw hex mirrors for WebGL / Three.js consumers (materials, Lightformer colors),
@@ -51,15 +55,17 @@ export const themeColorHex = "#050505";
  * KEEP IN SYNC with --color-* in globals.css.
  */
 export const webglColors = {
-  brandRed: "#E53935",
-  brandGreen: "#2E7D32",
+  brandRed: "#C8321F",
+  brandGreen: "#1F5C3A",
+  gold: "#C9A96A",
   background: themeColorHex,
-  surface: "#16181D",
-  foreground: "#FFFFFF",
+  surface: "#17171A",
+  foreground: "#F5F3EF",
 } as const;
 
 /* ---------- Fonts (var references) ---------- */
 export const fonts = {
+  display: "var(--font-display)",
   heading: "var(--font-heading)",
   body: "var(--font-body)",
   mono: "var(--font-mono)",

@@ -17,7 +17,7 @@ export function FaqExperience() {
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
           <div data-reveal className="max-w-3xl">
-            <p className={cn(typography.label, "text-brand-green")}>{faqContent.eyebrow}</p>
+            <p className={cn(typography.label, "text-gold")}>{faqContent.eyebrow}</p>
             <h2
               id="faq-heading"
               className={cn(typography.display, "mt-6 text-balance text-foreground")}
