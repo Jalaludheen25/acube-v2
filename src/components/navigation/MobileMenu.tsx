@@ -13,7 +13,6 @@ import { NavLink } from "./NavLink";
 import { mobileMenuItemVariants, mobileMenuVariants } from "./navMotion";
 
 interface MobileMenuProps {
-  active: string | null;
   onClose: () => void;
 }
 
@@ -22,7 +21,7 @@ interface MobileMenuProps {
  * staggered reveal. Locks body scroll, traps focus, closes on Escape, on the
  * close button, on a link, and on backdrop (outside) click.
  */
-export function MobileMenu({ active, onClose }: MobileMenuProps) {
+export function MobileMenu({ onClose }: MobileMenuProps) {
   const ref = useRef<HTMLDivElement>(null);
   useScrollLock(true);
 
@@ -101,7 +100,6 @@ export function MobileMenu({ active, onClose }: MobileMenuProps) {
               <m.li key={item.href} variants={mobileMenuItemVariants}>
                 <NavLink
                   item={item}
-                  active={active === item.href.slice(1)}
                   onNavigate={onClose}
                   className="text-h2 font-heading font-medium"
                 />
@@ -111,7 +109,7 @@ export function MobileMenu({ active, onClose }: MobileMenuProps) {
         </nav>
 
         <m.div variants={mobileMenuItemVariants} className="pointer-events-auto flex flex-col gap-3">
-          <NavCta href="#contact" label={siteConfig.cta.primary} onClick={onClose} />
+          <NavCta href="/contact" label={siteConfig.cta.primary} onClick={onClose} />
           {contact.whatsapp ? (
             <NavCta
               href={whatsappHref(contact.whatsapp.digits)}

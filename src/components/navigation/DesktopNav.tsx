@@ -6,26 +6,22 @@ import { whatsappHref } from "@/utils";
 import { NavCta } from "./NavCta";
 import { NavLink } from "./NavLink";
 
-interface DesktopNavProps {
-  active: string | null;
-}
-
 /**
- * Desktop navigation (≥ lg). Memoized so it only re-renders when the active
- * section changes — not on every scroll-state update.
+ * Desktop navigation (≥ lg). Real-route links + the primary consultation CTA
+ * (and WhatsApp when a verified number exists).
  */
-function DesktopNavComponent({ active }: DesktopNavProps) {
+function DesktopNavComponent() {
   return (
     <div className="hidden items-center gap-10 lg:flex">
       <ul className="flex items-center gap-8">
         {mainNav.map((item) => (
           <li key={item.href}>
-            <NavLink item={item} active={active === item.href.slice(1)} />
+            <NavLink item={item} />
           </li>
         ))}
       </ul>
       <div className="flex items-center gap-3">
-        <NavCta href="#contact" label={siteConfig.cta.primary} />
+        <NavCta href="/contact" label={siteConfig.cta.primary} />
         {contact.whatsapp ? (
           <NavCta
             href={whatsappHref(contact.whatsapp.digits)}

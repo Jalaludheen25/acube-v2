@@ -187,5 +187,5 @@ export const servicesContent: ServicesContent = {
       ],
     },
   ],
-  cta: { label: "Book a Free Consultation", href: "#contact" },
+  cta: { label: "Book a Free Consultation", href: "/contact" },
 };

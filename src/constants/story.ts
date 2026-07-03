@@ -95,7 +95,7 @@ export const story: StoryContent = {
   transition: {
     statement: ["Ready to see", "how we can help?"],
     ctaLabel: "Explore Our Services",
-    ctaHref: "#services",
+    ctaHref: "/services",
   },
   future: {
     foundingYear: null,

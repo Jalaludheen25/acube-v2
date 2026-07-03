@@ -1,50 +1,23 @@
-import { EntryExperienceClient } from "@/components/entry";
-import { ContactExperience } from "@/features/contact";
-import { FaqExperience } from "@/features/faq";
 import { Hero } from "@/features/hero";
-import { IndustriesExperience } from "@/features/industries";
-import { BusinessJourney } from "@/features/journey";
-import { PackagesExperience } from "@/features/packages";
-import { ServicesExperience } from "@/features/services";
-import { BusinessStory } from "@/features/story";
+import { HomeCtaBand, HomePillars } from "@/features/home";
 import { TrustExperience } from "@/features/testimonials";
-import { WhyAcube } from "@/features/why";
 
 /**
- * Home — composition root.
+ * Home — the landing page.
  *
- * `EntryExperienceClient` is a thin "use client" wrapper holding the
- * `next/dynamic ssr:false` import (Next.js 15 rule); this page stays a Server
- * Component. The Hero owns the single <h1>.
- *
- * Section mount order (22-milestone roadmap):
- *   EntryExperienceClient  M05 ✅
- *   Hero (#hero)           M06 ✅
- *   BusinessStory (#business-story) M07 ✅
- *   ServicesExperience (#services)  M08 ✅
- *   BusinessJourney (#process)      M09 ✅
- *   IndustriesExperience (#industries) M10 ✅
- *   WhyAcube (#why-acube)           M11 ✅
- *   PackagesExperience (#packages)  M12 ✅
- *   TrustExperience (#testimonials) M13 ✅
- *   FaqExperience (#faq)            M14 ✅
- *   ContactExperience (#contact)    M15 ✅ (this milestone)
- *   Footer M16
+ * A multi-page site: the homepage is a concise landing (hero → pillars that link
+ * to dedicated pages → trust → closing CTA), not a long stack of on-page
+ * sections. Each header item and each pillar navigates to its own route. The
+ * Hero owns the single <h1>; its animation is paused (static backdrop) until the
+ * final animation pass.
  */
 export default function HomePage() {
   return (
     <main id="main">
-      <EntryExperienceClient />
       <Hero />
-      <BusinessStory />
-      <ServicesExperience />
-      <BusinessJourney />
-      <IndustriesExperience />
-      <WhyAcube />
-      <PackagesExperience />
+      <HomePillars />
       <TrustExperience />
-      <FaqExperience />
-      <ContactExperience />
+      <HomeCtaBand />
     </main>
   );
 }

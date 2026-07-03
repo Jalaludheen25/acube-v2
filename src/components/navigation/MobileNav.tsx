@@ -8,14 +8,13 @@ import { MobileMenu } from "./MobileMenu";
 interface MobileNavProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  active: string | null;
 }
 
 /**
  * Mobile trigger (< lg). Opens the fullscreen MobileMenu; the menu renders its
  * own close/backdrop affordances. `AnimatePresence` drives the exit animation.
  */
-export function MobileNav({ open, onOpenChange, active }: MobileNavProps) {
+export function MobileNav({ open, onOpenChange }: MobileNavProps) {
   return (
     <div className="lg:hidden">
       <button
@@ -30,7 +29,7 @@ export function MobileNav({ open, onOpenChange, active }: MobileNavProps) {
       </button>
 
       <AnimatePresence>
-        {open ? <MobileMenu active={active} onClose={() => onOpenChange(false)} /> : null}
+        {open ? <MobileMenu onClose={() => onOpenChange(false)} /> : null}
       </AnimatePresence>
     </div>
   );

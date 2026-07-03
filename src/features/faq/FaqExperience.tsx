@@ -12,12 +12,17 @@ import { FaqItem } from "./FaqItem";
  * transitions naturally into Contact. Adding an item to faqContent.items
  * renders another entry automatically.
  */
-export function FaqExperience() {
+interface FaqExperienceProps {
+  as?: "h1" | "h2";
+}
+
+export function FaqExperience({ as = "h2" }: FaqExperienceProps) {
   return (
     <section id="faq" aria-labelledby="faq-heading" className="relative bg-background">
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
           <SectionIntro
+            as={as}
             eyebrow={faqContent.eyebrow}
             title={faqContent.headline}
             titleId="faq-heading"

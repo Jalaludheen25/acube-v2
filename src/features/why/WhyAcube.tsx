@@ -15,12 +15,17 @@ import { WhyPrinciples } from "./WhyPrinciples";
  * a placeholder. No CTA here: the section flows straight into Packages (M12).
  * Server Component; RevealRoot enhances the DOM. Section <h2>; principles as <dl>.
  */
-export function WhyAcube() {
+interface WhyAcubeProps {
+  as?: "h1" | "h2";
+}
+
+export function WhyAcube({ as = "h2" }: WhyAcubeProps) {
   return (
     <section id="why-acube" aria-labelledby="why-heading" className="relative section-exhale">
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
           <SectionIntro
+            as={as}
             eyebrow={why.eyebrow}
             title={why.headline}
             titleId="why-heading"

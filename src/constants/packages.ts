@@ -39,6 +39,6 @@ export const packagesContent: PackagesContent = {
   cta: {
     line: "We'll help you choose the right structure for your business.",
     label: "Speak with Our Consultant",
-    href: "#contact",
+    href: "/contact",
   },
 };

@@ -15,12 +15,17 @@ import { SetupStructureList } from "./SetupStructureList";
  * NOT referenced here (data layer only). Server Component; the reused RevealRoot
  * enhances the DOM.
  */
-export function PackagesExperience() {
+interface PackagesExperienceProps {
+  as?: "h1" | "h2";
+}
+
+export function PackagesExperience({ as = "h2" }: PackagesExperienceProps) {
   return (
     <section id="packages" aria-labelledby="packages-heading" className="relative bg-background">
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
           <SectionIntro
+            as={as}
             eyebrow={packagesContent.eyebrow}
             title={packagesContent.headline}
             titleId="packages-heading"

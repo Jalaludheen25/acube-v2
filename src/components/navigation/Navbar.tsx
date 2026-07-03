@@ -1,11 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { m } from "framer-motion";
 
 import { Logo } from "@/components/ui";
-import { mainNav } from "@/constants";
-import { useActiveSection, useScrollState } from "@/hooks";
+import { useScrollState } from "@/hooks";
 import { cn } from "@/lib";
 
 import { DesktopNav } from "./DesktopNav";
@@ -15,21 +14,13 @@ import { logoScaleTransition } from "./navMotion";
 /**
  * Floating, sticky navigation.
  *
- * - Transparent + expanded at the top of the page.
- * - Gains a glass background + soft shadow and becomes compact once scrolled
- *   (opacity/padding transition via CSS tokens — GPU-friendly, flicker-free).
- * - Logo scales down slightly (Framer transform, consuming motion tokens).
- * - Links + CTAs are real anchors in the SSR HTML (crawlable).
+ * Transparent + expanded at the top of the page; gains a glass background + soft
+ * shadow and compacts once scrolled. Links are real routes (crawlable); the
+ * active tab follows the current page (see NavLink).
  */
 export function Navbar() {
   const { scrolled } = useScrollState();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const sectionIds = useMemo(
-    () => mainNav.filter((item) => item.href.startsWith("#")).map((item) => item.href.slice(1)),
-    [],
-  );
-  const active = useActiveSection(sectionIds);
 
   return (
     <header className="fixed inset-x-0 top-0 z-[var(--z-nav)]">
@@ -55,8 +46,8 @@ export function Navbar() {
           <Logo priority className="h-8 w-auto" />
         </m.div>
 
-        <DesktopNav active={active} />
-        <MobileNav open={menuOpen} onOpenChange={setMenuOpen} active={active} />
+        <DesktopNav />
+        <MobileNav open={menuOpen} onOpenChange={setMenuOpen} />
       </nav>
     </header>
   );

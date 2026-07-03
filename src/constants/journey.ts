@@ -41,5 +41,5 @@ export const journey: JourneyContent = {
     },
   ],
   closing: "One guided path. We handle the process, so you can focus on your business.",
-  cta: { label: siteConfig.cta.primary, href: "#contact" },
+  cta: { label: siteConfig.cta.primary, href: "/contact" },
 };

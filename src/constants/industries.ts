@@ -33,5 +33,5 @@ export const industries: IndustriesContent = {
     { id: "media", name: "Media" },
   ],
   notListed: "Don't see your sector? We help entrepreneurs set up across the UAE.",
-  cta: { label: siteConfig.cta.primary, href: "#contact" },
+  cta: { label: siteConfig.cta.primary, href: "/contact" },
 };

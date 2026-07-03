@@ -1,31 +1,35 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import type { NavItem } from "@/types";
-import { useHomeHref } from "@/hooks";
 import { cn } from "@/lib";
 
 interface NavLinkProps {
   item: NavItem;
-  active?: boolean;
   /** Called on click — used to close the mobile menu. */
   onNavigate?: () => void;
   className?: string;
 }
 
 /**
- * A single navigation link with an animated (CSS) underline and active state.
- * Size/weight can be overridden via `className` (small on desktop, large in the
- * mobile menu) — the component itself hardcodes no design values.
+ * A single navigation link with an animated (CSS) underline. Active state is
+ * derived from the current route — exact for "/", prefix for sections so detail
+ * pages (e.g. /services/[slug]) keep their parent tab highlighted.
  */
-export function NavLink({ item, active = false, onNavigate, className }: NavLinkProps) {
-  const toHref = useHomeHref();
+export function NavLink({ item, onNavigate, className }: NavLinkProps) {
+  const pathname = usePathname();
+  const active =
+    item.href === "/"
+      ? pathname === "/"
+      : pathname === item.href || pathname.startsWith(`${item.href}/`);
+
   return (
     <Link
-      href={toHref(item.href)}
+      href={item.href}
       onClick={onNavigate}
-      aria-current={active ? "true" : undefined}
+      aria-current={active ? "page" : undefined}
       className={cn(
         "group relative inline-flex w-fit items-center text-body-sm font-medium text-muted transition-colors duration-[var(--duration-normal)] ease-out-quart hover:text-foreground",
         active && "text-foreground",

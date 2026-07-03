@@ -45,10 +45,10 @@ export function HeroContent() {
         </m.p>
 
         <m.div variants={heroItemVariants} className="mt-10 flex flex-wrap items-center gap-4">
-          <Button href="#contact" variant="primary" size="lg">
+          <Button href="/contact" variant="primary" size="lg">
             {siteConfig.cta.primary}
           </Button>
-          <Button href="#services" variant="secondary" size="lg">
+          <Button href="/services" variant="secondary" size="lg">
             {siteConfig.cta.secondary}
           </Button>
         </m.div>

@@ -17,12 +17,17 @@ import { IndustryRoster } from "./IndustryRoster";
  *
  * Semantics: section <h2>; sectors are a <ul> (not sub-headings).
  */
-export function IndustriesExperience() {
+interface IndustriesExperienceProps {
+  as?: "h1" | "h2";
+}
+
+export function IndustriesExperience({ as = "h2" }: IndustriesExperienceProps) {
   return (
     <section id="industries" aria-labelledby="industries-heading" className="relative bg-background">
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
           <SectionIntro
+            as={as}
             eyebrow={industries.eyebrow}
             title={industries.framing}
             titleId="industries-heading"
