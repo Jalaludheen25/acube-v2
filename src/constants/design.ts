@@ -47,7 +47,7 @@ export const colors = {
  * Raw hex required by <meta name="theme-color"> (var() is invalid there).
  * KEEP IN SYNC with --color-background in globals.css.
  */
-export const themeColorHex = "#0A0A0B";
+export const themeColorHex = "#0A0E0C";
 
 /**
  * Raw hex mirrors for WebGL / Three.js consumers (materials, Lightformer colors),
@@ -55,12 +55,12 @@ export const themeColorHex = "#0A0A0B";
  * KEEP IN SYNC with --color-* in globals.css.
  */
 export const webglColors = {
-  brandRed: "#C8321F",
-  brandGreen: "#1F5C3A",
-  gold: "#C9A96A",
+  brandRed: "#C2593F",
+  brandGreen: "#1E9E6C",
+  gold: "#CBAB6B",
   background: themeColorHex,
-  surface: "#17171A",
-  foreground: "#F5F3EF",
+  surface: "#131B16",
+  foreground: "#F1F4EF",
 } as const;
 
 /* ---------- Fonts (var references) ---------- */

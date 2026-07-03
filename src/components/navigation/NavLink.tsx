@@ -37,7 +37,7 @@ export function NavLink({ item, active = false, onNavigate, className }: NavLink
       <span
         aria-hidden
         className={cn(
-          "absolute -bottom-1 left-0 h-px w-full origin-left bg-brand-red transition-transform duration-[var(--duration-normal)] ease-out-quart motion-reduce:transition-none",
+          "absolute -bottom-1 left-0 h-px w-full origin-left bg-gold transition-transform duration-[var(--duration-normal)] ease-out-quart motion-reduce:transition-none",
           active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100",
         )}
       />

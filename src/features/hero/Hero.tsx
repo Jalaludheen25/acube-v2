@@ -1,5 +1,5 @@
-import { HeroCanvasClient } from "./HeroCanvasClient";
 import { HeroContent } from "./HeroContent";
+import { HeroPoster } from "./HeroPoster";
 
 /**
  * Hero section — the signature experience.
@@ -16,7 +16,7 @@ export function Hero() {
   return (
     <section id="hero" aria-label="Hero" className="relative isolate min-h-dvh overflow-hidden">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <HeroCanvasClient />
+        <HeroPoster />
       </div>
 
       <div

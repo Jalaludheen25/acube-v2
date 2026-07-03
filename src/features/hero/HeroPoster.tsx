@@ -1,23 +1,9 @@
 /**
- * Static, non-WebGL Hero backdrop.
- *
- * Fallback for prefers-reduced-motion, data-saver, and no-WebGL devices. Uses
- * only CSS design tokens (no downloaded image asset): a champagne-gold key glow
- * with a faint lacquer-red accent over the warm-obsidian background, echoing the
- * mood of the 3D scene without any runtime cost or motion.
+ * Static hero backdrop — a modern emerald/gold/teal gradient over deep ink
+ * (var(--gradient-hero)). Hero animation is intentionally paused for now; the
+ * WebGL scene (scene/HeroScene) stays in the codebase to be re-enabled in the
+ * final animation pass. Purely decorative; no runtime cost, no motion.
  */
 export function HeroPoster() {
-  return (
-    <div
-      aria-hidden
-      className="absolute inset-0"
-      style={{
-        background: [
-          "radial-gradient(50% 45% at 66% 40%, color-mix(in srgb, var(--color-gold) 12%, transparent) 0%, transparent 70%)",
-          "radial-gradient(45% 40% at 58% 64%, color-mix(in srgb, var(--color-brand-red) 8%, transparent) 0%, transparent 70%)",
-          "var(--color-background)",
-        ].join(", "),
-      }}
-    />
-  );
+  return <div aria-hidden className="absolute inset-0 bg-grad-hero" />;
 }

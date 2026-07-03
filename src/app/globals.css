@@ -19,35 +19,61 @@
    resolves at runtime. This is the correct trade-off for a design system. */
 @theme static {
   /* ---------------------------------------------------------
-     COLORS — Creative Reboot palette. Warm obsidian, lit by
-     champagne GOLD (the lead accent), with lacquer RED reserved
-     for action and a deep emerald whisper. Two warm "exhale"
-     tones (ivory/ink) drive rare light sections.
-     Contrast on #0A0A0B: #F5F3EF ≈ 18:1, #A8A29A ≈ 7.5:1,
-     gold #C9A96A ≈ 8:1 (all AA+). Deep emerald is decorative only.
+     COLORS — modern emerald + champagne-gold on deep ink, with
+     off-white/ivory and supporting teal, terracotta and rose.
+     Green + gold LEAD; red is a minor accent only. A broad ramp
+     drives the gradients used throughout the UI.
+     Contrast: #F1F4EF ≈ 18:1, #A6B0A8 ≈ 9:1 on #0A0E0C (AA+).
      --------------------------------------------------------- */
-  --color-background: #0a0a0b; /* warm obsidian — page base */
-  --color-background-secondary: #121214; /* alternating sections */
-  --color-surface: #17171a; /* raised solid surfaces */
-  --color-foreground: #f5f3ef; /* warm off-white — primary text */
-  --color-muted: #a8a29a; /* warm gray — secondary text */
-  --color-border: rgba(245, 243, 239, 0.09);
-  --color-divider: rgba(245, 243, 239, 0.06);
-  --color-glass: rgba(245, 243, 239, 0.05);
+  /* Neutrals — deep ink base (subtle green undertone) → off-white */
+  --color-background: #0a0e0c;
+  --color-background-secondary: #0e1512;
+  --color-surface: #131b16;
+  --color-surface-elevated: #1b241e;
+  --color-foreground: #f1f4ef;
+  --color-muted: #a6b0a8;
+  --color-border: rgba(241, 244, 239, 0.1);
+  --color-divider: rgba(241, 244, 239, 0.07);
+  --color-glass: rgba(241, 244, 239, 0.05);
 
-  --color-brand-red: #c8321f; /* lacquer red — ACTION only (CTAs) */
-  --color-brand-green: #1f5c3a; /* deep emerald — decorative whisper */
-  --color-gold: #c9a96a; /* champagne gold — LEAD accent */
-  --color-gold-ink: #9a7b3a; /* deeper gold — for light/ivory contexts */
+  /* Light "exhale" tones */
+  --color-ivory: #f4f1e8;
+  --color-ink: #10201a;
+  --color-ink-muted: #4c5a52;
 
-  /* Warm "exhale" light-section palette */
-  --color-ivory: #f3eee4; /* light-section background */
-  --color-ink: #1a1714; /* text on ivory */
-  --color-ink-muted: #5b554c; /* secondary text on ivory */
+  /* GREEN family (primary) */
+  --color-emerald-900: #0a3a2a;
+  --color-emerald-700: #115c42;
+  --color-emerald-600: #157a56;
+  --color-emerald-500: #1e9e6c;
+  --color-emerald-400: #35be85;
+  --color-emerald-300: #74d9a9;
+  --color-mint-200: #bcebd3;
+  --color-teal-500: #12897f;
+
+  /* GOLD family (accent) */
+  --color-gold-700: #9a7b2e;
+  --color-gold-500: #cbab6b;
+  --color-gold-400: #dbbe84;
+  --color-gold-300: #ecd8a6;
+  --color-amber-500: #e2a93c;
+
+  /* RED / warm accents (variety only, never the lead) */
+  --color-terracotta-500: #c2593f;
+  --color-rose-400: #e07c6b;
+  --color-crimson-500: #c43b4a;
+
+  /* Semantic aliases — keep existing component tokens working */
+  --color-primary: var(--color-emerald-500);
+  --color-accent: var(--color-gold-500);
+  --color-brand-green: var(--color-emerald-500);
+  --color-brand-red: var(--color-terracotta-500);
+  --color-gold: var(--color-gold-500);
+  --color-gold-ink: var(--color-gold-700);
 
   --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-danger: #ef4444;
+  --color-warning: #e2a93c;
+  --color-danger: #e5533d;
 
   /* ---------------------------------------------------------
      TYPOGRAPHY — 3 families. Sizes are fluid clamp() so a single
@@ -115,8 +141,8 @@
   --shadow-large: 0 40px 80px rgba(0, 0, 0, 0.35);
   --shadow-floating: 0 30px 60px rgba(0, 0, 0, 0.35);
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.25);
-  --shadow-glow: 0 0 40px rgba(200, 50, 31, 0.32); /* lacquer-red glow (CTA) */
-  --shadow-glow-gold: 0 0 48px rgba(201, 169, 106, 0.28); /* champagne-gold glow */
+  --shadow-glow: 0 0 44px rgba(30, 158, 108, 0.32); /* emerald glow (CTA) */
+  --shadow-glow-gold: 0 0 48px rgba(203, 171, 107, 0.3); /* champagne-gold glow */
 
   /* ---------------------------------------------------------
      BLUR — glass + depth.
@@ -210,6 +236,19 @@
 
     /* Section vertical rhythm (fluid 96 → 160) */
     --section-y: clamp(6rem, 12vw, 10rem);
+
+    /* GRADIENTS — modern, professional. Consumed via the bg-grad-* /
+       text-grad-* utilities below. */
+    --gradient-hero:
+      radial-gradient(90% 120% at 12% -10%, color-mix(in srgb, var(--color-emerald-500) 22%, transparent) 0%, transparent 55%),
+      radial-gradient(80% 110% at 95% 8%, color-mix(in srgb, var(--color-gold-500) 16%, transparent) 0%, transparent 52%),
+      radial-gradient(75% 95% at 60% 115%, color-mix(in srgb, var(--color-teal-500) 15%, transparent) 0%, transparent 60%),
+      linear-gradient(180deg, var(--color-background-secondary) 0%, var(--color-background) 100%);
+    --gradient-cta: linear-gradient(135deg, #157a56 0%, #0f4e39 100%);
+    --gradient-emerald: linear-gradient(135deg, var(--color-emerald-600) 0%, var(--color-teal-500) 100%);
+    --gradient-gold: linear-gradient(135deg, var(--color-gold-300) 0%, var(--color-gold-500) 55%, var(--color-gold-700) 100%);
+    --gradient-surface: linear-gradient(160deg, var(--color-surface-elevated) 0%, var(--color-surface) 100%);
+    --gradient-text-gold: linear-gradient(120deg, var(--color-gold-300) 0%, var(--color-emerald-400) 100%);
   }
 
   html {
@@ -229,13 +268,13 @@
 
   /* Visible keyboard focus (WCAG 2.4.7) */
   :focus-visible {
-    outline: var(--border-thick) solid var(--color-brand-red);
+    outline: var(--border-thick) solid var(--color-primary);
     outline-offset: 2px;
     border-radius: var(--radius-xs);
   }
 
   ::selection {
-    background-color: color-mix(in srgb, var(--color-brand-red) 30%, transparent);
+    background-color: color-mix(in srgb, var(--color-primary) 32%, transparent);
     color: var(--color-foreground);
   }
 }
@@ -365,7 +404,32 @@
   --color-foreground: var(--color-ink);
   --color-muted: var(--color-ink-muted);
   --color-gold: var(--color-gold-ink);
-  --color-border: rgba(26, 23, 20, 0.12);
-  --color-divider: rgba(26, 23, 20, 0.08);
-  --color-glass: rgba(26, 23, 20, 0.04);
+  --color-border: rgba(16, 32, 26, 0.14);
+  --color-divider: rgba(16, 32, 26, 0.09);
+  --color-glass: rgba(16, 32, 26, 0.04);
+}
+
+/* ============================================================
+   GRADIENT UTILITIES (modern theme)
+   ============================================================ */
+@utility bg-grad-hero {
+  background-image: var(--gradient-hero);
+}
+@utility bg-grad-cta {
+  background-image: var(--gradient-cta);
+}
+@utility bg-grad-emerald {
+  background-image: var(--gradient-emerald);
+}
+@utility bg-grad-gold {
+  background-image: var(--gradient-gold);
+}
+@utility bg-grad-surface {
+  background-image: var(--gradient-surface);
+}
+@utility text-grad-gold {
+  background-image: var(--gradient-text-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
