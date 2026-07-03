@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 
 import type { NavItem } from "@/types";
+import { useHomeHref } from "@/hooks";
 import { cn } from "@/lib";
 
 interface NavLinkProps {
@@ -17,9 +20,10 @@ interface NavLinkProps {
  * mobile menu) — the component itself hardcodes no design values.
  */
 export function NavLink({ item, active = false, onNavigate, className }: NavLinkProps) {
+  const toHref = useHomeHref();
   return (
     <Link
-      href={item.href}
+      href={toHref(item.href)}
       onClick={onNavigate}
       aria-current={active ? "true" : undefined}
       className={cn(

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { footerContent, servicesContent } from "@/constants";
 import { cn, typography } from "@/lib";
 
@@ -19,9 +21,9 @@ export function FooterServices() {
       <ul className="mt-6 flex flex-col gap-3">
         {servicesContent.categories.map((category) => (
           <li key={category.id}>
-            <a href="#services" className={linkClass}>
+            <Link href="/services" className={linkClass}>
               {category.title}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

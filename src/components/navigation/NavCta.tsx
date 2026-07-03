@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 
+import { useHomeHref } from "@/hooks";
 import { cn } from "@/lib";
 
 type NavCtaVariant = "primary" | "secondary";
@@ -26,9 +29,10 @@ export function NavCta({
   external,
   className,
 }: NavCtaProps) {
+  const toHref = useHomeHref();
   return (
     <Link
-      href={href}
+      href={toHref(href)}
       onClick={onClick}
       className={cn(
         "touch-target inline-flex items-center justify-center rounded-md px-5 text-button font-semibold transition duration-[var(--duration-normal)] ease-out-quart",

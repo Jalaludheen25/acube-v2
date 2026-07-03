@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { footerContent, mainNav } from "@/constants";
 import { cn, typography } from "@/lib";
 
@@ -19,9 +21,12 @@ export function FooterNavigation() {
       <ul className="mt-6 flex flex-col gap-3">
         {mainNav.map((item) => (
           <li key={item.href}>
-            <a href={item.href} className={linkClass}>
+            <Link
+              href={item.href.startsWith("#") ? `/${item.href}` : item.href}
+              className={linkClass}
+            >
               {item.label}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

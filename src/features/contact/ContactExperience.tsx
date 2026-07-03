@@ -12,12 +12,18 @@ import { ContactForm } from "./ContactForm";
  * minimal message form (secondary, lazy-loaded). Server Component; only the form
  * hydrates. No cards, no map, no heavy glass — hairline dividers and typography.
  */
-export function ContactExperience() {
+interface ContactExperienceProps {
+  /** "h2" as an in-page section (default); "h1" when used as a page hero. */
+  as?: "h1" | "h2";
+}
+
+export function ContactExperience({ as = "h2" }: ContactExperienceProps) {
   return (
     <section id="contact" aria-labelledby="contact-heading" className="relative bg-background">
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
           <SectionIntro
+            as={as}
             eyebrow={contactContent.eyebrow}
             title={contactContent.headline}
             titleId="contact-heading"

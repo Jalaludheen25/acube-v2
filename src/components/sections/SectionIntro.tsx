@@ -13,6 +13,8 @@ interface SectionIntroProps {
   lede?: string;
   /** Title scale: the larger editorial "display" (default) or "h2". */
   size?: "display" | "h2";
+  /** Heading level — "h2" for in-page sections (default), "h1" for a page hero. */
+  as?: "h1" | "h2";
   /** Extra classes on the wrapper (e.g. width overrides). */
   className?: string;
   /** Optional trailing node (e.g. a small aside) — rarely needed. */
@@ -33,10 +35,12 @@ export function SectionIntro({
   titleId,
   lede,
   size = "display",
+  as = "h2",
   className,
   children,
 }: SectionIntroProps) {
   const lines = Array.isArray(title) ? title : [title];
+  const Heading = as;
 
   return (
     <div data-reveal className={cn("max-w-3xl", className)}>
@@ -44,7 +48,7 @@ export function SectionIntro({
         <span aria-hidden className="h-px w-8 bg-gold/60" />
         {eyebrow}
       </p>
-      <h2
+      <Heading
         id={titleId}
         className={cn(
           size === "display" ? typography.display : typography.h2,
@@ -56,7 +60,7 @@ export function SectionIntro({
             {line}
           </span>
         ))}
-      </h2>
+      </Heading>
       {lede ? (
         <p className={cn(typography.body, "mt-6 max-w-2xl text-muted")}>{lede}</p>
       ) : null}
