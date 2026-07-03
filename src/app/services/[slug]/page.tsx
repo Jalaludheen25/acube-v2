@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import { RevealRoot } from "@/components/motion";
 import { Breadcrumb } from "@/components/sections";
-import { Button } from "@/components/ui";
+import { Button, Figure } from "@/components/ui";
 import { siteConfig } from "@/constants";
 import { allServices, getServiceBySlug } from "@/features/services";
 import { FallbackServiceIcon, serviceIcons } from "@/features/services/serviceIcons";
@@ -74,6 +74,10 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
               {siteConfig.cta.primary}
             </Button>
           </div>
+
+          {service.image ? (
+            <Figure image={service.image} priority className="mt-16 max-w-4xl" />
+          ) : null}
 
           {related.length > 0 ? (
             <div data-reveal className="mt-20 border-t border-divider pt-12">

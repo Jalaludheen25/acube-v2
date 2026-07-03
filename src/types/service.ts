@@ -15,6 +15,8 @@ export interface Service {
   idealFor?: string;
   /** Optional detail-page href (e.g. /services/[slug]) — reserved for a future milestone. */
   href?: string;
+  /** Optional hero image for the detail page; auto-activates when a real asset is supplied. */
+  image?: { src: string; alt: string; width: number; height: number };
   seo?: SeoMeta;
 }
 
