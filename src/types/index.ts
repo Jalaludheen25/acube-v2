@@ -2,6 +2,7 @@ export * from "./seo";
 export * from "./site";
 export * from "./contact";
 export * from "./navigation";
+export * from "./navigator";
 export * from "./service";
 export * from "./faq";
 export * from "./package";

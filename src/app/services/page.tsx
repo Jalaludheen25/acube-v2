@@ -4,8 +4,8 @@ import { ArrowUpRight } from "lucide-react";
 
 import { RevealRoot } from "@/components/motion";
 import { Breadcrumb, SectionIntro } from "@/components/sections";
-import { Button } from "@/components/ui";
-import { servicesContent, siteConfig } from "@/constants";
+import { servicesContent } from "@/constants";
+import { SetupNavigator } from "@/features/navigator";
 import { cn, container, typography } from "@/lib";
 
 export const metadata: Metadata = {
@@ -61,14 +61,12 @@ export default function ServicesPage() {
             ))}
           </div>
 
-          <div className="mt-20 border-t border-divider pt-12">
-            <p className={cn(typography.body, "max-w-xl text-muted")}>
-              Not sure which service you need? Tell us where you are and we&apos;ll guide you.
-            </p>
-            <Button href="/contact" variant="primary" size="lg" className="mt-6">
-              {siteConfig.cta.primary}
-            </Button>
-          </div>
+          <section
+            aria-label="Find your starting point"
+            className="mt-20 border-t border-divider pt-12"
+          >
+            <SetupNavigator />
+          </section>
         </div>
       </RevealRoot>
     </main>
