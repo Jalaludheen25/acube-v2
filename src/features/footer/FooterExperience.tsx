@@ -19,7 +19,7 @@ export function FooterExperience() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-divider bg-background">
+    <footer className="relative surface-ink">
       <RevealRoot>
         <div data-reveal className={cn(container.content, "py-20 lg:py-28")}>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">

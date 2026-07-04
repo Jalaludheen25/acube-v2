@@ -66,7 +66,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: themeColorHex,
-  colorScheme: "dark",
+  colorScheme: "light",
   width: "device-width",
   initialScale: 1,
 };
@@ -82,7 +82,6 @@ export default function RootLayout({
     >
       <body className="font-body antialiased">
         <OrganizationSchema />
-        <div className="grain" aria-hidden="true" />
         <Providers>
           <a
             href="#main"

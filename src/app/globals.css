@@ -19,61 +19,58 @@
    resolves at runtime. This is the correct trade-off for a design system. */
 @theme static {
   /* ---------------------------------------------------------
-     COLORS — modern emerald + champagne-gold on deep ink, with
-     off-white/ivory and supporting teal, terracotta and rose.
-     Green + gold LEAD; red is a minor accent only. A broad ramp
-     drives the gradients used throughout the UI.
-     Contrast: #F1F4EF ≈ 18:1, #A6B0A8 ≈ 9:1 on #0A0E0C (AA+).
+     COLORS — LIGHT theme, two palettes.
+       Whispering Woods (GREEN, primary): Platinum #E8F1F2,
+       Celadon #B3EFB2, Muted Teal #7A9E7E, Pine Teal #31493C,
+       Ink Black #001A23.
+       Warm Earth (ACCENTS/CTA, red used sparingly): Blood Red
+       #8C1C13, Blushed Brick #BF4342, Sand Dune #E7D7C1,
+       Dusty Taupe #A78A7F, Mauve Bark #735751.
+     Light backgrounds throughout; dark (Pine/Ink) = emphasis only.
+     Contrast on #F5F7F4: ink #001A23 ≈ 16:1, mauve #735751 ≈ 6:1,
+     pine #31493C ≈ 8.5:1 (AA+).
      --------------------------------------------------------- */
-  /* Neutrals — deep ink base (subtle green undertone) → off-white */
-  --color-background: #0a0e0c;
-  --color-background-secondary: #0e1512;
-  --color-surface: #131b16;
-  --color-surface-elevated: #1b241e;
-  --color-foreground: #f1f4ef;
-  --color-muted: #a6b0a8;
-  --color-border: rgba(241, 244, 239, 0.1);
-  --color-divider: rgba(241, 244, 239, 0.07);
-  --color-glass: rgba(241, 244, 239, 0.05);
+  /* Neutrals — light base → ink text */
+  --color-background: #f5f7f4;
+  --color-background-secondary: #eef2ee;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #f8f9f7;
+  --color-foreground: #001a23; /* Ink Black */
+  --color-muted: #735751; /* Mauve Bark */
+  --color-border: rgba(0, 26, 35, 0.12);
+  --color-divider: rgba(0, 26, 35, 0.08);
+  --color-glass: rgba(0, 26, 35, 0.04);
 
-  /* Light "exhale" tones */
-  --color-ivory: #f4f1e8;
-  --color-ink: #10201a;
+  /* Whispering Woods — green (primary) */
+  --color-platinum: #e8f1f2;
+  --color-celadon: #b3efb2;
+  --color-muted-teal: #7a9e7e;
+  --color-pine-teal: #31493c;
+  --color-ink-black: #001a23;
+
+  /* Warm Earth — accents (use red sparingly) */
+  --color-blood-red: #8c1c13;
+  --color-blushed-brick: #bf4342;
+  --color-sand-dune: #e7d7c1;
+  --color-dusty-taupe: #a78a7f;
+  --color-mauve-bark: #735751;
+
+  /* "Exhale"/ink tones kept for compatibility */
+  --color-ivory: #f8f9f7;
+  --color-ink: #001a23;
   --color-ink-muted: #4c5a52;
 
-  /* GREEN family (primary) */
-  --color-emerald-900: #0a3a2a;
-  --color-emerald-700: #115c42;
-  --color-emerald-600: #157a56;
-  --color-emerald-500: #1e9e6c;
-  --color-emerald-400: #35be85;
-  --color-emerald-300: #74d9a9;
-  --color-mint-200: #bcebd3;
-  --color-teal-500: #12897f;
-
-  /* GOLD family (accent) */
-  --color-gold-700: #9a7b2e;
-  --color-gold-500: #cbab6b;
-  --color-gold-400: #dbbe84;
-  --color-gold-300: #ecd8a6;
-  --color-amber-500: #e2a93c;
-
-  /* RED / warm accents (variety only, never the lead) */
-  --color-terracotta-500: #c2593f;
-  --color-rose-400: #e07c6b;
-  --color-crimson-500: #c43b4a;
-
   /* Semantic aliases — keep existing component tokens working */
-  --color-primary: var(--color-emerald-500);
-  --color-accent: var(--color-gold-500);
-  --color-brand-green: var(--color-emerald-500);
-  --color-brand-red: var(--color-terracotta-500);
-  --color-gold: var(--color-gold-500);
-  --color-gold-ink: var(--color-gold-700);
+  --color-primary: var(--color-pine-teal); /* primary green */
+  --color-accent: var(--color-blushed-brick); /* warm accent */
+  --color-brand-green: var(--color-pine-teal);
+  --color-brand-red: var(--color-blushed-brick);
+  --color-gold: var(--color-pine-teal); /* eyebrows/labels → primary green */
+  --color-gold-ink: var(--color-pine-teal);
 
-  --color-success: #22c55e;
-  --color-warning: #e2a93c;
-  --color-danger: #e5533d;
+  --color-success: #2f8f5b;
+  --color-warning: #b8860b;
+  --color-danger: #8c1c13;
 
   /* ---------------------------------------------------------
      TYPOGRAPHY — 3 families. Sizes are fluid clamp() so a single
@@ -141,8 +138,8 @@
   --shadow-large: 0 40px 80px rgba(0, 0, 0, 0.35);
   --shadow-floating: 0 30px 60px rgba(0, 0, 0, 0.35);
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.25);
-  --shadow-glow: 0 0 44px rgba(30, 158, 108, 0.32); /* emerald glow (CTA) */
-  --shadow-glow-gold: 0 0 48px rgba(203, 171, 107, 0.3); /* champagne-gold glow */
+  --shadow-glow: 0 0 44px rgba(191, 67, 66, 0.3); /* blushed-brick glow (CTA) */
+  --shadow-glow-gold: 0 0 48px rgba(122, 158, 126, 0.28); /* muted-teal glow */
 
   /* ---------------------------------------------------------
      BLUR — glass + depth.
@@ -184,7 +181,7 @@
    ============================================================ */
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
 
     /* Motion durations (ms) — CSS transitions + mirrored in TS */
     --duration-fast: 150ms;
@@ -220,17 +217,17 @@
 
     /* GLASS SYSTEM — the signature ACUBE surface language.
        Inherited by every future card, nav, and modal. */
-    --glass-bg: rgba(255, 255, 255, 0.06);
-    --glass-bg-hover: rgba(255, 255, 255, 0.09);
-    --glass-bg-active: rgba(255, 255, 255, 0.12);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-border-hover: rgba(255, 255, 255, 0.14);
+    --glass-bg: rgba(0, 26, 35, 0.04);
+    --glass-bg-hover: rgba(0, 26, 35, 0.07);
+    --glass-bg-active: rgba(0, 26, 35, 0.1);
+    --glass-border: rgba(0, 26, 35, 0.12);
+    --glass-border-hover: rgba(0, 26, 35, 0.2);
     --glass-blur: 24px;
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-    --glass-shadow-floating: 0 30px 60px rgba(0, 0, 0, 0.4);
+    --glass-shadow: 0 8px 32px rgba(0, 26, 35, 0.12);
+    --glass-shadow-floating: 0 30px 60px rgba(0, 26, 35, 0.16);
     --glass-reflection: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.6) 0%,
       rgba(255, 255, 255, 0) 45%
     );
 
@@ -240,15 +237,15 @@
     /* GRADIENTS — modern, professional. Consumed via the bg-grad-* /
        text-grad-* utilities below. */
     --gradient-hero:
-      radial-gradient(90% 120% at 12% -10%, color-mix(in srgb, var(--color-emerald-500) 22%, transparent) 0%, transparent 55%),
-      radial-gradient(80% 110% at 95% 8%, color-mix(in srgb, var(--color-gold-500) 16%, transparent) 0%, transparent 52%),
-      radial-gradient(75% 95% at 60% 115%, color-mix(in srgb, var(--color-teal-500) 15%, transparent) 0%, transparent 60%),
-      linear-gradient(180deg, var(--color-background-secondary) 0%, var(--color-background) 100%);
-    --gradient-cta: linear-gradient(135deg, #157a56 0%, #0f4e39 100%);
-    --gradient-emerald: linear-gradient(135deg, var(--color-emerald-600) 0%, var(--color-teal-500) 100%);
-    --gradient-gold: linear-gradient(135deg, var(--color-gold-300) 0%, var(--color-gold-500) 55%, var(--color-gold-700) 100%);
-    --gradient-surface: linear-gradient(160deg, var(--color-surface-elevated) 0%, var(--color-surface) 100%);
-    --gradient-text-gold: linear-gradient(120deg, var(--color-gold-300) 0%, var(--color-emerald-400) 100%);
+      radial-gradient(85% 120% at 12% -10%, color-mix(in srgb, var(--color-celadon) 60%, transparent) 0%, transparent 55%),
+      radial-gradient(75% 110% at 95% 5%, color-mix(in srgb, var(--color-sand-dune) 55%, transparent) 0%, transparent 52%),
+      radial-gradient(70% 90% at 55% 115%, color-mix(in srgb, var(--color-muted-teal) 32%, transparent) 0%, transparent 60%),
+      linear-gradient(180deg, var(--color-platinum) 0%, var(--color-background) 100%);
+    --gradient-cta: linear-gradient(135deg, #bf4342 0%, #8c1c13 100%);
+    --gradient-emerald: linear-gradient(140deg, #31493c 0%, #001a23 100%);
+    --gradient-gold: linear-gradient(135deg, var(--color-sand-dune) 0%, var(--color-dusty-taupe) 100%);
+    --gradient-surface: linear-gradient(160deg, #ffffff 0%, #f2f5f2 100%);
+    --gradient-text-gold: linear-gradient(120deg, var(--color-platinum) 0%, var(--color-celadon) 100%);
   }
 
   html {
@@ -393,20 +390,32 @@
   background-size: 140px 140px;
 }
 
-/* "Exhale" — warm ivory light sections. Locally re-maps the neutral
-   tokens so every token-driven child inherits correct light-mode
-   contrast (foreground → ink, muted → ink-muted, gold → deeper gold).
-   Brand red stays for action; deep emerald stays decorative. */
+/* "Exhale" — DARK emphasis sections (Pine Teal) on the otherwise light site.
+   Locally re-maps the neutral tokens so every token-driven child inherits
+   correct light-on-dark contrast (foreground → platinum, eyebrows → celadon). */
 .section-exhale {
-  background-color: var(--color-ivory);
-  color: var(--color-ink);
-  color-scheme: light;
-  --color-foreground: var(--color-ink);
-  --color-muted: var(--color-ink-muted);
-  --color-gold: var(--color-gold-ink);
-  --color-border: rgba(16, 32, 26, 0.14);
-  --color-divider: rgba(16, 32, 26, 0.09);
-  --color-glass: rgba(16, 32, 26, 0.04);
+  background-color: var(--color-pine-teal);
+  color: var(--color-platinum);
+  color-scheme: dark;
+  --color-foreground: #e8f1f2;
+  --color-muted: #c3d2c9;
+  --color-gold: var(--color-celadon);
+  --color-border: rgba(232, 241, 242, 0.16);
+  --color-divider: rgba(232, 241, 242, 0.1);
+  --color-glass: rgba(232, 241, 242, 0.06);
+}
+
+/* Deepest dark anchor (footer / strong emphasis) — Ink Black. */
+.surface-ink {
+  background-color: var(--color-ink-black);
+  color: var(--color-platinum);
+  color-scheme: dark;
+  --color-foreground: #e8f1f2;
+  --color-muted: #a9bcb3;
+  --color-gold: var(--color-celadon);
+  --color-border: rgba(232, 241, 242, 0.12);
+  --color-divider: rgba(232, 241, 242, 0.08);
+  --color-glass: rgba(232, 241, 242, 0.05);
 }
 
 /* ============================================================

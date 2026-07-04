@@ -47,7 +47,7 @@ export const colors = {
  * Raw hex required by <meta name="theme-color"> (var() is invalid there).
  * KEEP IN SYNC with --color-background in globals.css.
  */
-export const themeColorHex = "#0A0E0C";
+export const themeColorHex = "#F5F7F4";
 
 /**
  * Raw hex mirrors for WebGL / Three.js consumers (materials, Lightformer colors),

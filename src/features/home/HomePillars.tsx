@@ -62,7 +62,7 @@ export function HomePillars() {
               <li key={pillar.href}>
                 <Link
                   href={pillar.href}
-                  className="group flex h-full flex-col justify-between gap-10 overflow-hidden rounded-2xl border border-border bg-grad-surface p-8 transition-colors duration-[var(--duration-normal)] ease-out-quart hover:border-gold/40"
+                  className="group flex h-full flex-col justify-between gap-10 overflow-hidden rounded-2xl border border-border bg-grad-surface p-8 shadow-soft transition-colors duration-[var(--duration-normal)] ease-out-quart hover:border-accent/50"
                 >
                   <div>
                     <h3 className={cn(typography.h3, "text-foreground")}>{pillar.title}</h3>
@@ -70,7 +70,7 @@ export function HomePillars() {
                       {pillar.description}
                     </p>
                   </div>
-                  <span className="inline-flex items-center gap-2 text-body-sm font-medium text-gold">
+                  <span className="inline-flex items-center gap-2 text-body-sm font-medium text-accent">
                     Learn more
                     <ArrowUpRight
                       className="size-4 transition-transform duration-[var(--duration-normal)] ease-out-quart group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
