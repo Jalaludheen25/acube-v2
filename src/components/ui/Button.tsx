@@ -34,12 +34,12 @@ export function Button({
   children,
 }: ButtonProps) {
   const classes = cn(
-    "touch-target inline-flex items-center justify-center rounded-md font-semibold transition duration-[var(--duration-normal)] ease-out-quart",
+    "touch-target inline-flex items-center justify-center rounded-md font-semibold transition duration-[var(--duration-normal)] ease-out-quart hover:-translate-y-0.5 active:translate-y-0",
     size === "md" && "px-5 text-button",
     size === "lg" && "px-7 py-4 text-button",
     // Emerald gradient CTA; `text-white` (not text-foreground) so the label
     // stays legible even inside a `.section-exhale` (foreground → dark ink).
-    variant === "primary" && "bg-grad-cta text-white hover:shadow-glow",
+    variant === "primary" && "bg-grad-cta text-platinum hover:shadow-glow",
     variant === "secondary" && "glass-interactive text-foreground",
     className,
   );

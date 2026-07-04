@@ -32,8 +32,8 @@
      --------------------------------------------------------- */
   /* Neutrals — light base → ink text */
   --color-background: #f5f7f4;
-  --color-background-secondary: #eef2ee;
-  --color-surface: #ffffff;
+  --color-background-secondary: #e8f1f2;
+  --color-surface: #f8f9f7;
   --color-surface-elevated: #f8f9f7;
   --color-foreground: #001a23; /* Ink Black */
   --color-muted: #735751; /* Mauve Bark */
@@ -58,7 +58,7 @@
   /* "Exhale"/ink tones kept for compatibility */
   --color-ivory: #f8f9f7;
   --color-ink: #001a23;
-  --color-ink-muted: #4c5a52;
+  --color-ink-muted: #735751;
 
   /* Semantic aliases — keep existing component tokens working */
   --color-primary: var(--color-pine-teal); /* primary green */
@@ -68,8 +68,8 @@
   --color-gold: var(--color-pine-teal); /* eyebrows/labels → primary green */
   --color-gold-ink: var(--color-pine-teal);
 
-  --color-success: #2f8f5b;
-  --color-warning: #b8860b;
+  --color-success: #7a9e7e;
+  --color-warning: #a78a7f;
   --color-danger: #8c1c13;
 
   /* ---------------------------------------------------------
@@ -244,7 +244,7 @@
     --gradient-cta: linear-gradient(135deg, #bf4342 0%, #8c1c13 100%);
     --gradient-emerald: linear-gradient(140deg, #31493c 0%, #001a23 100%);
     --gradient-gold: linear-gradient(135deg, var(--color-sand-dune) 0%, var(--color-dusty-taupe) 100%);
-    --gradient-surface: linear-gradient(160deg, #ffffff 0%, #f2f5f2 100%);
+    --gradient-surface: linear-gradient(160deg, #f8f9f7 0%, #f5f7f4 100%);
     --gradient-text-gold: linear-gradient(120deg, var(--color-platinum) 0%, var(--color-celadon) 100%);
   }
 
@@ -398,7 +398,7 @@
   color: var(--color-platinum);
   color-scheme: dark;
   --color-foreground: #e8f1f2;
-  --color-muted: #c3d2c9;
+  --color-muted: color-mix(in srgb, var(--color-platinum) 72%, transparent);
   --color-gold: var(--color-celadon);
   --color-border: rgba(232, 241, 242, 0.16);
   --color-divider: rgba(232, 241, 242, 0.1);
@@ -411,7 +411,7 @@
   color: var(--color-platinum);
   color-scheme: dark;
   --color-foreground: #e8f1f2;
-  --color-muted: #a9bcb3;
+  --color-muted: color-mix(in srgb, var(--color-platinum) 66%, transparent);
   --color-gold: var(--color-celadon);
   --color-border: rgba(232, 241, 242, 0.12);
   --color-divider: rgba(232, 241, 242, 0.08);
@@ -441,4 +441,100 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* ============================================================
+   MOTION & 3D SYSTEM
+   Soft-3D shadows, perspective/lift hovers, glassmorphism with
+   depth, animated gradients, and floating idle motion. All use
+   GPU-friendly transform/opacity and are neutralized by the
+   global prefers-reduced-motion rule.
+   ============================================================ */
+
+/* Layered soft shadows for depth (Ink-Black tint on light bg). */
+@utility shadow-3d {
+  box-shadow:
+    0 1px 2px rgba(0, 26, 35, 0.05),
+    0 8px 20px rgba(0, 26, 35, 0.08),
+    0 20px 40px rgba(0, 26, 35, 0.06);
+}
+@utility shadow-3d-lg {
+  box-shadow:
+    0 2px 4px rgba(0, 26, 35, 0.06),
+    0 16px 32px rgba(0, 26, 35, 0.1),
+    0 40px 72px rgba(0, 26, 35, 0.09);
+}
+
+/* 3D card — lift + subtle scale on hover. */
+@utility card-3d {
+  transform: translateZ(0);
+  transition:
+    transform var(--duration-medium) var(--ease-out-quart),
+    box-shadow var(--duration-medium) var(--ease-out-quart);
+  will-change: transform;
+
+  &:hover {
+    transform: translateY(-8px) scale(1.015);
+    box-shadow:
+      0 2px 4px rgba(0, 26, 35, 0.06),
+      0 24px 48px rgba(0, 26, 35, 0.14),
+      0 48px 88px rgba(0, 26, 35, 0.1);
+  }
+}
+
+/* Lighter lift for smaller interactive elements. */
+@utility hover-lift {
+  transition:
+    transform var(--duration-normal) var(--ease-out-quart),
+    box-shadow var(--duration-normal) var(--ease-out-quart);
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Glassmorphism with depth (light-theme translucent surface). */
+@utility glass-depth {
+  background-color: rgba(248, 249, 247, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    0 10px 30px rgba(0, 26, 35, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+/* Slowly panning gradient — pair with a bg-grad-* utility. */
+@utility animated-gradient {
+  background-size: 220% 220%;
+  animation: gradient-pan 14s ease infinite;
+}
+
+/* Floating idle motion for decorative/layered elements. */
+@utility float {
+  animation: float 7s var(--ease-in-out-soft) infinite;
+}
+@utility float-slow {
+  animation: float 11s var(--ease-in-out-soft) infinite;
+}
+
+@keyframes gradient-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
 }

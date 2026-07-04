@@ -36,7 +36,7 @@ export function NavCta({
       onClick={onClick}
       className={cn(
         "touch-target inline-flex items-center justify-center rounded-md px-5 text-button font-semibold transition duration-[var(--duration-normal)] ease-out-quart",
-        variant === "primary" && "bg-grad-cta text-white hover:shadow-glow",
+        variant === "primary" && "bg-grad-cta text-platinum hover:shadow-glow",
         variant === "secondary" && "glass-interactive text-foreground",
         className,
       )}

@@ -15,7 +15,7 @@ export function HomeCtaBand() {
         <RevealRoot>
           <div
             data-reveal
-            className="section-exhale relative overflow-hidden rounded-[var(--radius-2xl)] bg-grad-emerald px-8 py-16 text-center shadow-medium lg:px-16 lg:py-24"
+            className="section-exhale card-3d relative overflow-hidden rounded-[var(--radius-2xl)] bg-grad-emerald animated-gradient px-8 py-16 text-center shadow-3d-lg lg:px-16 lg:py-24"
           >
             <h2
               id="home-cta-heading"
