@@ -29,7 +29,7 @@ export function HeroContent() {
           {hero.eyebrow}
         </m.p>
 
-        <h1 className={cn(typography.hero, "mt-6 text-balance text-foreground")}>
+        <h1 className={cn(typography.hero, "mt-6 text-balance text-grad-gold")}>
           {hero.headlineLines.map((line) => (
             <span key={line} className="block">
               {line}

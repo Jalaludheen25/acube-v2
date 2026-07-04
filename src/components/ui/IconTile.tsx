@@ -2,7 +2,7 @@ import type { LucideIcon } from "lucide-react";
 
 import { cn } from "@/lib";
 
-type IconTileVariant = "green" | "warm" | "glass";
+type IconTileVariant = "green" | "warm" | "glass" | "celadon" | "sand";
 
 interface IconTileProps {
   icon: LucideIcon;
@@ -15,6 +15,8 @@ const surfaces: Record<IconTileVariant, string> = {
   green: "bg-grad-emerald text-platinum",
   warm: "bg-grad-cta text-platinum",
   glass: "glass-depth text-foreground",
+  celadon: "bg-grad-celadon text-ink-black",
+  sand: "bg-grad-sand text-ink-black",
 };
 
 /**

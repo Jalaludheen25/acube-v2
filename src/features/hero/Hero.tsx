@@ -14,7 +14,11 @@ import { HeroPoster } from "./HeroPoster";
  */
 export function Hero() {
   return (
-    <section id="hero" aria-label="Hero" className="relative isolate min-h-dvh overflow-hidden">
+    <section
+      id="hero"
+      aria-label="Hero"
+      className="theme-dark relative isolate min-h-dvh overflow-hidden"
+    >
       <div className="pointer-events-none absolute inset-0 -z-10">
         <HeroPoster />
       </div>

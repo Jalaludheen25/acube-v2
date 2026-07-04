@@ -30,16 +30,18 @@
      Contrast on #F5F7F4: ink #001A23 ≈ 16:1, mauve #735751 ≈ 6:1,
      pine #31493C ≈ 8.5:1 (AA+).
      --------------------------------------------------------- */
-  /* Neutrals — light base → ink text */
-  --color-background: #f5f7f4;
-  --color-background-secondary: #e8f1f2;
-  --color-surface: #f8f9f7;
-  --color-surface-elevated: #f8f9f7;
+  /* Neutrals — Platinum base (tinted, NOT white) → ink text.
+     Sections alternate Platinum / Sand Dune / Pine / Ink for a
+     dark–medium–light rhythm. */
+  --color-background: #e8f1f2; /* Platinum */
+  --color-background-secondary: #e7d7c1; /* Sand Dune */
+  --color-surface: color-mix(in srgb, var(--color-celadon) 22%, #e8f1f2);
+  --color-surface-elevated: color-mix(in srgb, var(--color-celadon) 12%, #e8f1f2);
   --color-foreground: #001a23; /* Ink Black */
   --color-muted: #735751; /* Mauve Bark */
-  --color-border: rgba(0, 26, 35, 0.12);
-  --color-divider: rgba(0, 26, 35, 0.08);
-  --color-glass: rgba(0, 26, 35, 0.04);
+  --color-border: rgba(0, 26, 35, 0.14);
+  --color-divider: rgba(0, 26, 35, 0.1);
+  --color-glass: rgba(0, 26, 35, 0.05);
 
   /* Whispering Woods — green (primary) */
   --color-platinum: #e8f1f2;
@@ -237,15 +239,23 @@
     /* GRADIENTS — modern, professional. Consumed via the bg-grad-* /
        text-grad-* utilities below. */
     --gradient-hero:
-      radial-gradient(85% 120% at 12% -10%, color-mix(in srgb, var(--color-celadon) 60%, transparent) 0%, transparent 55%),
-      radial-gradient(75% 110% at 95% 5%, color-mix(in srgb, var(--color-sand-dune) 55%, transparent) 0%, transparent 52%),
-      radial-gradient(70% 90% at 55% 115%, color-mix(in srgb, var(--color-muted-teal) 32%, transparent) 0%, transparent 60%),
-      linear-gradient(180deg, var(--color-platinum) 0%, var(--color-background) 100%);
+      radial-gradient(80% 110% at 10% -10%, color-mix(in srgb, var(--color-celadon) 34%, transparent) 0%, transparent 52%),
+      radial-gradient(70% 100% at 95% 0%, color-mix(in srgb, var(--color-muted-teal) 45%, transparent) 0%, transparent 55%),
+      radial-gradient(80% 90% at 60% 120%, color-mix(in srgb, var(--color-blushed-brick) 28%, transparent) 0%, transparent 58%),
+      linear-gradient(150deg, var(--color-pine-teal) 0%, var(--color-ink-black) 78%);
     --gradient-cta: linear-gradient(135deg, #bf4342 0%, #8c1c13 100%);
     --gradient-emerald: linear-gradient(140deg, #31493c 0%, #001a23 100%);
+    --gradient-teal: linear-gradient(140deg, #31493c 0%, #7a9e7e 135%);
+    --gradient-celadon: linear-gradient(130deg, var(--color-celadon) 0%, var(--color-muted-teal) 100%);
+    --gradient-sand: linear-gradient(140deg, var(--color-sand-dune) 0%, var(--color-dusty-taupe) 100%);
     --gradient-gold: linear-gradient(135deg, var(--color-sand-dune) 0%, var(--color-dusty-taupe) 100%);
-    --gradient-surface: linear-gradient(160deg, #f8f9f7 0%, #f5f7f4 100%);
+    --gradient-surface: linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--color-celadon) 30%, var(--color-platinum)) 0%,
+      var(--color-platinum) 100%
+    );
     --gradient-text-gold: linear-gradient(120deg, var(--color-platinum) 0%, var(--color-celadon) 100%);
+    --gradient-text-pine: linear-gradient(120deg, var(--color-pine-teal) 0%, var(--color-muted-teal) 100%);
   }
 
   html {
@@ -436,11 +446,97 @@
 @utility bg-grad-surface {
   background-image: var(--gradient-surface);
 }
+@utility bg-grad-teal {
+  background-image: var(--gradient-teal);
+}
+@utility bg-grad-celadon {
+  background-image: var(--gradient-celadon);
+}
+@utility bg-grad-sand {
+  background-image: var(--gradient-sand);
+}
 @utility text-grad-gold {
   background-image: var(--gradient-text-gold);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+@utility text-grad-pine {
+  background-image: var(--gradient-text-pine);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Colored glows (celadon / brick) for depth on rich surfaces. */
+@utility glow-celadon {
+  box-shadow:
+    0 10px 30px rgba(0, 26, 35, 0.18),
+    0 0 56px rgba(179, 239, 178, 0.22);
+}
+@utility glow-brick {
+  box-shadow:
+    0 10px 30px rgba(0, 26, 35, 0.18),
+    0 0 56px rgba(191, 67, 66, 0.3);
+}
+
+/* Gradient border (masked ring) — inherits the element's radius. */
+@utility border-grad {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-celadon);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+}
+
+/* Subtle texture for rich dark panels. */
+@utility texture {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 140px 140px;
+  }
+}
+
+/* Token remap for dark content WITHOUT painting a background —
+   used by the navbar, hero overlay content, and mobile menu. */
+.theme-dark {
+  color-scheme: dark;
+  --color-foreground: #e8f1f2;
+  --color-muted: color-mix(in srgb, var(--color-platinum) 72%, transparent);
+  --color-gold: var(--color-celadon);
+  --color-primary: var(--color-celadon);
+  --color-border: rgba(232, 241, 242, 0.16);
+  --color-divider: rgba(232, 241, 242, 0.1);
+  --color-glass: rgba(232, 241, 242, 0.06);
+}
+
+.section-exhale,
+.surface-ink {
+  --color-primary: var(--color-celadon);
 }
 
 /* ============================================================

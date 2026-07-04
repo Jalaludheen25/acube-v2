@@ -23,12 +23,13 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[var(--z-nav)]">
+    <header className="theme-dark fixed inset-x-0 top-0 z-[var(--z-nav)]">
+      {/* Always-on rich dark bar — deepens slightly once scrolled. */}
       <div
         aria-hidden
         className={cn(
-          "pointer-events-none absolute inset-0 border-b border-border bg-background/70 shadow-soft backdrop-blur-[var(--blur-glass)] transition-opacity duration-[var(--duration-normal)] ease-out-quart",
-          scrolled ? "opacity-100" : "opacity-0",
+          "pointer-events-none absolute inset-0 border-b border-divider shadow-soft backdrop-blur-[var(--blur-glass)] transition-colors duration-[var(--duration-normal)] ease-out-quart",
+          scrolled ? "bg-ink-black/90" : "bg-ink-black/60",
         )}
       />
       <nav

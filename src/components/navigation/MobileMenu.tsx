@@ -68,7 +68,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
       role="dialog"
       aria-modal="true"
       aria-label="Site navigation"
-      className="fixed inset-0 z-[var(--z-drawer)] lg:hidden"
+      className="theme-dark fixed inset-0 z-[var(--z-drawer)] lg:hidden"
       variants={mobileMenuVariants}
       initial="closed"
       animate="open"
@@ -79,7 +79,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
         type="button"
         aria-label="Close navigation"
         onClick={onClose}
-        className="absolute inset-0 bg-background/80 backdrop-blur-[var(--blur-glass)]"
+        className="absolute inset-0 bg-ink-black/90 backdrop-blur-[var(--blur-glass)]"
       />
 
       {/* Close (X) — the accessible close affordance. */}
