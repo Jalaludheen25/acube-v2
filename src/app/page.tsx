@@ -1,5 +1,5 @@
 import { Hero } from "@/features/hero";
-import { HomeCtaBand, HomePillars } from "@/features/home";
+import { HomeCtaBand, HomeMarquee, HomePillars } from "@/features/home";
 import { TrustExperience } from "@/features/testimonials";
 
 /**
@@ -16,6 +16,7 @@ export default function HomePage() {
     <main id="main">
       <Hero />
       <HomePillars />
+      <HomeMarquee />
       <TrustExperience />
       <HomeCtaBand />
     </main>

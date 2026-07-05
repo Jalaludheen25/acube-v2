@@ -1,2 +1,3 @@
-export * from "./HomePillars";
 export * from "./HomeCtaBand";
+export * from "./HomeMarquee";
+export * from "./HomePillars";

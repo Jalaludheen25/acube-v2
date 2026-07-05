@@ -14,7 +14,7 @@ import { TrustStatement } from "./TrustStatement";
  */
 export function TrustExperience() {
   return (
-    <section id="testimonials" aria-label="Trust" className="relative section-exhale">
+    <section id="testimonials" aria-label="Trust" className="relative section-exhale overflow-hidden">
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
           {testimonials.length > 0 ? <TestimonialList /> : <TrustStatement />}

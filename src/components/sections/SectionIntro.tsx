@@ -15,6 +15,8 @@ interface SectionIntroProps {
   size?: "display" | "h2";
   /** Heading level — "h2" for in-page sections (default), "h1" for a page hero. */
   as?: "h1" | "h2";
+  /** Per-character title reveal (RevealRoot's [data-split]); off by default. */
+  split?: boolean;
   /** Extra classes on the wrapper (e.g. width overrides). */
   className?: string;
   /** Optional trailing node (e.g. a small aside) — rarely needed. */
@@ -36,6 +38,7 @@ export function SectionIntro({
   lede,
   size = "display",
   as = "h2",
+  split = false,
   className,
   children,
 }: SectionIntroProps) {
@@ -56,7 +59,7 @@ export function SectionIntro({
         )}
       >
         {lines.map((line) => (
-          <span key={line} className="block">
+          <span key={line} className="block" {...(split ? { "data-split": "" } : {})}>
             {line}
           </span>
         ))}

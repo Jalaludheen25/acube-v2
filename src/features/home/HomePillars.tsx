@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Briefcase, Building2, HelpCircle, Layers, ShieldCheck, Users } from "lucide-react";
 
-import { RevealRoot } from "@/components/motion";
+import { RevealRoot, TiltCard } from "@/components/motion";
 import { SectionIntro } from "@/components/sections";
 import { IconTile } from "@/components/ui";
 import { cn, container, typography } from "@/lib";
@@ -15,6 +15,7 @@ const pillars = [
     icon: Briefcase,
     surface: "bg-grad-emerald",
     tile: "celadon",
+    featured: true,
   },
   {
     title: "Industries",
@@ -23,6 +24,7 @@ const pillars = [
     icon: Building2,
     surface: "bg-grad-teal",
     tile: "sand",
+    featured: false,
   },
   {
     title: "Why ACUBE",
@@ -31,6 +33,7 @@ const pillars = [
     icon: ShieldCheck,
     surface: "bg-grad-cta",
     tile: "sand",
+    featured: false,
   },
   {
     title: "Business Structures",
@@ -39,6 +42,7 @@ const pillars = [
     icon: Layers,
     surface: "bg-grad-teal",
     tile: "celadon",
+    featured: false,
   },
   {
     title: "About",
@@ -47,6 +51,7 @@ const pillars = [
     icon: Users,
     surface: "bg-grad-cta",
     tile: "sand",
+    featured: false,
   },
   {
     title: "FAQ",
@@ -55,13 +60,15 @@ const pillars = [
     icon: HelpCircle,
     surface: "bg-grad-emerald",
     tile: "celadon",
+    featured: false,
   },
 ] as const;
 
 /**
- * Home pillars — primary wayfinding on the landing page. Each is a 3D card (soft
- * depth shadow + lift on hover) with a gradient 3D icon tile, linking to a
- * dedicated page (no on-page sections). Server Component.
+ * Home pillars — primary wayfinding, as an asymmetric bento grid. The
+ * featured Services card spans 2×2 on desktop; every card is a pointer-
+ * tracked TiltCard with a cursor spotlight, an outlined index numeral, and
+ * a gradient icon tile. Server Component (TiltCard is an inert leaf).
  */
 export function HomePillars() {
   return (
@@ -73,32 +80,68 @@ export function HomePillars() {
             title="Everything you need to establish and run your business."
             titleId="explore-heading"
             size="h2"
+            split
             lede="From company formation to everyday documentation — explore how ACUBE can help."
           />
 
-          <ul data-reveal className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {pillars.map((pillar) => (
-              <li key={pillar.href}>
-                <Link
-                  href={pillar.href}
-                  className={cn(
-                    "card-3d texture theme-dark group flex h-full flex-col justify-between gap-8 rounded-2xl p-8 shadow-3d",
-                    pillar.surface,
-                  )}
-                >
-                  <div>
-                    <IconTile icon={pillar.icon} variant={pillar.tile} />
-                    <h3 className={cn(typography.h3, "mt-6 text-foreground")}>{pillar.title}</h3>
-                    <p className={cn(typography.bodySmall, "mt-3 text-muted")}>{pillar.description}</p>
-                  </div>
-                  <span className="inline-flex items-center gap-2 text-body-sm font-medium text-gold">
-                    Learn more
-                    <ArrowUpRight
-                      className="size-4 transition-transform duration-[var(--duration-normal)] ease-out-quart group-hover:translate-x-1 group-hover:-translate-y-1"
+          <ul
+            data-reveal-stagger
+            className="mt-16 grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {pillars.map((pillar, index) => (
+              <li
+                key={pillar.href}
+                className={cn(pillar.featured && "sm:col-span-2 sm:row-span-2")}
+              >
+                <TiltCard className="h-full">
+                  <Link
+                    href={pillar.href}
+                    data-cursor-label="View"
+                    className={cn(
+                      "card-spotlight texture theme-dark group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl shadow-3d",
+                      pillar.featured ? "gap-16 p-8 lg:p-12" : "gap-10 p-8",
+                      pillar.surface,
+                    )}
+                  >
+                    <span
                       aria-hidden
-                    />
-                  </span>
-                </Link>
+                      className="index-giant text-stroke pointer-events-none absolute -right-3 -top-4 select-none opacity-60"
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div className="relative">
+                      <IconTile
+                        icon={pillar.icon}
+                        variant={pillar.tile}
+                        className="transition-transform duration-[var(--duration-medium)] ease-out-quart group-hover:-rotate-6 group-hover:scale-110"
+                      />
+                      <h3
+                        className={cn(
+                          pillar.featured ? typography.h2 : typography.h3,
+                          "mt-6 text-foreground",
+                        )}
+                      >
+                        {pillar.title}
+                      </h3>
+                      <p
+                        className={cn(
+                          typography.bodySmall,
+                          "mt-3 text-muted",
+                          pillar.featured && "max-w-md",
+                        )}
+                      >
+                        {pillar.description}
+                      </p>
+                    </div>
+                    <span className="relative inline-flex items-center gap-2 text-body-sm font-medium text-gold">
+                      Learn more
+                      <ArrowUpRight
+                        className="size-4 transition-transform duration-[var(--duration-normal)] ease-out-quart group-hover:translate-x-1 group-hover:-translate-y-1"
+                        aria-hidden
+                      />
+                    </span>
+                  </Link>
+                </TiltCard>
               </li>
             ))}
           </ul>
