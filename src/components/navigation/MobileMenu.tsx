@@ -87,13 +87,13 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
         type="button"
         aria-label="Close menu"
         onClick={onClose}
-        className="touch-target absolute right-4 top-4 inline-flex items-center justify-center text-foreground"
+        className="touch-target absolute right-[max(1rem,env(safe-area-inset-right))] top-[max(1rem,env(safe-area-inset-top))] inline-flex items-center justify-center text-foreground"
       >
         <X className="size-6" aria-hidden />
       </button>
 
       {/* Content — pointer-events pass through empty areas to the backdrop. */}
-      <div className="pointer-events-none relative flex h-full flex-col justify-center gap-12 px-8 pb-16 pt-28">
+      <div className="pointer-events-none relative flex h-full flex-col justify-center gap-12 pl-[max(2rem,env(safe-area-inset-left))] pr-[max(2rem,env(safe-area-inset-right))] pb-[max(4rem,calc(2rem+env(safe-area-inset-bottom)))] pt-[max(7rem,calc(7rem+env(safe-area-inset-top)))]">
         <nav aria-label="Mobile" className="pointer-events-auto">
           <ul className="flex flex-col gap-4">
             {mainNav.map((item) => (
@@ -101,7 +101,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
                 <NavLink
                   item={item}
                   onNavigate={onClose}
-                  className="text-h2 font-heading font-medium"
+                  className="max-lg:flex max-lg:min-h-[2.75rem] max-lg:items-center text-h2 font-heading font-medium"
                 />
               </m.li>
             ))}

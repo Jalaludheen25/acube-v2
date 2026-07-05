@@ -23,7 +23,7 @@ export function PackagesExperience({ as = "h2" }: PackagesExperienceProps) {
   return (
     <section id="packages" aria-labelledby="packages-heading" className="relative bg-background">
       <RevealRoot>
-        <div className={cn(container.content, "py-24 lg:py-32")}>
+        <div className={cn(container.content, "pb-24 max-lg:pt-0 lg:py-32")}>
           <SectionIntro
             as={as}
             eyebrow={packagesContent.eyebrow}

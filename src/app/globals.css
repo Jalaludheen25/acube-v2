@@ -267,6 +267,7 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
   }
 
   body {
@@ -277,6 +278,7 @@
     font-optical-sizing: auto;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
   }
 
   /* Visible keyboard focus (WCAG 2.4.7) */
@@ -304,6 +306,15 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile hero type scale — the desktop clamp floors at 56px, which forces
+   the hero's per-line headline spans to double-wrap on narrow viewports.
+   Scoped below the `lg` breakpoint only; desktop is untouched. */
+@media (max-width: 1023.98px) {
+  :root {
+    --text-hero: clamp(2.5rem, 10vw, 3.5rem);
   }
 }
 

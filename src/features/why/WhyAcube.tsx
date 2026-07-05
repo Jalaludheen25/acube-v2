@@ -23,7 +23,7 @@ export function WhyAcube({ as = "h2" }: WhyAcubeProps) {
   return (
     <section id="why-acube" aria-labelledby="why-heading" className="relative section-exhale">
       <RevealRoot>
-        <div className={cn(container.content, "py-24 lg:py-32")}>
+        <div className={cn(container.content, "pb-24 max-lg:pt-0 lg:py-32")}>
           <SectionIntro
             as={as}
             eyebrow={why.eyebrow}

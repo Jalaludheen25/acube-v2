@@ -7,7 +7,7 @@ import { navigatorContent, siteConfig } from "@/constants";
 import { cn, typography } from "@/lib";
 
 const chipBase =
-  "cursor-pointer rounded-full border px-4 py-2 text-body-sm transition-colors duration-[var(--duration-normal)] ease-out-quart has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-gold";
+  "cursor-pointer rounded-full border px-4 py-2 text-body-sm transition-colors duration-[var(--duration-normal)] ease-out-quart has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-gold max-lg:inline-flex max-lg:items-center max-lg:touch-target";
 const chipOn = "border-gold bg-gold/10 text-gold";
 const chipOff = "border-border text-muted hover:border-foreground/30 hover:text-foreground";
 

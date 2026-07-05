@@ -25,7 +25,7 @@ export function IndustriesExperience({ as = "h2" }: IndustriesExperienceProps) {
   return (
     <section id="industries" aria-labelledby="industries-heading" className="relative bg-background">
       <RevealRoot>
-        <div className={cn(container.content, "py-24 lg:py-32")}>
+        <div className={cn(container.content, "pb-24 max-lg:pt-0 lg:py-32")}>
           <SectionIntro
             as={as}
             eyebrow={industries.eyebrow}

@@ -19,7 +19,7 @@ import { heroContentVariants, heroItemVariants } from "./heroMotion";
  */
 export function HeroContent() {
   return (
-    <div className="container-wide relative z-[var(--z-content)] flex min-h-dvh flex-col justify-center py-32">
+    <div className="container-wide relative z-[var(--z-content)] flex min-h-dvh flex-col justify-center py-32 max-lg:py-20">
       <m.div variants={heroContentVariants} initial="hidden" animate="visible" className="max-w-3xl">
         <m.p
           variants={heroItemVariants}
@@ -44,11 +44,11 @@ export function HeroContent() {
           {hero.subhead}
         </m.p>
 
-        <m.div variants={heroItemVariants} className="mt-10 flex flex-wrap items-center gap-4">
-          <Button href="/contact" variant="primary" size="lg">
+        <m.div className="mt-10 flex max-lg:flex-col flex-wrap items-center gap-4" variants={heroItemVariants}>
+          <Button href="/contact" variant="primary" size="lg" className="max-lg:w-full">
             {siteConfig.cta.primary}
           </Button>
-          <Button href="/services" variant="secondary" size="lg">
+          <Button href="/services" variant="secondary" size="lg" className="max-lg:w-full">
             {siteConfig.cta.secondary}
           </Button>
         </m.div>

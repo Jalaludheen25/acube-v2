@@ -18,6 +18,7 @@ export interface UseHeroFrameSequenceResult {
 
 /** Eagerly loaded before the canvas mounts; the rest stream in during idle time. */
 const EAGER_FRAME_COUNT = 20;
+const EAGER_FRAME_COUNT_MOBILE = 12;
 
 function scheduleIdle(callback: () => void): () => void {
   if (typeof window.requestIdleCallback === "function") {
@@ -49,6 +50,7 @@ function coverSourceRect(canvasW: number, canvasH: number, imgW: number, imgH: n
 export function useHeroFrameSequence(
   manifestUrl: string,
   reducedMotion: boolean,
+  mobile: boolean,
 ): UseHeroFrameSequenceResult {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -82,7 +84,7 @@ export function useHeroFrameSequence(
       if (cancelled) return;
       frameCountRef.current = manifest.count;
 
-      const eagerCount = Math.min(EAGER_FRAME_COUNT, manifest.count);
+      const eagerCount = Math.min(mobile ? EAGER_FRAME_COUNT_MOBILE : EAGER_FRAME_COUNT, manifest.count);
       await Promise.all(
         Array.from({ length: eagerCount }, (_, i) => loadFrame(manifest, i)),
       );
@@ -106,7 +108,7 @@ export function useHeroFrameSequence(
       cancelled = true;
       cancelIdle?.();
     };
-  }, [manifestUrl, reducedMotion]);
+  }, [manifestUrl, reducedMotion, mobile]);
 
   // Canvas sizing + draw + scroll pin/scrub — starts once the canvas has mounted.
   useEffect(() => {
@@ -161,7 +163,7 @@ export function useHeroFrameSequence(
         scrollTrigger = ScrollTrigger.create({
           trigger: heroSection,
           start: "top top",
-          end: "+=100%",
+          end: mobile ? "+=60%" : "+=100%",
           pin: true,
           scrub: true,
           onUpdate: (self) => {
@@ -181,7 +183,7 @@ export function useHeroFrameSequence(
       scrollTrigger?.kill();
       mm?.revert();
     };
-  }, [ready, reducedMotion]);
+  }, [ready, reducedMotion, mobile]);
 
   return { containerRef, canvasRef, ready };
 }

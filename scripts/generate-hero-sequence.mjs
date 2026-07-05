@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 /**
- * Generates the web-delivery hero frame sequence from the production masters.
+ * Generates the web-delivery hero frame sequences from the production masters.
  *
  * Reads public/hero/frames/frame-NNN.png (source art, untouched) and writes
- * resized/compressed WebP derivatives + a manifest to public/hero/sequence/,
- * which is what HeroFrameSequence actually fetches at runtime. Rerun this
- * whenever the master frames are replaced.
+ * two resized/compressed WebP derivative sets + manifests:
+ *   - public/hero/sequence/        — desktop, scaled to OUT_WIDTH
+ *   - public/hero/sequence-mobile/ — phone-sized, center-cropped to a 3:4
+ *     portrait ratio then scaled to MOBILE_WIDTH (an "intelligent crop" of
+ *     the same footage — no separate portrait shoot exists)
  *
- * Requires ffmpeg on PATH.
+ * These are what HeroFrameSequence actually fetches at runtime. Rerun this
+ * whenever the master frames are replaced. Requires ffmpeg on PATH.
  */
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readdirSync, writeFileSync } from "node:fs";
@@ -16,9 +19,72 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SRC_DIR = join(ROOT, "public", "hero", "frames");
-const OUT_DIR = join(ROOT, "public", "hero", "sequence");
-const OUT_WIDTH = 1600;
 const QUALITY = 72;
+
+const SETS = [
+  {
+    name: "desktop",
+    outDir: join(ROOT, "public", "hero", "sequence"),
+    basePath: "/hero/sequence/frame-",
+    vf: (w) => `scale=${w}:-1`,
+    width: 1600,
+  },
+  {
+    name: "mobile",
+    outDir: join(ROOT, "public", "hero", "sequence-mobile"),
+    basePath: "/hero/sequence-mobile/frame-",
+    // Center-crop to a 3:4 portrait ratio (crop defaults to centered when x/y
+    // are omitted), then scale down to phone size.
+    vf: (w) => `crop=ih*0.75:ih,scale=${w}:-1`,
+    width: 760,
+  },
+];
+
+function probeDimensions(file) {
+  const probe = execFileSync(
+    "ffprobe",
+    ["-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height", "-of", "csv=p=0", file],
+    { encoding: "utf8" },
+  ).trim();
+  const [w, h] = probe.split(",").map(Number);
+  return { width: w, height: h };
+}
+
+function generateSet(set, frames) {
+  mkdirSync(set.outDir, { recursive: true });
+  let width = 0;
+  let height = 0;
+
+  frames.forEach((file, i) => {
+    const index = String(i + 1).padStart(3, "0");
+    const src = join(SRC_DIR, file);
+    const out = join(set.outDir, `frame-${index}.webp`);
+
+    execFileSync(
+      "ffmpeg",
+      ["-y", "-i", src, "-vf", set.vf(set.width), "-c:v", "libwebp", "-quality", String(QUALITY), out],
+      { stdio: "inherit" },
+    );
+
+    if (i === 0) {
+      ({ width, height } = probeDimensions(out));
+    }
+
+    console.log(`[${set.name} ${i + 1}/${frames.length}] ${file} -> frame-${index}.webp`);
+  });
+
+  const manifest = {
+    count: frames.length,
+    width,
+    height,
+    basePath: set.basePath,
+    pad: 3,
+    ext: "webp",
+  };
+
+  writeFileSync(join(set.outDir, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
+  console.log(`Wrote ${frames.length} frames + manifest.json to ${set.outDir}\n`);
+}
 
 function main() {
   const frames = readdirSync(SRC_DIR)
@@ -30,54 +96,9 @@ function main() {
     process.exit(1);
   }
 
-  mkdirSync(OUT_DIR, { recursive: true });
-
-  let width = 0;
-  let height = 0;
-
-  frames.forEach((file, i) => {
-    const index = String(i + 1).padStart(3, "0");
-    const src = join(SRC_DIR, file);
-    const out = join(OUT_DIR, `frame-${index}.webp`);
-
-    execFileSync(
-      "ffmpeg",
-      [
-        "-y",
-        "-i", src,
-        "-vf", `scale=${OUT_WIDTH}:-1`,
-        "-c:v", "libwebp",
-        "-quality", String(QUALITY),
-        out,
-      ],
-      { stdio: "inherit" },
-    );
-
-    if (i === 0) {
-      const probe = execFileSync(
-        "ffprobe",
-        ["-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height", "-of", "csv=p=0", out],
-        { encoding: "utf8" },
-      ).trim();
-      const [w, h] = probe.split(",").map(Number);
-      width = w;
-      height = h;
-    }
-
-    console.log(`[${i + 1}/${frames.length}] ${file} -> frame-${index}.webp`);
-  });
-
-  const manifest = {
-    count: frames.length,
-    width,
-    height,
-    basePath: "/hero/sequence/frame-",
-    pad: 3,
-    ext: "webp",
-  };
-
-  writeFileSync(join(OUT_DIR, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
-  console.log(`\nWrote ${frames.length} frames + manifest.json to ${OUT_DIR}`);
+  for (const set of SETS) {
+    generateSet(set, frames);
+  }
 }
 
 main();

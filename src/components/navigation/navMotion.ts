@@ -15,14 +15,16 @@ export const logoScaleTransition: Transition = {
   ease: bezier(easing.outQuart),
 };
 
-/** Fullscreen mobile menu container — fades and choreographs its children. */
+/** Fullscreen mobile menu container — fades/scales and choreographs its children. */
 export const mobileMenuVariants: Variants = {
   closed: {
     opacity: 0,
+    scale: 0.98,
     transition: { duration: s(duration.normal), ease: bezier(easing.outQuart), when: "afterChildren" },
   },
   open: {
     opacity: 1,
+    scale: 1,
     transition: {
       duration: s(duration.medium),
       ease: bezier(easing.outExpo),

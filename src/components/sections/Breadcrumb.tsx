@@ -30,7 +30,7 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
             {item.href && !last ? (
               <Link
                 href={item.href}
-                className="transition-colors duration-[var(--duration-normal)] ease-out-quart hover:text-gold"
+                className="max-lg:touch-target max-lg:inline-flex max-lg:items-center transition-colors duration-[var(--duration-normal)] ease-out-quart hover:text-gold"
               >
                 {item.label}
               </Link>
