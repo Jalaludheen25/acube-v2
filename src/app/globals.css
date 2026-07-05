@@ -654,3 +654,220 @@
     transform: translateY(-14px);
   }
 }
+
+/* ============================================================
+   INTERACTION LAYER
+   Marquee, morphing blobs, conic rings, spotlight cards, shine
+   sweeps, animated underlines, stroke numerals. All GPU-friendly
+   (transform/opacity/background) and neutralized by the global
+   prefers-reduced-motion rule above.
+   ============================================================ */
+
+/* Infinite marquee track (content duplicated by <Marquee>). */
+.marquee-track {
+  animation: marquee-scroll 36s linear infinite;
+}
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Organic morphing blob — pair with a bg-grad-* + blur-3xl. */
+@utility blob {
+  border-radius: 42% 58% 61% 39% / 45% 42% 58% 55%;
+  animation: blob-morph 18s var(--ease-in-out-soft) infinite alternate;
+}
+@keyframes blob-morph {
+  0% {
+    border-radius: 42% 58% 61% 39% / 45% 42% 58% 55%;
+  }
+  50% {
+    border-radius: 58% 42% 39% 61% / 55% 58% 42% 45%;
+  }
+  100% {
+    border-radius: 39% 61% 55% 45% / 42% 45% 55% 58%;
+  }
+}
+
+/* Rotating conic border ring — masked like border-grad. */
+@utility ring-conic {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from var(--ring-angle, 0deg),
+      transparent 0%,
+      color-mix(in srgb, var(--color-celadon) 85%, transparent) 12%,
+      transparent 28%,
+      transparent 55%,
+      color-mix(in srgb, var(--color-celadon) 45%, transparent) 68%,
+      transparent 82%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: ring-spin 9s linear infinite;
+    pointer-events: none;
+  }
+}
+@property --ring-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes ring-spin {
+  to {
+    --ring-angle: 360deg;
+  }
+}
+
+/* Pointer spotlight — fed --px/--py (0–1) by <TiltCard>. */
+@utility card-spotlight {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      32rem circle at calc(var(--px, 0.5) * 100%) calc(var(--py, 0.5) * 100%),
+      rgba(232, 241, 242, 0.14) 0%,
+      transparent 55%
+    );
+    opacity: 0;
+    transition: opacity var(--duration-medium) var(--ease-out-quart);
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Diagonal light sweep on hover (buttons / CTAs). */
+@utility btn-shine {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -150% auto -150% -60%;
+    width: 40%;
+    transform: rotate(18deg) translateX(-220%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.28),
+      transparent
+    );
+    transition: transform var(--duration-slow) var(--ease-out-quart);
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    transform: rotate(18deg) translateX(520%);
+  }
+}
+
+/* Animated left→right underline on hover/focus. */
+@utility hover-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--duration-normal) var(--ease-out-quart);
+
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* Outlined display numerals used as section furniture. */
+@utility text-stroke {
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--color-foreground) 30%, transparent);
+}
+@utility index-giant {
+  font-family: var(--font-mono);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
+/* Row background sweep for editorial list rows. */
+@utility row-hover {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 -1.5rem;
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-gold) 7%, transparent);
+    opacity: 0;
+    transform: scaleX(0.96);
+    transform-origin: left center;
+    transition:
+      opacity var(--duration-normal) var(--ease-out-quart),
+      transform var(--duration-normal) var(--ease-out-quart);
+    pointer-events: none;
+  }
+
+  &:hover::before {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* Cursor follower states (see components/cursor/Cursor.tsx). */
+.cursor-ring {
+  transition-property: opacity;
+}
+.cursor-ring-labelled {
+  background-color: rgba(232, 241, 242, 0.14);
+  backdrop-filter: blur(2px);
+}
+.cursor-ring-labelled .cursor-ring-label {
+  opacity: 1;
+}
+.cursor-ring-label {
+  transition: opacity var(--duration-fast) ease-out;
+  white-space: nowrap;
+}
+
+/* FAQ accordion — slide-down entrance when a native <details> opens.
+   (Closed <details> content is display:none, so a transition has no
+   from-state; an entrance animation plays reliably instead.) */
+details[open] .faq-answer {
+  animation: faq-open var(--duration-medium) var(--ease-out-quart);
+}
+@keyframes faq-open {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

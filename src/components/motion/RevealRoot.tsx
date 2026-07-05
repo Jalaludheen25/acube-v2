@@ -9,6 +9,38 @@ interface RevealRootProps {
   className?: string;
 }
 
+/** Wrap each word in an inline-block span; returns the char/word spans. */
+function splitInto(el: HTMLElement, granularity: "chars" | "words"): HTMLElement[] {
+  const text = el.textContent ?? "";
+  el.setAttribute("aria-label", text);
+  el.textContent = "";
+
+  const units: HTMLElement[] = [];
+  text.split(/(\s+)/).forEach((token) => {
+    if (token.trim() === "") {
+      el.appendChild(document.createTextNode(token === "" ? "" : " "));
+      return;
+    }
+    const word = document.createElement("span");
+    word.setAttribute("aria-hidden", "true");
+    word.style.display = "inline-block";
+    if (granularity === "words") {
+      word.textContent = token;
+      units.push(word);
+    } else {
+      for (const ch of token) {
+        const c = document.createElement("span");
+        c.style.display = "inline-block";
+        c.textContent = ch;
+        word.appendChild(c);
+        units.push(c);
+      }
+    }
+    el.appendChild(word);
+  });
+  return units;
+}
+
 /**
  * Shared scroll-reveal engine (progressive enhancement).
  *
@@ -17,10 +49,13 @@ interface RevealRootProps {
  * `(prefers-reduced-motion: no-preference)`, applies:
  *   - [data-reveal]          → fade + rise, once at 20% in view
  *   - [data-reveal-stagger]  → staggered children
- *   - [data-spine]           → scrubbed vertical draw (optional; skipped if absent)
+ *   - [data-reveal-scale]    → scale 0.92 + fade, once (panels/cards)
+ *   - [data-split]           → per-character rise + blur reveal, once
+ *   - [data-words-scrub]     → word-by-word opacity illumination, scrubbed
+ *   - [data-parallax="0.2"]  → decorative yPercent scrub (value = speed)
+ *   - [data-spine]           → scrubbed vertical draw (optional)
  *
  * All values come from design tokens. Everything reverts on unmount.
- * Consumed by the Business Story and the Services Experience.
  */
 export function RevealRoot({ children, className }: RevealRootProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -56,6 +91,60 @@ export function RevealRoot({ children, className }: RevealRootProps) {
             stagger: stagger.cards,
             scrollTrigger: { trigger: group, start: "top 80%", toggleActions: "play none none none" },
           });
+        });
+
+        el.querySelectorAll<HTMLElement>("[data-reveal-scale]").forEach((node) => {
+          gsap.from(node, {
+            opacity: 0,
+            scale: 0.92,
+            duration: duration.slow / 1000,
+            ease: ease.outExpo,
+            scrollTrigger: { trigger: node, start: "top 80%", toggleActions: "play none none none" },
+          });
+        });
+
+        el.querySelectorAll<HTMLElement>("[data-split]").forEach((node) => {
+          const chars = splitInto(node, "chars");
+          if (chars.length === 0) return;
+          gsap.from(chars, {
+            opacity: 0,
+            y: "0.6em",
+            rotateX: -45,
+            filter: "blur(6px)",
+            duration: duration.medium / 1000,
+            ease: ease.outExpo,
+            stagger: { each: 0.018, from: "start" },
+            scrollTrigger: { trigger: node, start: "top 85%", toggleActions: "play none none none" },
+          });
+        });
+
+        el.querySelectorAll<HTMLElement>("[data-words-scrub]").forEach((node) => {
+          const words = splitInto(node, "words");
+          if (words.length === 0) return;
+          gsap.fromTo(
+            words,
+            { opacity: 0.18 },
+            {
+              opacity: 1,
+              ease: "none",
+              stagger: 0.08,
+              scrollTrigger: { trigger: node, start: "top 78%", end: "top 30%", scrub: true },
+            },
+          );
+        });
+
+        el.querySelectorAll<HTMLElement>("[data-parallax]").forEach((node) => {
+          const speed = parseFloat(node.dataset.parallax ?? "0.15");
+          if (Number.isNaN(speed) || speed === 0) return;
+          gsap.fromTo(
+            node,
+            { yPercent: speed * 100 },
+            {
+              yPercent: speed * -100,
+              ease: "none",
+              scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
+            },
+          );
         });
 
         const spine = el.querySelector<HTMLElement>("[data-spine]");

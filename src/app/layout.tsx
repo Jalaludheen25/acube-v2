@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 
+import { Cursor } from "@/components/cursor";
 import { ScrollProgress } from "@/components/motion";
 import { Navbar } from "@/components/navigation";
 import { OrganizationSchema } from "@/components/seo";
@@ -92,6 +93,8 @@ export default function RootLayout({
             Skip to content
           </a>
           <ScrollProgress />
+          <Cursor />
+          <div aria-hidden className="grain" />
           <Navbar />
           {children}
           <FooterExperience />

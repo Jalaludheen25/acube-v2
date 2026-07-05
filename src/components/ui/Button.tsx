@@ -34,7 +34,7 @@ export function Button({
   children,
 }: ButtonProps) {
   const classes = cn(
-    "touch-target inline-flex items-center justify-center rounded-md font-semibold transition duration-[var(--duration-normal)] ease-out-quart hover:-translate-y-0.5 active:translate-y-0",
+    "touch-target btn-shine inline-flex items-center justify-center rounded-md font-semibold transition duration-[var(--duration-normal)] ease-out-quart hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]",
     size === "md" && "px-5 text-button",
     size === "lg" && "px-7 py-4 text-button",
     // Emerald gradient CTA; `text-white` (not text-foreground) so the label
