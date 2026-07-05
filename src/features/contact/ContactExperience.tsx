@@ -27,14 +27,23 @@ export function ContactExperience({ as = "h2" }: ContactExperienceProps) {
             eyebrow={contactContent.eyebrow}
             title={contactContent.headline}
             titleId="contact-heading"
+            split
             lede={contactContent.invitation}
           />
 
-          <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="relative mt-16 grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <div
+              aria-hidden
+              data-parallax="0.12"
+              className="blob bg-grad-celadon pointer-events-none absolute -right-28 -top-20 size-80 opacity-15 blur-3xl"
+            />
             <div data-reveal>
               <ContactDetails />
             </div>
-            <div data-reveal>
+            <div
+              data-reveal-scale
+              className="glass-depth relative self-start overflow-hidden rounded-[var(--radius-2xl)] p-6 lg:p-8"
+            >
               <ContactForm />
             </div>
           </div>

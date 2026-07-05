@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm, type UseFormRegisterReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { Magnetic } from "@/components/motion";
 import { Button } from "@/components/ui";
 import { contact, contactContent, siteConfig } from "@/constants";
 import { cn, typography } from "@/lib";
@@ -14,7 +15,7 @@ import { contactSchema, type ContactFormValues } from "./contactSchema";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClass =
-  "mt-2 w-full rounded-md border border-border bg-surface px-4 py-3 text-body text-foreground transition-colors duration-[var(--duration-normal)] ease-out-quart placeholder:text-muted focus:border-brand-red focus:outline-none aria-[invalid=true]:border-danger";
+  "mt-2 w-full rounded-md border border-border bg-surface px-4 py-3 text-body text-foreground transition-[border-color,box-shadow] duration-[var(--duration-normal)] ease-out-quart placeholder:text-muted focus:border-gold focus:shadow-glow-gold focus:outline-none aria-[invalid=true]:border-danger";
 
 interface FieldProps {
   id: string;
@@ -170,9 +171,11 @@ export function ContactFormFields() {
         </p>
       ) : null}
 
-      <Button type="submit" variant="primary" size="lg" className="self-start">
-        {status === "submitting" ? contactContent.form.sending : siteConfig.cta.primary}
-      </Button>
+      <Magnetic className="self-start">
+        <Button type="submit" variant="primary" size="lg">
+          {status === "submitting" ? contactContent.form.sending : siteConfig.cta.primary}
+        </Button>
+      </Magnetic>
     </form>
   );
 }

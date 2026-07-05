@@ -29,6 +29,7 @@ export function PackagesExperience({ as = "h2" }: PackagesExperienceProps) {
             eyebrow={packagesContent.eyebrow}
             title={packagesContent.headline}
             titleId="packages-heading"
+            split
             lede={packagesContent.intro}
           />
 

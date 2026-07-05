@@ -21,14 +21,24 @@ interface WhyAcubeProps {
 
 export function WhyAcube({ as = "h2" }: WhyAcubeProps) {
   return (
-    <section id="why-acube" aria-labelledby="why-heading" className="relative section-exhale">
+    <section
+      id="why-acube"
+      aria-labelledby="why-heading"
+      className="relative section-exhale overflow-hidden"
+    >
       <RevealRoot>
-        <div className={cn(container.content, "pb-24 max-lg:pt-0 lg:py-32")}>
+        <div className={cn(container.content, "relative pb-24 max-lg:pt-0 lg:py-32")}>
+          <div
+            aria-hidden
+            data-parallax="0.16"
+            className="blob bg-grad-celadon pointer-events-none absolute -right-32 top-10 size-96 opacity-15 blur-3xl"
+          />
           <SectionIntro
             as={as}
             eyebrow={why.eyebrow}
             title={why.headline}
             titleId="why-heading"
+            split
             lede={why.intro}
           />
 

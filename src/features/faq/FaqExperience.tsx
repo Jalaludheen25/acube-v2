@@ -26,11 +26,12 @@ export function FaqExperience({ as = "h2" }: FaqExperienceProps) {
             eyebrow={faqContent.eyebrow}
             title={faqContent.headline}
             titleId="faq-heading"
+            split
           />
 
-          <div data-reveal className="mt-16">
-            {faqContent.items.map((item) => (
-              <FaqItem key={item.id} item={item} />
+          <div data-reveal-stagger className="mt-16">
+            {faqContent.items.map((item, index) => (
+              <FaqItem key={item.id} item={item} index={index} />
             ))}
           </div>
         </div>

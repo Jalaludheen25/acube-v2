@@ -32,6 +32,7 @@ export function IndustriesExperience({ as = "h2" }: IndustriesExperienceProps) {
             title={industries.framing}
             titleId="industries-heading"
             size="h2"
+            split
           />
 
           <IndustryRoster className="mt-16" />

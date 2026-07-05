@@ -54,23 +54,35 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             ]}
           />
 
-          <div data-reveal className="mt-8 max-w-3xl">
-            <Icon className="size-10 text-gold" aria-hidden />
-            <p className={cn(typography.label, "mt-6 flex items-center gap-3 text-gold")}>
+          <div data-reveal className="relative mt-8 max-w-3xl">
+            <div
+              aria-hidden
+              data-parallax="0.12"
+              className="blob bg-grad-celadon pointer-events-none absolute -left-24 -top-16 size-64 opacity-20 blur-3xl"
+            />
+            <span className="glass-floating float relative inline-flex size-16 items-center justify-center rounded-2xl">
+              <Icon className="size-8 text-gold" aria-hidden />
+            </span>
+            <p className={cn(typography.label, "relative mt-8 flex items-center gap-3 text-gold")}>
               <span aria-hidden className="h-px w-8 bg-gold/60" />
               {category.title}
             </p>
-            <h1 className={cn(typography.display, "mt-6 text-balance text-foreground")}>
+            <h1
+              data-split
+              className={cn(typography.display, "relative mt-6 text-balance text-foreground")}
+            >
               {service.title}
             </h1>
-            <p className={cn(typography.body, "mt-6 text-muted")}>{service.description}</p>
+            <p className={cn(typography.body, "relative mt-6 text-muted")}>
+              {service.description}
+            </p>
             {service.idealFor ? (
-              <p className={cn(typography.bodySmall, "mt-6 text-muted")}>
+              <p className={cn(typography.bodySmall, "relative mt-6 text-muted")}>
                 <span className="text-gold">Ideal for</span> · {service.idealFor}
               </p>
             ) : null}
 
-            <Button href="/contact" variant="primary" size="lg" className="mt-10">
+            <Button href="/contact" variant="primary" size="lg" className="relative mt-10">
               {siteConfig.cta.primary}
             </Button>
           </div>
@@ -82,18 +94,19 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
           {related.length > 0 ? (
             <div data-reveal className="mt-20 border-t border-divider pt-12">
               <h2 className={cn(typography.h3, "text-foreground")}>More in {category.title}</h2>
-              <ul className="mt-6">
+              <ul data-reveal-stagger className="mt-6">
                 {related.map((item) => (
                   <li key={item.id}>
                     <Link
                       href={`/services/${item.slug}`}
-                      className="group flex items-center justify-between gap-6 border-t border-divider py-5"
+                      data-cursor-label="Open"
+                      className="row-hover group flex items-center justify-between gap-6 border-t border-divider py-5"
                     >
                       <span className="font-heading text-body font-medium text-foreground transition-colors duration-[var(--duration-normal)] ease-out-quart group-hover:text-gold">
                         {item.title}
                       </span>
                       <ArrowUpRight
-                        className="size-5 shrink-0 text-muted transition-colors duration-[var(--duration-normal)] ease-out-quart group-hover:text-gold"
+                        className="size-5 shrink-0 text-muted transition-all duration-[var(--duration-normal)] ease-out-quart group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-gold"
                         aria-hidden
                       />
                     </Link>

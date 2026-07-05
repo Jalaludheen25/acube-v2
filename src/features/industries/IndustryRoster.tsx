@@ -1,3 +1,5 @@
+import { ArrowUpRight } from "lucide-react";
+
 import { industries } from "@/constants";
 import { cn } from "@/lib";
 
@@ -6,26 +8,39 @@ interface IndustryRosterProps {
 }
 
 /**
- * The industries roster — a perfectly-aligned two-column (desktop) / single
- * column (mobile) typographic list. Every sector name is always visible for a
- * one-scan recognition; no icons, no cards, no glass. The whole list reveals as
- * one group (data-reveal on the <ul>). Hover is a restrained color-only
- * transition (no movement, scaling, or glass).
+ * The industries roster as an interactive tile grid — glass tiles that lift,
+ * fill with a gold sweep, and surface an arrow on hover, revealed in a
+ * stagger. Every sector name stays instantly scannable; each tile invites
+ * the conversation on /contact.
  *
  * Semantics: a plain list of sectors we help set up (not sub-headings).
  */
 export function IndustryRoster({ className }: IndustryRosterProps) {
   return (
     <ul
-      data-reveal
-      className={cn("grid grid-cols-1 lg:grid-cols-2 lg:gap-x-16", className)}
+      data-reveal-stagger
+      className={cn("grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3", className)}
     >
-      {industries.sectors.map((sector) => (
-        <li
-          key={sector.id}
-          className="border-t border-divider py-6 font-heading text-h3 font-medium text-foreground transition-colors duration-[var(--duration-normal)] ease-out-quart hover:text-gold"
-        >
-          {sector.name}
+      {industries.sectors.map((sector, index) => (
+        <li key={sector.id}>
+          <div className="glass hover-lift group relative flex min-h-[7rem] flex-col justify-between overflow-hidden rounded-xl p-5">
+            <span
+              aria-hidden
+              className="absolute inset-0 origin-bottom scale-y-0 bg-gradient-to-t from-gold/12 to-transparent transition-transform duration-[var(--duration-medium)] ease-out-quart group-hover:scale-y-100"
+            />
+            <span className="relative flex items-start justify-between gap-3">
+              <span className="font-mono text-label uppercase tracking-wider text-muted/70">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <ArrowUpRight
+                className="size-4 -translate-x-1 translate-y-1 text-gold opacity-0 transition-all duration-[var(--duration-normal)] ease-out-quart group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
+                aria-hidden
+              />
+            </span>
+            <span className="relative font-heading text-h3 font-medium text-foreground transition-colors duration-[var(--duration-normal)] ease-out-quart group-hover:text-gold">
+              {sector.name}
+            </span>
+          </div>
         </li>
       ))}
     </ul>
