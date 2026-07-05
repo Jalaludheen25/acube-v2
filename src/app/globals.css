@@ -256,6 +256,12 @@
     );
     --gradient-text-gold: linear-gradient(120deg, var(--color-platinum) 0%, var(--color-celadon) 100%);
     --gradient-text-pine: linear-gradient(120deg, var(--color-pine-teal) 0%, var(--color-muted-teal) 100%);
+    --gradient-hero-scrim: linear-gradient(
+      100deg,
+      color-mix(in srgb, var(--color-ink-black) 65%, transparent) 0%,
+      color-mix(in srgb, var(--color-ink-black) 30%, transparent) 45%,
+      transparent 75%
+    );
   }
 
   html {
@@ -454,6 +460,9 @@
 }
 @utility bg-grad-sand {
   background-image: var(--gradient-sand);
+}
+@utility bg-grad-hero-scrim {
+  background-image: var(--gradient-hero-scrim);
 }
 @utility text-grad-gold {
   background-image: var(--gradient-text-gold);

@@ -1,16 +1,17 @@
 import { HeroContent } from "./HeroContent";
-import { HeroPoster } from "./HeroPoster";
+import { HeroFrameSequence } from "./HeroFrameSequence";
 
 /**
  * Hero section — the signature experience.
  *
  * Server Component. Layers, back to front:
- *   1. WebGL scene / CSS poster (decorative, aria-hidden, pointer-events-none)
- *   2. Left contrast scrim (guarantees WCAG AA text contrast over the scene)
- *   3. HTML content (single H1, subhead, CTAs, trust, scroll indicator)
+ *   1. 120-frame scroll-scrubbed canvas sequence (decorative, aria-hidden,
+ *      pointer-events-none) with a built-in contrast scrim
+ *   2. HTML content (single H1, subhead, CTAs, trust, scroll indicator)
  *
- * The canvas is lazy + ssr:false, so the HTML content always renders before the
- * WebGL. `#hero` is the nav scrollspy anchor and the Entry Experience hand-off.
+ * The frame sequence progressively enhances a real SSR'd poster image, so the
+ * HTML content and LCP are never blocked by it. `#hero` is both the nav
+ * scrollspy anchor and the ScrollTrigger pin target for the sequence.
  */
 export function Hero() {
   return (
@@ -20,7 +21,7 @@ export function Hero() {
       className="theme-dark relative isolate min-h-dvh overflow-hidden"
     >
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <HeroPoster />
+        <HeroFrameSequence />
       </div>
 
       <HeroContent />

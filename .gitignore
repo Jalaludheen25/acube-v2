@@ -51,3 +51,8 @@ logs
 
 # os
 .cache/
+
+# hero frame-sequence masters (regenerable source art, ~200MB — never shipped;
+# public/hero/sequence/*.webp is the optimized runtime asset, see
+# scripts/generate-hero-sequence.mjs)
+/public/hero/frames/
