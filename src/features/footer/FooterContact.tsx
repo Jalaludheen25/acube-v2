@@ -5,7 +5,7 @@ import { mailtoHref, telHref, whatsappHref } from "@/utils";
 const headingClass = cn(typography.label, "text-gold");
 const linkClass = cn(
   typography.bodySmall,
-  "text-muted transition-colors duration-[var(--duration-normal)] ease-out-quart hover:text-foreground",
+  "hover-underline w-fit text-muted transition-colors duration-[var(--duration-normal)] ease-out-quart hover:text-foreground",
   "max-lg:touch-target max-lg:flex max-lg:items-center max-lg:-mx-2 max-lg:px-2",
 );
 

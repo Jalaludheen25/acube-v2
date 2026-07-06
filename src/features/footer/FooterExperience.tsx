@@ -1,4 +1,7 @@
-import { RevealRoot } from "@/components/motion";
+import Link from "next/link";
+import { ArrowUp, ArrowUpRight } from "lucide-react";
+
+import { Magnetic, RevealRoot } from "@/components/motion";
 import { Logo } from "@/components/ui";
 import { footerContent, siteConfig } from "@/constants";
 import { cn, container, typography } from "@/lib";
@@ -8,21 +11,65 @@ import { FooterNavigation } from "./FooterNavigation";
 import { FooterServices } from "./FooterServices";
 
 /**
- * Footer — the quiet, editorial conclusion of the ACUBE experience. Four groups
- * (brand · navigation · services · contact) over a hairline bottom bar. Pure
- * Server Component: no new client components, no added hydration or runtime JS
- * (RevealRoot is the shared, site-wide reveal boundary). All data is reused from
- * existing constants; only the brand statement, headings, and bottom-bar copy
- * live in footerContent.
+ * Footer — the site's grand finale. A giant "Let's talk." invitation (outlined
+ * type that fills with the gold gradient on hover), then the four editorial
+ * groups (brand · navigation · services · contact), a magnetic back-to-top
+ * button, and the hairline bottom bar. Server Component; Magnetic is an inert
+ * leaf.
  */
 export function FooterExperience() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="surface-ink texture relative bg-grad-emerald">
+    <footer className="surface-ink texture relative overflow-hidden bg-grad-emerald">
+      {/* Gradient hairline seam between the page and the footer. */}
+      <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+
       <RevealRoot>
-        <div data-reveal className={cn(container.content, "py-20 lg:py-28")}>
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className={cn(container.content, "relative py-20 lg:py-28")}>
+          <div
+            aria-hidden
+            data-parallax="0.14"
+            className="blob bg-grad-celadon pointer-events-none absolute -right-32 -top-24 size-96 opacity-10 blur-3xl"
+          />
+
+          {/* Pre-footer invitation — the biggest type on the site. */}
+          <div data-reveal className="flex flex-col gap-10 border-b border-divider pb-16 lg:flex-row lg:items-end lg:justify-between">
+            <Link
+              href="/contact"
+              data-cursor-label="Contact"
+              className="group relative inline-block w-fit"
+              aria-label={siteConfig.cta.primary}
+            >
+              <span
+                aria-hidden
+                className="text-stroke block font-display text-hero font-semibold tracking-tight"
+              >
+                Let&apos;s talk.
+              </span>
+              <span
+                className="text-grad-gold absolute inset-0 block font-display text-hero font-semibold tracking-tight transition-[clip-path] duration-[var(--duration-slow)] ease-out-quart [clip-path:inset(0_100%_0_0)] group-hover:[clip-path:inset(0_0_0_0)]"
+              >
+                Let&apos;s talk.
+              </span>
+              <ArrowUpRight
+                aria-hidden
+                className="absolute -right-10 top-2 size-8 text-gold transition-transform duration-[var(--duration-normal)] ease-out-quart group-hover:translate-x-1 group-hover:-translate-y-1 max-lg:hidden"
+              />
+            </Link>
+
+            <Magnetic strength={0.35} className="shrink-0">
+              <a
+                href="#main"
+                aria-label="Back to top"
+                className="glass-interactive inline-flex size-14 items-center justify-center rounded-full text-foreground"
+              >
+                <ArrowUp className="size-5" aria-hidden />
+              </a>
+            </Magnetic>
+          </div>
+
+          <div data-reveal className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
             <div>
               <Logo className="mx-auto h-9 w-auto md:mx-0" />
               <p className={cn(typography.body, "mt-6 max-w-xs text-muted")}>
