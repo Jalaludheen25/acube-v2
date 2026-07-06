@@ -25,6 +25,12 @@ interface FigureProps {
   fill?: boolean;
   /** object-position when `fill` is used (e.g. "center", "top", "30% 60%"). */
   focus?: string;
+  /**
+   * Grounding overlay (bottom gradient + edge shadow + grain) — on by
+   * default whenever `fill` is used, so every photo card reads as composed
+   * into the page rather than a raw dropped-in image. Set false to opt out.
+   */
+  overlay?: boolean;
 }
 
 /**
@@ -32,7 +38,8 @@ interface FigureProps {
  * (AVIF/WebP, auto-optimized). Two modes: intrinsic sizing (default — the
  * image dictates its own aspect ratio, for in-flow editorial photos) or
  * `fill` (crops to whatever aspect-ratio class is on `className`, for fixed
- * shape slots like portrait/square/banner cards).
+ * shape slots like portrait/square/banner cards — these also get the
+ * `photo-scrim` + `texture` overlay by default).
  */
 export function Figure({
   image,
@@ -42,9 +49,17 @@ export function Figure({
   className,
   fill = false,
   focus = "center",
+  overlay = true,
 }: FigureProps) {
   return (
-    <figure className={cn("overflow-hidden rounded-2xl", fill && "relative", className)}>
+    <figure
+      className={cn(
+        "overflow-hidden rounded-2xl",
+        fill && "relative",
+        fill && overlay && "photo-scrim texture",
+        className,
+      )}
+    >
       {fill ? (
         <Image
           src={image.src}

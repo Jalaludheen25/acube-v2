@@ -898,6 +898,42 @@
   }
 }
 
+/* Grounding overlay for real photography (Figure in fill mode) — a soft
+   bottom-anchored dark gradient plus a whisper of inner shadow at the edges,
+   so a photo reads as composed into the page rather than a raw dropped-in
+   image. Uses ::before (explicit z-index, so it stacks above the fill
+   <Image>) leaving ::after free for the shared `texture` grain utility. */
+@utility photo-scrim {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    pointer-events: none;
+    background-image:
+      linear-gradient(
+        to bottom,
+        transparent 55%,
+        color-mix(in srgb, var(--color-ink-black) 55%, transparent) 100%
+      ),
+      linear-gradient(
+        to top,
+        color-mix(in srgb, var(--color-ink-black) 22%, transparent) 0%,
+        transparent 18%
+      ),
+      linear-gradient(
+        to right,
+        color-mix(in srgb, var(--color-ink-black) 16%, transparent) 0%,
+        transparent 12%,
+        transparent 88%,
+        color-mix(in srgb, var(--color-ink-black) 16%, transparent) 100%
+      );
+  }
+}
+
 /* Cursor follower states (see components/cursor/Cursor.tsx). */
 .cursor-ring {
   transition-property: opacity;
