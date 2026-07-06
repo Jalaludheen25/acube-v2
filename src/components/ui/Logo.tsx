@@ -30,7 +30,7 @@ export function Logo({ className, priority = false, href = "/" }: LogoProps) {
       height={LOGO_HEIGHT}
       priority={priority}
       sizes="128px"
-      className={cn("h-8 w-auto select-none", className)}
+      className={cn("logo-glow h-8 w-auto select-none", className)}
     />
   );
 

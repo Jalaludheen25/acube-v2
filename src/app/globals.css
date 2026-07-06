@@ -524,6 +524,19 @@
     0 0 56px rgba(191, 67, 66, 0.3);
 }
 
+/* Logo legibility on the dark, image-rich surfaces it always sits on
+   (hero, nav bar, footer, entry loader) — box-shadow can't help here since
+   the logo is a transparent-background PNG; drop-shadow traces its actual
+   letterform/icon silhouette instead of a boxy rectangle. A tight dark
+   contact shadow adds depth, and a soft platinum glow lifts the mark off
+   whatever busy background sits behind it, without altering the logo file. */
+@utility logo-glow {
+  filter:
+    drop-shadow(0 1px 2px color-mix(in srgb, var(--color-ink-black) 50%, transparent))
+    drop-shadow(0 0 10px color-mix(in srgb, var(--color-platinum) 55%, transparent))
+    drop-shadow(0 0 2px color-mix(in srgb, var(--color-platinum) 40%, transparent));
+}
+
 /* Gradient border (masked ring) — inherits the element's radius. */
 @utility border-grad {
   position: relative;
