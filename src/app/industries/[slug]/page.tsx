@@ -5,7 +5,7 @@ import { ArrowUpRight, Check } from "lucide-react";
 
 import { RevealRoot } from "@/components/motion";
 import { Breadcrumb, LetsTalk } from "@/components/sections";
-import { Button, ImagePlaceholder } from "@/components/ui";
+import { Button, Figure } from "@/components/ui";
 import { industries, siteConfig, why } from "@/constants";
 import {
   allSectors,
@@ -88,13 +88,17 @@ export default async function IndustryDetailPage({ params }: IndustryDetailPageP
               </Button>
             </div>
 
-            {/* Image: "<Sector> Operations" — replace with real photography. */}
-            <ImagePlaceholder
-              suggestion={`${sector.name} Operations`}
-              hint="Sector-specific workspace or team"
-              aspect="portrait"
-              variant="teal"
-              className="mt-12 lg:mt-0"
+            <Figure
+              image={{
+                src: "/images/industries-operations.jpg",
+                alt: "ACUBE consultants reviewing business setup options with a view of Dubai's skyline",
+                width: 1536,
+                height: 1024,
+              }}
+              fill
+              focus="85% 40%"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="aspect-[3/4] shadow-3d-lg mt-12 lg:mt-0"
             />
           </div>
 

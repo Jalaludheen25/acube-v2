@@ -3,7 +3,7 @@ import { MapPin } from "lucide-react";
 
 import { RevealRoot } from "@/components/motion";
 import { Breadcrumb, LetsTalk, SectionIntro, StatBand } from "@/components/sections";
-import { Button, IconTile, ImagePlaceholder } from "@/components/ui";
+import { Button, Figure, IconTile } from "@/components/ui";
 import { AboutPillars, AboutTimeline } from "@/features/about";
 import { contact, siteConfig, why } from "@/constants";
 import { cn, container, typography } from "@/lib";
@@ -38,13 +38,18 @@ export default function AboutPage() {
               split
               lede={siteConfig.description ?? undefined}
             />
-            {/* Image: "Office Workspace / Dubai Skyline" — replace later. */}
-            <ImagePlaceholder
-              suggestion="Office Workspace"
-              hint="Dubai skyline or the ACUBE office"
-              aspect="portrait"
-              variant="glass"
-              className="mt-12 lg:mt-0"
+            <Figure
+              image={{
+                src: "/images/about-office.jpg",
+                alt: "The ACUBE office, overlooking Dubai's skyline",
+                width: 1536,
+                height: 1024,
+              }}
+              fill
+              focus="80% 45%"
+              priority
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="aspect-[3/4] shadow-3d-lg mt-12 lg:mt-0"
             />
           </div>
         </div>
@@ -73,12 +78,17 @@ export default function AboutPage() {
         {/* Company story */}
         <section aria-label="Our story" className="relative bg-background">
           <div className={cn(container.content, "py-24 lg:py-32 lg:grid lg:grid-cols-2 lg:items-center lg:gap-16")}>
-            {/* Image: "Founder / Team at work" — replace later. */}
-            <ImagePlaceholder
-              suggestion="The Team at Work"
-              hint="Founder or consultants with a client"
-              aspect="square"
-              variant="teal"
+            <Figure
+              image={{
+                src: "/images/about-team.jpg",
+                alt: "ACUBE consultants reviewing a business setup plan with a client",
+                width: 1536,
+                height: 1024,
+              }}
+              fill
+              focus="center 30%"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="aspect-square shadow-3d-lg"
             />
             <div data-reveal className="mt-12 lg:mt-0">
               <SectionIntro

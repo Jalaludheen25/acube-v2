@@ -2,7 +2,7 @@ import { CheckCircle2, Clock, Eye, MapPin, UserRound } from "lucide-react";
 
 import { RevealRoot } from "@/components/motion";
 import { SectionIntro, StatBand } from "@/components/sections";
-import { ImagePlaceholder } from "@/components/ui";
+import { Figure } from "@/components/ui";
 import { why } from "@/constants";
 import { cn, container, typography } from "@/lib";
 
@@ -62,13 +62,17 @@ export function WhyAcube({ as = "h2" }: WhyAcubeProps) {
               split
               lede={why.intro}
             />
-            {/* Image: "Team / Handshake / Dubai business district" — replace later. */}
-            <ImagePlaceholder
-              suggestion="A Partnership You Trust"
-              hint="Handshake, team, or Dubai business district"
-              aspect="portrait"
-              variant="teal"
-              className="mt-12 lg:mt-0"
+            <Figure
+              image={{
+                src: "/images/why-partnership.jpg",
+                alt: "A handshake between an ACUBE consultant and a client, with Dubai's skyline at sunset",
+                width: 1536,
+                height: 1024,
+              }}
+              fill
+              focus="center"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="aspect-[3/4] shadow-3d-lg mt-12 lg:mt-0"
             />
           </div>
 

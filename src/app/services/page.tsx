@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { RevealRoot } from "@/components/motion";
 import { Breadcrumb, LetsTalk, SectionIntro } from "@/components/sections";
-import { ImagePlaceholder } from "@/components/ui";
+import { Figure } from "@/components/ui";
 import { servicesContent } from "@/constants";
 import { ServiceFeatures, ServiceShowcase } from "@/features/services";
 import { SetupNavigator } from "@/features/navigator";
@@ -43,13 +43,18 @@ export default function ServicesPage() {
       {/* Image banner + Setup Navigator */}
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
-          {/* Image: "Business Meeting / Consultation" — replace later. */}
           <div data-reveal-scale>
-            <ImagePlaceholder
-              suggestion="Consultation in Progress"
-              hint="A consultant meeting a client at the ACUBE office"
-              aspect="wide"
-              variant="emerald"
+            <Figure
+              image={{
+                src: "/images/services-consultation.jpg",
+                alt: "An ACUBE consultant meeting a client at the office, with Dubai's skyline behind them",
+                width: 1536,
+                height: 1024,
+              }}
+              fill
+              focus="center 35%"
+              sizes="100vw"
+              className="aspect-[16/7] shadow-3d-lg"
             />
           </div>
 
