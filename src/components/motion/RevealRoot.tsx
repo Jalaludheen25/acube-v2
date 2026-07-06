@@ -147,6 +147,24 @@ export function RevealRoot({ children, className }: RevealRootProps) {
           );
         });
 
+        el.querySelectorAll<HTMLElement>("[data-count]").forEach((node) => {
+          const target = parseFloat(node.dataset.count ?? "");
+          if (Number.isNaN(target)) return;
+          const prefix = node.dataset.countPrefix ?? "";
+          const suffix = node.dataset.countSuffix ?? "";
+          const decimals = target % 1 === 0 ? 0 : 1;
+          const counter = { value: 0 };
+          gsap.to(counter, {
+            value: target,
+            duration: duration.slow / 1000,
+            ease: ease.outExpo,
+            onUpdate: () => {
+              node.textContent = `${prefix}${counter.value.toFixed(decimals)}${suffix}`;
+            },
+            scrollTrigger: { trigger: node, start: "top 85%", toggleActions: "play none none none" },
+          });
+        });
+
         const spine = el.querySelector<HTMLElement>("[data-spine]");
         if (spine) {
           gsap.fromTo(

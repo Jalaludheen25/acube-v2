@@ -45,12 +45,10 @@ export function FooterExperience() {
                 aria-hidden
                 className="text-stroke block font-display text-hero font-semibold tracking-tight"
               >
-                Let&apos;s talk.
+                Ready to begin?
               </span>
-              <span
-                className="text-grad-gold absolute inset-0 block font-display text-hero font-semibold tracking-tight transition-[clip-path] duration-[var(--duration-slow)] ease-out-quart [clip-path:inset(0_100%_0_0)] group-hover:[clip-path:inset(0_0_0_0)]"
-              >
-                Let&apos;s talk.
+              <span className="text-shimmer absolute inset-0 block font-display text-hero font-semibold tracking-tight opacity-0 transition-opacity duration-[var(--duration-slow)] group-hover:opacity-100">
+                Ready to begin?
               </span>
               <ArrowUpRight
                 aria-hidden
