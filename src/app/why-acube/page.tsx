@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { Breadcrumb } from "@/components/sections";
+import { Breadcrumb, LetsTalk } from "@/components/sections";
 import { WhyAcube } from "@/features/why";
 import { cn, container } from "@/lib";
 
@@ -18,6 +18,7 @@ export default function WhyAcubePage() {
         <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Why ACUBE" }]} />
       </div>
       <WhyAcube as="h1" />
+      <LetsTalk />
     </main>
   );
 }

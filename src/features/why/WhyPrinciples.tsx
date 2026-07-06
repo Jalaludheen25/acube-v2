@@ -1,41 +1,49 @@
+import { Eye, Infinity as InfinityIcon, Landmark, UserCheck, Workflow } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+import { TiltCard } from "@/components/motion";
 import { why } from "@/constants";
 import { cn, typography } from "@/lib";
 
+/** Principle id → icon. */
+const principleIcons: Record<string, LucideIcon> = {
+  "end-to-end": Workflow,
+  personal: UserCheck,
+  local: Landmark,
+  transparency: Eye,
+  "long-term": InfinityIcon,
+};
+
 /**
- * The principles as a numbered editorial sequence — an outlined index
- * numeral, the term, and its one-sentence description, each row separated by
- * a hairline and revealed in a stagger while a gold spine draws down the
- * left edge on scroll. No icons or cards; typography still dominates.
+ * The principles as pointer-tracked glass cards with icons and a hover glow —
+ * a bold upgrade from the plain definition list. Each is a commitment to how
+ * ACUBE works (never an achievement or comparison). Server Component.
  */
 export function WhyPrinciples() {
   return (
-    <div className="relative mt-16">
-      <span
-        aria-hidden
-        data-spine
-        className="absolute -left-6 top-0 hidden h-full w-px origin-top bg-gradient-to-b from-gold/70 via-divider to-transparent lg:block"
-      />
-      <dl data-reveal-stagger>
-        {why.principles.map((principle, index) => (
-          <div
-            key={principle.id}
-            className="row-hover grid gap-2 border-t border-divider py-9 lg:grid-cols-[6rem_1fr_2fr] lg:items-start lg:gap-8"
-          >
-            <span aria-hidden className={cn(typography.label, "hidden pt-2 text-gold/70 lg:block")}>
-              /{String(index + 1).padStart(2, "0")}
-            </span>
-            <dt className="font-heading text-h3 font-medium text-foreground">
-              <span aria-hidden className={cn(typography.label, "mr-3 text-gold/70 lg:hidden")}>
-                /{String(index + 1).padStart(2, "0")}
-              </span>
-              {principle.term}
-            </dt>
-            <dd className={cn(typography.body, "text-muted lg:pt-1")}>
-              {principle.description}
-            </dd>
-          </div>
-        ))}
-      </dl>
-    </div>
+    <ul data-reveal-stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {why.principles.map((principle, index) => {
+        const Icon = principleIcons[principle.id] ?? Workflow;
+        return (
+          <li key={principle.id}>
+            <TiltCard className="h-full">
+              <div className="glass card-spotlight group relative flex h-full flex-col overflow-hidden rounded-2xl p-8 shadow-3d transition-colors hover:border-gold/30">
+                <span
+                  aria-hidden
+                  className="index-corner text-stroke pointer-events-none absolute right-5 top-4 select-none opacity-30"
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="flex size-12 items-center justify-center rounded-2xl bg-grad-celadon text-ink-black shadow-3d transition-transform duration-[var(--duration-medium)] ease-out-quart group-hover:-rotate-6 group-hover:scale-110">
+                  <Icon className="size-6" aria-hidden />
+                </span>
+                <h3 className={cn(typography.h3, "mt-6 text-foreground")}>{principle.term}</h3>
+                <p className={cn(typography.bodySmall, "mt-3 text-muted")}>{principle.description}</p>
+              </div>
+            </TiltCard>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
