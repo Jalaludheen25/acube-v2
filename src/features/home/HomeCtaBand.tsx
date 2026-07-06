@@ -11,7 +11,7 @@ import { cn, container, typography } from "@/lib";
 export function HomeCtaBand() {
   return (
     <section aria-labelledby="home-cta-heading" className="relative bg-background">
-      <div className={cn(container.content, "pb-24 lg:pb-32")}>
+      <div className={cn(container.content, "py-24 lg:py-32")}>
         <RevealRoot>
           <div
             data-reveal-scale

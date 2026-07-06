@@ -105,7 +105,7 @@ export function HomePillars() {
                   >
                     <span
                       aria-hidden
-                      className="index-giant text-stroke pointer-events-none absolute -right-3 -top-4 select-none opacity-60"
+                      className="index-corner text-stroke pointer-events-none absolute right-5 top-5 select-none opacity-40"
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>

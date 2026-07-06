@@ -84,8 +84,8 @@
   --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
-  --text-hero: clamp(3.5rem, 8vw, 7.5rem); /* 56 → 120 */
-  --text-hero--line-height: 1;
+  --text-hero: clamp(2.75rem, 5.5vw, 5rem); /* 44 → 80 */
+  --text-hero--line-height: 1.02;
   --text-display: clamp(2.75rem, 6vw, 4.5rem); /* 44 → 72 */
   --text-display--line-height: 1.05;
   --text-h1: clamp(2.25rem, 5vw, 3.5rem); /* 36 → 56 */
@@ -309,12 +309,11 @@
   }
 }
 
-/* Mobile hero type scale — the desktop clamp floors at 56px, which forces
-   the hero's per-line headline spans to double-wrap on narrow viewports.
-   Scoped below the `lg` breakpoint only; desktop is untouched. */
+/* Mobile hero type scale — keep the per-line headline spans on one line each
+   on narrow viewports. Scoped below the `lg` breakpoint only. */
 @media (max-width: 1023.98px) {
   :root {
-    --text-hero: clamp(2.5rem, 10vw, 3.5rem);
+    --text-hero: clamp(2.25rem, 9vw, 3.25rem);
   }
 }
 
@@ -811,6 +810,16 @@
   line-height: 1;
   font-weight: 600;
   letter-spacing: -0.04em;
+  user-select: none;
+}
+
+/* Clean corner watermark numeral for cards — always fully within bounds. */
+@utility index-corner {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.03em;
   user-select: none;
 }
 

@@ -124,15 +124,15 @@ export function Cursor() {
     <div aria-hidden className="pointer-events-none fixed inset-0 z-[var(--z-max)]">
       <div
         ref={dotRef}
-        className="absolute left-0 top-0 size-1.5 rounded-full bg-platinum opacity-0 mix-blend-difference transition-opacity duration-[var(--duration-normal)]"
+        className="absolute left-0 top-0 size-2 rounded-full bg-white opacity-0 mix-blend-difference transition-opacity duration-[var(--duration-normal)] [filter:drop-shadow(0_0_2px_rgba(0,0,0,0.35))]"
       />
       <div
         ref={ringRef}
-        className="cursor-ring absolute left-0 top-0 flex size-9 items-center justify-center rounded-full border border-platinum opacity-0 mix-blend-difference transition-opacity duration-[var(--duration-normal)]"
+        className="cursor-ring absolute left-0 top-0 flex size-9 items-center justify-center rounded-full border-[1.5px] border-white opacity-0 mix-blend-difference transition-opacity duration-[var(--duration-normal)] [filter:drop-shadow(0_0_3px_rgba(0,0,0,0.3))]"
       >
         <span
           ref={labelRef}
-          className="cursor-ring-label font-mono text-[0.55rem] uppercase tracking-widest text-platinum opacity-0"
+          className="cursor-ring-label font-mono text-[0.55rem] uppercase tracking-widest text-white opacity-0"
         />
       </div>
     </div>
