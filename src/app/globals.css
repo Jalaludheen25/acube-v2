@@ -263,11 +263,21 @@
       transparent 75%
     );
     /* Composition-only vignette for the hero backdrop — softens all four
-       edges, more heavily toward the bottom (and the bottom-right corner
-       specifically, where the frame's own watermark sits), so the eye
-       settles on the CTA/content column instead of the frame's corners.
-       Layered above the scrim; never touches the video/canvas itself. */
+       edges, more heavily toward the bottom, so the eye settles on the
+       CTA/content column instead of the frame's corners. The first layer is
+       a tight, near-opaque shroud anchored at the bottom-right corner: it
+       fully swallows the frame's baked-in watermark (which stays pinned to
+       that corner at any viewport size thanks to object-cover) while reading
+       as deliberate cinematic vignetting. Layered above the scrim; never
+       touches the video/canvas itself. */
     --gradient-hero-vignette:
+      radial-gradient(
+        max(32rem, 26vw) max(14rem, 16vh) at 100% 100%,
+        var(--color-ink-black) 0%,
+        var(--color-ink-black) 40%,
+        color-mix(in srgb, var(--color-ink-black) 88%, transparent) 62%,
+        transparent 100%
+      ),
       radial-gradient(
         55% 50% at 100% 100%,
         color-mix(in srgb, var(--color-ink-black) 55%, transparent) 0%,
@@ -336,6 +346,23 @@
 @media (max-width: 1023.98px) {
   :root {
     --text-hero: clamp(2.25rem, 9vw, 3.25rem);
+
+    /* The mobile frame sequence is center-cropped, which already removes the
+       desktop frames' corner watermark — so drop the heavy corner shroud
+       (its fixed footprint would swallow a large slice of a narrow viewport)
+       and keep only the soft all-edge vignette + bottom fade. */
+    --gradient-hero-vignette:
+      radial-gradient(
+        125% 100% at 50% 45%,
+        transparent 55%,
+        color-mix(in srgb, var(--color-ink-black) 42%, transparent) 100%
+      ),
+      linear-gradient(
+        to bottom,
+        transparent 58%,
+        color-mix(in srgb, var(--color-ink-black) 46%, transparent) 85%,
+        color-mix(in srgb, var(--color-ink-black) 78%, transparent) 100%
+      );
   }
 }
 
