@@ -15,5 +15,5 @@ export const footerContent: FooterContent = {
     contact: "Contact",
   },
   rightsReserved: "All rights reserved.",
-  developerCredit: "Designed & Developed by ACUBE",
+  developerCredit: "Designed & Developed by TwoMonk Technologies",
 };
