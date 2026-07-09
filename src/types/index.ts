@@ -15,3 +15,5 @@ export * from "./story";
 export * from "./journey";
 export * from "./why";
 export * from "./footer";
+export * from "./aboutStory";
+export * from "./aboutTeam";

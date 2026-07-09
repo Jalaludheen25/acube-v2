@@ -10,6 +10,8 @@ export * from "./serviceHero";
 export * from "./journey";
 export * from "./industries";
 export * from "./why";
+export * from "./aboutStory";
+export * from "./aboutTeam";
 export * from "./packages";
 export * from "./testimonials";
 export * from "./faq";
