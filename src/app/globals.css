@@ -56,6 +56,10 @@
   --color-sand-dune: #e7d7c1;
   --color-dusty-taupe: #a78a7f;
   --color-mauve-bark: #735751;
+  /* Luxury gold — client-requested for the Packages experience (light
+     sweeps, card edges, premium dividers). Distinct from --color-gold,
+     which aliases to the brand greens for eyebrows/labels. Use sparingly. */
+  --color-champagne: #d4af37;
 
   /* "Exhale"/ink tones kept for compatibility */
   --color-ivory: #f8f9f7;
@@ -781,6 +785,57 @@
   }
   50% {
     transform: translate3d(var(--drift-x, 10px), var(--drift-y, -14px), 0);
+  }
+}
+
+/* Luxury light beam traversing the packages scene. Transform/opacity only. */
+@keyframes light-ray {
+  0% {
+    transform: translateX(-40%) rotate(16deg);
+    opacity: 0;
+  }
+  18% {
+    opacity: var(--ray-opacity, 0.4);
+  }
+  82% {
+    opacity: calc(var(--ray-opacity, 0.4) * 0.7);
+  }
+  100% {
+    transform: translateX(140%) rotate(16deg);
+    opacity: 0;
+  }
+}
+
+/* Reflection sweep across a glass card — long dwell, quick pass. */
+@keyframes card-sheen {
+  0%,
+  58% {
+    transform: translateX(-170%) skewX(-14deg);
+  }
+  100% {
+    transform: translateX(240%) skewX(-14deg);
+  }
+}
+
+/* Slow 3D drift for the decorative CSS cube. */
+@keyframes cube-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotateX(-18deg) rotateY(22deg);
+  }
+  50% {
+    transform: translate3d(0, -20px, 0) rotateX(-12deg) rotateY(46deg);
+  }
+}
+
+/* Soft attention pulse for the recommended badge / CTA (red, sparing). */
+@keyframes badge-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-blushed-brick) 45%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 10px transparent;
   }
 }
 

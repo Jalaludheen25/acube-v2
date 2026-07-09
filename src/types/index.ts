@@ -7,6 +7,7 @@ export * from "./service";
 export * from "./serviceHero";
 export * from "./faq";
 export * from "./package";
+export * from "./packageTier";
 export * from "./testimonial";
 export * from "./industry";
 export * from "./process";

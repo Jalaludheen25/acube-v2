@@ -13,6 +13,7 @@ export * from "./why";
 export * from "./aboutStory";
 export * from "./aboutTeam";
 export * from "./packages";
+export * from "./packageTiers";
 export * from "./testimonials";
 export * from "./faq";
 export * from "./footer";
