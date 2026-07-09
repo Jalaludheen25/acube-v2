@@ -44,7 +44,10 @@ export function ServiceFeatures() {
           <span aria-hidden className="h-px w-8 bg-gold/60" />
           Why our setup is different
         </p>
-        <h2 data-reveal className={cn(typography.h2, "mt-6 max-w-2xl text-balance text-foreground")}>
+        <h2
+          data-split
+          className={cn(typography.h2, "mt-6 max-w-2xl text-balance text-foreground")}
+        >
           The complexity is ours. The business is yours.
         </h2>
         <ul data-reveal-stagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

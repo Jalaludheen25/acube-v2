@@ -1,3 +1,4 @@
+export * from "./FloatingParticles";
 export * from "./Magnetic";
 export * from "./Marquee";
 export * from "./RevealRoot";

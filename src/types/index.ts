@@ -4,6 +4,7 @@ export * from "./contact";
 export * from "./navigation";
 export * from "./navigator";
 export * from "./service";
+export * from "./serviceHero";
 export * from "./faq";
 export * from "./package";
 export * from "./testimonial";

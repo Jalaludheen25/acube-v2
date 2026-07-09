@@ -48,7 +48,14 @@ export function ServiceShowcase() {
               </span>
               <div>
                 <h2 className={cn(typography.h3, "text-foreground")}>{category.title}</h2>
-                <p className={cn(typography.caption, "mt-1")}>{category.services.length} services</p>
+                <p className={cn(typography.caption, "mt-1")}>
+                  <span
+                    data-count={category.services.length}
+                    data-count-suffix=" services"
+                  >
+                    {category.services.length} services
+                  </span>
+                </p>
               </div>
             </div>
 
@@ -67,7 +74,7 @@ export function ServiceShowcase() {
                     href={`/services/${service.slug}`}
                     data-cursor-label="Open"
                     className={cn(
-                      "card-spotlight group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 p-6 shadow-3d transition-colors",
+                      "card-spotlight group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 p-6 shadow-3d transition-[color,background-color,border-color,box-shadow,transform] duration-[var(--duration-normal)] ease-out-quart hover:-translate-y-1 hover:shadow-3d-lg",
                       primary ? "bg-surface hover:border-gold/40" : "glass hover:border-gold/40",
                     )}
                   >

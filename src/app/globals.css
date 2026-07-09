@@ -294,6 +294,18 @@
         color-mix(in srgb, var(--color-ink-black) 46%, transparent) 85%,
         color-mix(in srgb, var(--color-ink-black) 78%, transparent) 100%
       );
+    /* Services video hero — a flat ~46% dark wash for text readability over
+       unpredictable real footage (distinct from the Home hero's directional
+       scrim), ramping to the page's own light background at the bottom edge
+       so the section dissolves straight into the content below with no hard
+       seam. Unlike the Home hero (dark-to-dark handoff), this fades to the
+       literal --color-background because that's what's actually beneath it. */
+    --gradient-services-hero-scrim: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-ink-black) 42%, transparent) 0%,
+      color-mix(in srgb, var(--color-ink-black) 48%, transparent) 65%,
+      var(--color-background) 100%
+    );
   }
 
   html {
@@ -526,6 +538,9 @@
 @utility bg-grad-hero-vignette {
   background-image: var(--gradient-hero-vignette);
 }
+@utility bg-services-hero-scrim {
+  background-image: var(--gradient-services-hero-scrim);
+}
 @utility text-grad-gold {
   background-image: var(--gradient-text-gold);
   -webkit-background-clip: text;
@@ -754,6 +769,18 @@
   }
   100% {
     border-radius: 39% 61% 55% 45% / 42% 45% 55% 58%;
+  }
+}
+
+/* Ambient particle drift — a slow, tiny orbit so the FloatingParticles
+   background reads as alive without ever drawing attention. Transform-only. */
+@keyframes particle-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(var(--drift-x, 10px), var(--drift-y, -14px), 0);
   }
 }
 

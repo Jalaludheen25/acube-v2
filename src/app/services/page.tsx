@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 
-import { RevealRoot } from "@/components/motion";
-import { Breadcrumb, LetsTalk, SectionIntro } from "@/components/sections";
+import { FloatingParticles, RevealRoot } from "@/components/motion";
+import { Breadcrumb, LetsTalk } from "@/components/sections";
 import { Figure } from "@/components/ui";
-import { servicesContent } from "@/constants";
-import { ServiceFeatures, ServiceShowcase } from "@/features/services";
+import { ServiceFeatures, ServiceHero, ServiceShowcase } from "@/features/services";
 import { SetupNavigator } from "@/features/navigator";
 import { cn, container } from "@/lib";
 
@@ -18,44 +17,44 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <main id="main" className="relative bg-background">
+      <ServiceHero />
+
       <RevealRoot>
-        <div className={cn(container.content, "py-32 lg:py-40")}>
-          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
+        <div id="service-catalogue" className="relative">
+          <FloatingParticles className="hidden md:block" />
+          <div className={cn(container.content, "relative py-24 lg:py-32")}>
+            <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
 
-          <SectionIntro
-            as="h1"
-            className="mt-8"
-            eyebrow="Services"
-            title={servicesContent.framing}
-            split
-            lede="From company formation to everyday documentation — explore what we handle, each service delivered end-to-end."
-          />
-
-          <div className="mt-20">
-            <ServiceShowcase />
+            <div className="mt-20">
+              <ServiceShowcase />
+            </div>
           </div>
         </div>
       </RevealRoot>
 
       {/* Why our setup is different */}
-      <ServiceFeatures />
+      <RevealRoot>
+        <ServiceFeatures />
+      </RevealRoot>
 
       {/* Image banner + Setup Navigator */}
       <RevealRoot>
         <div className={cn(container.content, "py-24 lg:py-32")}>
-          <div data-reveal-scale>
-            <Figure
-              image={{
-                src: "/images/services-consultation.jpg",
-                alt: "An ACUBE consultant meeting a client at the office, with Dubai's skyline behind them",
-                width: 1536,
-                height: 1024,
-              }}
-              fill
-              focus="center 35%"
-              sizes="100vw"
-              className="aspect-[16/7] shadow-3d-lg"
-            />
+          <div data-parallax="0.1">
+            <div data-reveal-scale>
+              <Figure
+                image={{
+                  src: "/images/services-consultation.jpg",
+                  alt: "An ACUBE consultant meeting a client at the office, with Dubai's skyline behind them",
+                  width: 1536,
+                  height: 1024,
+                }}
+                fill
+                focus="center 35%"
+                sizes="100vw"
+                className="aspect-[16/7] shadow-3d-lg"
+              />
+            </div>
           </div>
 
           <section
