@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
 
-import { Magnetic, RevealRoot } from "@/components/motion";
+import { FloatingParticles, Magnetic, RevealRoot } from "@/components/motion";
 import { Logo } from "@/components/ui";
 import { footerContent, siteConfig } from "@/constants";
 import { cn, container, typography } from "@/lib";
@@ -24,6 +24,13 @@ export function FooterExperience() {
     <footer className="surface-ink texture relative overflow-hidden bg-grad-emerald">
       {/* Gradient hairline seam between the page and the footer. */}
       <div aria-hidden className="h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+
+      {/* Ending atmosphere — the finale should feel as alive as the heroes. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <span className="absolute -top-1/4 left-0 h-[150%] w-36 bg-gradient-to-b from-transparent via-champagne/10 to-transparent blur-2xl motion-safe:[animation:light-ray_24s_linear_infinite] max-md:hidden" />
+        <span className="blob bg-grad-teal absolute -left-24 bottom-0 size-80 opacity-15 blur-3xl" />
+        <FloatingParticles count={12} className="max-md:hidden" />
+      </div>
 
       <RevealRoot>
         <div className={cn(container.content, "relative py-20 lg:py-28")}>
