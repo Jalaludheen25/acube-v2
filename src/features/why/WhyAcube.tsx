@@ -1,7 +1,7 @@
 import { CheckCircle2, Clock, Eye, MapPin, UserRound } from "lucide-react";
 
 import { RevealRoot } from "@/components/motion";
-import { SectionIntro, StatBand } from "@/components/sections";
+import { Atmosphere, SectionIntro, StatBand } from "@/components/sections";
 import { Figure } from "@/components/ui";
 import { why } from "@/constants";
 import { cn, container, typography } from "@/lib";
@@ -45,6 +45,7 @@ export function WhyAcube({ as = "h2" }: WhyAcubeProps) {
       className="relative section-exhale overflow-hidden"
     >
       <RevealRoot>
+        <Atmosphere tone="dark" />
         <div className={cn(container.content, "relative pb-24 max-lg:pt-0 lg:pt-12")}>
           <div
             aria-hidden

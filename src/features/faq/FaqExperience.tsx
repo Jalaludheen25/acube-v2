@@ -1,5 +1,5 @@
 import { RevealRoot } from "@/components/motion";
-import { SectionIntro } from "@/components/sections";
+import { Atmosphere, SectionIntro } from "@/components/sections";
 import { faqContent } from "@/constants";
 import { cn, container } from "@/lib";
 
@@ -20,7 +20,8 @@ export function FaqExperience({ as = "h2" }: FaqExperienceProps) {
   return (
     <section id="faq" aria-labelledby="faq-heading" className="relative bg-background">
       <RevealRoot>
-        <div className={cn(container.content, "pb-24 max-lg:pt-0 lg:py-32")}>
+        <Atmosphere particles={false} />
+        <div className={cn(container.content, "relative pb-24 max-lg:pt-0 lg:py-32")}>
           <SectionIntro
             as={as}
             eyebrow={faqContent.eyebrow}
@@ -29,7 +30,7 @@ export function FaqExperience({ as = "h2" }: FaqExperienceProps) {
             split
           />
 
-          <div data-reveal-stagger className="mt-16">
+          <div data-reveal-blur className="mt-16">
             {faqContent.items.map((item, index) => (
               <FaqItem key={item.id} item={item} index={index} />
             ))}

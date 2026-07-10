@@ -76,18 +76,20 @@ export default function AboutPage() {
           {/* Company story */}
           <section aria-label="Our story" className="relative bg-background">
             <div className={cn(container.content, "py-24 lg:py-32 lg:grid lg:grid-cols-2 lg:items-center lg:gap-16")}>
-              <Figure
-                image={{
-                  src: "/images/about-team.jpg",
-                  alt: "ACUBE consultants reviewing a business setup plan with a client",
-                  width: 1536,
-                  height: 1024,
-                }}
-                fill
-                focus="center 30%"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="aspect-square shadow-3d-lg"
-              />
+              <div data-reveal-mask>
+                <Figure
+                  image={{
+                    src: "/images/about-team.jpg",
+                    alt: "ACUBE consultants reviewing a business setup plan with a client",
+                    width: 1536,
+                    height: 1024,
+                  }}
+                  fill
+                  focus="center 30%"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="aspect-square shadow-3d-lg"
+                />
+              </div>
               <div data-reveal className="mt-12 lg:mt-0">
                 <SectionIntro eyebrow="Our story" title="Built to make UAE setup simple." size="h2" />
                 <p className={cn(typography.body, "mt-6 text-muted")}>{siteConfig.description}</p>

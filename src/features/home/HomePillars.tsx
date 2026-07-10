@@ -97,6 +97,7 @@ export function HomePillars() {
                   <Link
                     href={pillar.href}
                     data-cursor-label="View"
+                    {...(pillar.featured ? { "data-reveal-mask": "" } : {})}
                     className={cn(
                       "card-spotlight texture theme-dark group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl shadow-3d",
                       pillar.featured ? "gap-16 p-8 lg:p-12" : "gap-10 p-8",

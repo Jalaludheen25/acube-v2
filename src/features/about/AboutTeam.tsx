@@ -14,7 +14,7 @@ import { cn, typography } from "@/lib";
  */
 export function AboutTeam() {
   return (
-    <ul data-reveal-stagger className="grid gap-6 sm:grid-cols-3">
+    <ul data-reveal-tilt className="grid gap-6 sm:grid-cols-3">
       {aboutTeam.map((member) => (
         <li key={member.id}>
           <TiltCard className="h-full">

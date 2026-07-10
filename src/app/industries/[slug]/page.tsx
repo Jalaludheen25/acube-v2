@@ -88,18 +88,20 @@ export default async function IndustryDetailPage({ params }: IndustryDetailPageP
               </Button>
             </div>
 
-            <Figure
-              image={{
-                src: "/images/industries-operations.jpg",
-                alt: "ACUBE consultants reviewing business setup options with a view of Dubai's skyline",
-                width: 1536,
-                height: 1024,
-              }}
-              fill
-              focus="85% 40%"
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="aspect-[3/4] shadow-3d-lg mt-12 lg:mt-0"
-            />
+            <div data-reveal-mask className="mt-12 lg:mt-0">
+              <Figure
+                image={{
+                  src: "/images/industries-operations.jpg",
+                  alt: "ACUBE consultants reviewing business setup options with a view of Dubai's skyline",
+                  width: 1536,
+                  height: 1024,
+                }}
+                fill
+                focus="85% 40%"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="aspect-[3/4] shadow-3d-lg"
+              />
+            </div>
           </div>
 
           {/* How we help — qualitative (reuses the universal principles, not

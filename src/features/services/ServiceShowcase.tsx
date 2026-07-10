@@ -29,9 +29,10 @@ export function ServiceShowcase() {
         const look = categoryLook[category.id] ?? { icon: Rocket, surface: "bg-grad-emerald" };
         const primary = category.variant === "primary";
         return (
-          <section key={category.id} aria-label={category.title} data-reveal>
-            {/* Gradient header band */}
+          <section key={category.id} aria-label={category.title}>
+            {/* Gradient header band — mask-reveals upward, its own entrance. */}
             <div
+              data-reveal-mask
               className={cn(
                 "texture theme-dark relative flex items-center gap-5 overflow-hidden rounded-2xl px-6 py-6 shadow-3d lg:px-8",
                 look.surface,

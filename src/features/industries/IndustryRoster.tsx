@@ -18,7 +18,7 @@ interface IndustryRosterProps {
 export function IndustryRoster({ className }: IndustryRosterProps) {
   return (
     <ul
-      data-reveal-stagger
+      data-reveal-wipe
       className={cn("grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3", className)}
     >
       {industries.sectors.map((sector, index) => {

@@ -50,9 +50,14 @@ function splitInto(el: HTMLElement, granularity: "chars" | "words"): HTMLElement
  *   - [data-reveal]          → fade + rise, once at 20% in view
  *   - [data-reveal-stagger]  → staggered children
  *   - [data-reveal-scale]    → scale 0.92 + fade, once (panels/cards)
+ *   - [data-reveal-mask]     → upward clip-path mask reveal, once
+ *   - [data-reveal-blur]     → blur + slight overscale dissolve, once
+ *   - [data-reveal-tilt]     → perspective rotateX settle, once
+ *   - [data-reveal-wipe]     → left→right clip-path wipe, once
  *   - [data-split]           → per-character rise + blur reveal, once
  *   - [data-words-scrub]     → word-by-word opacity illumination, scrubbed
  *   - [data-parallax="0.2"]  → decorative yPercent scrub (value = speed)
+ *   - [data-count]           → numeric count-up on reveal
  *   - [data-spine]           → scrubbed vertical draw (optional)
  *
  * All values come from design tokens. Everything reverts on unmount.
@@ -100,6 +105,49 @@ export function RevealRoot({ children, className }: RevealRootProps) {
             duration: duration.slow / 1000,
             ease: ease.outExpo,
             scrollTrigger: { trigger: node, start: "top 80%", toggleActions: "play none none none" },
+          });
+        });
+
+        el.querySelectorAll<HTMLElement>("[data-reveal-mask]").forEach((node) => {
+          gsap.from(node, {
+            clipPath: "inset(100% 0% 0% 0%)",
+            y: 24,
+            duration: duration.slow / 1000,
+            ease: ease.outExpo,
+            scrollTrigger: { trigger: node, start: "top 80%", toggleActions: "play none none none" },
+          });
+        });
+
+        el.querySelectorAll<HTMLElement>("[data-reveal-blur]").forEach((node) => {
+          gsap.from(node, {
+            opacity: 0,
+            scale: 1.04,
+            filter: "blur(14px)",
+            duration: duration.slow / 1000,
+            ease: ease.outQuart,
+            scrollTrigger: { trigger: node, start: "top 80%", toggleActions: "play none none none" },
+          });
+        });
+
+        el.querySelectorAll<HTMLElement>("[data-reveal-tilt]").forEach((node) => {
+          gsap.from(node, {
+            opacity: 0,
+            y: spacing[16],
+            rotationX: 12,
+            transformPerspective: 900,
+            transformOrigin: "center bottom",
+            duration: duration.slow / 1000,
+            ease: ease.outExpo,
+            scrollTrigger: { trigger: node, start: "top 82%", toggleActions: "play none none none" },
+          });
+        });
+
+        el.querySelectorAll<HTMLElement>("[data-reveal-wipe]").forEach((node) => {
+          gsap.from(node, {
+            clipPath: "inset(0% 100% 0% 0%)",
+            duration: duration.slow / 1000,
+            ease: ease.outQuart,
+            scrollTrigger: { trigger: node, start: "top 82%", toggleActions: "play none none none" },
           });
         });
 

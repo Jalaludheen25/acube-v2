@@ -39,7 +39,7 @@ export function WhyProcess() {
         data-spine
         className="absolute left-0 top-8 hidden h-px w-full origin-left bg-gradient-to-r from-gold/60 via-divider to-transparent lg:block"
       />
-      <ol data-reveal-stagger className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <ol data-reveal-tilt className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {steps.map((step, index) => (
           <li key={step.title} className="relative">
             <span className="relative z-[1] flex size-16 items-center justify-center rounded-2xl bg-grad-emerald text-platinum shadow-3d ring-4 ring-[color:var(--color-pine-teal)]">

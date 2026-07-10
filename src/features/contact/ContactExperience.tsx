@@ -1,5 +1,5 @@
 import { RevealRoot } from "@/components/motion";
-import { SectionIntro } from "@/components/sections";
+import { Atmosphere, SectionIntro } from "@/components/sections";
 import { contactContent } from "@/constants";
 import { cn, container } from "@/lib";
 
@@ -21,7 +21,8 @@ export function ContactExperience({ as = "h2" }: ContactExperienceProps) {
   return (
     <section id="contact" aria-labelledby="contact-heading" className="relative bg-background">
       <RevealRoot>
-        <div className={cn(container.content, "pb-24 max-lg:pt-0 lg:py-32")}>
+        <Atmosphere particles={false} />
+        <div className={cn(container.content, "relative pb-24 max-lg:pt-0 lg:py-32")}>
           <SectionIntro
             as={as}
             eyebrow={contactContent.eyebrow}
@@ -37,11 +38,11 @@ export function ContactExperience({ as = "h2" }: ContactExperienceProps) {
               data-parallax="0.12"
               className="blob bg-grad-celadon pointer-events-none absolute -right-28 -top-20 size-80 opacity-15 blur-3xl"
             />
-            <div data-reveal>
+            <div data-reveal-wipe>
               <ContactDetails />
             </div>
             <div
-              data-reveal-scale
+              data-reveal-mask
               className="glass-depth relative self-start overflow-hidden rounded-[var(--radius-2xl)] p-6 lg:p-8"
             >
               <ContactForm />

@@ -28,10 +28,11 @@ const benefits: { icon: LucideIcon; title: string }[] = [
  */
 export function WhyBenefits() {
   return (
-    <ul data-reveal-stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {benefits.map((benefit) => (
         <li
           key={benefit.title}
+          data-reveal-wipe
           className="row-hover group flex items-center gap-4 rounded-xl border border-border/60 bg-surface/40 p-5 transition-colors hover:border-gold/40"
         >
           <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-grad-celadon text-ink-black shadow-3d transition-transform duration-[var(--duration-normal)] ease-out-quart group-hover:scale-110">

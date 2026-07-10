@@ -1,5 +1,5 @@
 import { RevealRoot } from "@/components/motion";
-import { SectionIntro } from "@/components/sections";
+import { Atmosphere, SectionIntro } from "@/components/sections";
 import { Button } from "@/components/ui";
 import { industries } from "@/constants";
 import { cn, container, typography } from "@/lib";
@@ -25,7 +25,8 @@ export function IndustriesExperience({ as = "h2" }: IndustriesExperienceProps) {
   return (
     <section id="industries" aria-labelledby="industries-heading" className="relative bg-background">
       <RevealRoot>
-        <div className={cn(container.content, "pb-24 max-lg:pt-0 lg:py-32")}>
+        <Atmosphere />
+        <div className={cn(container.content, "relative pb-24 max-lg:pt-0 lg:py-32")}>
           <SectionIntro
             as={as}
             eyebrow={industries.eyebrow}
