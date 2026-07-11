@@ -17,10 +17,7 @@ import type { ReactNode } from "react";
  *
  * NOTE: GSAP and Three.js are intentionally NOT initialized here (Milestone 05+).
  */
-/** domMax (not domAnimation): the header's sliding active indicator uses
- *  shared-layout `layoutId` animation, which only the max bundle includes.
- *  Still lazy — loaded on demand, off the initial JS. */
-const loadFeatures = () => import("framer-motion").then((mod) => mod.domMax);
+const loadFeatures = () => import("framer-motion").then((mod) => mod.domAnimation);
 
 export function Providers({ children }: { children: ReactNode }) {
   return (

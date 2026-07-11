@@ -15,28 +15,6 @@ export const logoScaleTransition: Transition = {
   ease: bezier(easing.outQuart),
 };
 
-/**
- * Header entrance — plays once on first load (the Navbar lives in the root
- * layout and never re-mounts on navigation): logo, then nav items, then CTA,
- * each rising and de-blurring with a small stagger.
- */
-export const headerEntranceVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: stagger.icons, delayChildren: s(duration.normal) },
-  },
-};
-
-export const headerItemVariants: Variants = {
-  hidden: { opacity: 0, y: -14, filter: "blur(6px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: s(duration.medium), ease: bezier(easing.outExpo) },
-  },
-};
-
 /** Fullscreen mobile menu container — fades/scales and choreographs its children. */
 export const mobileMenuVariants: Variants = {
   closed: {
