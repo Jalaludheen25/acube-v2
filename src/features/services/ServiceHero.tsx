@@ -6,6 +6,7 @@ import { m } from "framer-motion";
 import { Magnetic } from "@/components/motion";
 import { Button } from "@/components/ui";
 import { serviceHero } from "@/constants";
+import { useVideoOnce } from "@/hooks";
 import { cn, container, typography } from "@/lib";
 
 import {
@@ -13,7 +14,6 @@ import {
   serviceHeroCtaVariants,
   serviceHeroItemVariants,
 } from "./serviceHeroMotion";
-import { useVideoOnce } from "./useVideoOnce";
 
 /**
  * Services page introduction — a cinematic 70vh video hero, deliberately

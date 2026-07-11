@@ -8,3 +8,4 @@ export * from "./useAppReady";
 export * from "./useEntrySequence";
 export * from "./useDeviceCapability";
 export * from "./useHomeHref";
+export * from "./useVideoOnce";
