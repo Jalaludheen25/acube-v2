@@ -40,9 +40,14 @@ export function AboutHeroText({ stage, className }: AboutHeroTextProps) {
           exit="exit"
           variants={aboutStageExitVariants}
         >
+          {/* Gradient is clipped PER character: background-clip:text on the
+              h1 can't reach spans that carry their own filter/transform
+              (Framer leaves blur(0px) inline), which renders the text
+              invisible. whitespace-pre keeps space glyphs from collapsing
+              inside inline-block spans. */}
           <m.h1
             variants={aboutHeadingContainerVariants}
-            className={cn(typography.h1, "text-balance text-grad-gold")}
+            className={cn(typography.h1, "text-balance")}
             aria-label={current.heading}
           >
             {chars.map((char, index) => (
@@ -50,7 +55,7 @@ export function AboutHeroText({ stage, className }: AboutHeroTextProps) {
                 key={index}
                 variants={aboutCharVariants}
                 aria-hidden
-                className="inline-block"
+                className="text-grad-gold inline-block whitespace-pre"
               >
                 {char === " " ? " " : char}
               </m.span>

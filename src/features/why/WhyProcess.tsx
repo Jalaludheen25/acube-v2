@@ -36,7 +36,7 @@ export function WhyProcess() {
     <div className="relative">
       <span
         aria-hidden
-        data-spine
+        data-spine-x
         className="absolute left-0 top-8 hidden h-px w-full origin-left bg-gradient-to-r from-gold/60 via-divider to-transparent lg:block"
       />
       <ol data-reveal-tilt className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

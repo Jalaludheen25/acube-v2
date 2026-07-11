@@ -1088,3 +1088,26 @@ details[open] .faq-answer {
     transform: translateY(0);
   }
 }
+
+/* Progressive smooth open/close for native <details> (Chromium 129+):
+   interpolate-size lets height animate to/from `auto`, and the
+   ::details-content pseudo transitions the reveal. Browsers without
+   support fall back to the instant toggle + faq-open entrance above. */
+details.faq-card {
+  interpolate-size: allow-keywords;
+}
+details.faq-card::details-content {
+  block-size: 0;
+  overflow: clip;
+  transition:
+    block-size var(--duration-medium) var(--ease-out-quart),
+    content-visibility var(--duration-medium) allow-discrete;
+}
+details.faq-card[open]::details-content {
+  block-size: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  details.faq-card::details-content {
+    transition: none;
+  }
+}

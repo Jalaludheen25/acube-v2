@@ -59,6 +59,7 @@ function splitInto(el: HTMLElement, granularity: "chars" | "words"): HTMLElement
  *   - [data-parallax="0.2"]  → decorative yPercent scrub (value = speed)
  *   - [data-count]           → numeric count-up on reveal
  *   - [data-spine]           → scrubbed vertical draw (optional)
+ *   - [data-spine-x]         → scrubbed horizontal draw (connector lines)
  *
  * All values come from design tokens. Everything reverts on unmount.
  */
@@ -213,8 +214,7 @@ export function RevealRoot({ children, className }: RevealRootProps) {
           });
         });
 
-        const spine = el.querySelector<HTMLElement>("[data-spine]");
-        if (spine) {
+        el.querySelectorAll<HTMLElement>("[data-spine]").forEach((spine) => {
           gsap.fromTo(
             spine,
             { scaleY: 0 },
@@ -224,7 +224,22 @@ export function RevealRoot({ children, className }: RevealRootProps) {
               scrollTrigger: { trigger: el, start: "top 70%", end: "bottom 85%", scrub: true },
             },
           );
-        }
+        });
+
+        // Horizontal twin of the spine — for connector lines that draw
+        // left→right (e.g. the Why process stepper). Triggered by the line's
+        // own viewport entry so short sections still complete the draw.
+        el.querySelectorAll<HTMLElement>("[data-spine-x]").forEach((spine) => {
+          gsap.fromTo(
+            spine,
+            { scaleX: 0 },
+            {
+              scaleX: 1,
+              ease: "none",
+              scrollTrigger: { trigger: spine, start: "top 90%", end: "top 45%", scrub: true },
+            },
+          );
+        });
       });
 
       cleanup = () => mm.revert();

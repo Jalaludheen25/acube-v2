@@ -7,17 +7,19 @@ interface FaqItemProps {
 }
 
 /**
- * A single FAQ entry — native <details>/<summary>, zero JavaScript.
+ * A single FAQ entry — a glass card around a native <details>/<summary>.
  *
- * Interaction is fully native (keyboard + screen reader correct by default,
- * independent open/close). Premium dressing only: a mono index, a row hover
- * sweep, a plus→minus icon morph on open (two CSS bars), and a slide-down
- * entrance for the answer (`.faq-answer` keyframes in globals.css).
+ * Interaction stays fully native (keyboard + screen reader correct by
+ * default, independent open/close). Premium dressing: glass card with
+ * cursor spotlight + hover lift, a mono index, a plus→minus icon morph on
+ * open, a slide-down answer entrance, and — in Chromium — a genuinely
+ * animated height via `interpolate-size` (see `details.faq-card` in
+ * globals.css; other browsers fall back gracefully).
  */
 export function FaqItem({ item, index }: FaqItemProps) {
   return (
-    <details className="group border-t border-divider">
-      <summary className="row-hover flex cursor-pointer list-none items-center justify-between gap-6 py-7 [&::-webkit-details-marker]:hidden">
+    <details className="faq-card glass card-spotlight group overflow-hidden rounded-2xl border border-border/60 shadow-3d transition-[transform,box-shadow,border-color] duration-[var(--duration-normal)] ease-out-quart open:border-gold/30 hover:-translate-y-0.5 hover:border-gold/30 hover:shadow-3d-lg">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-6 py-6 [&::-webkit-details-marker]:hidden lg:px-8">
         <span className="flex items-baseline gap-5">
           <span
             aria-hidden
@@ -39,7 +41,7 @@ export function FaqItem({ item, index }: FaqItemProps) {
         </span>
       </summary>
       <div className="faq-answer">
-        <p className={cn(typography.body, "max-w-2xl pb-8 pl-0 text-muted lg:pl-12")}>
+        <p className={cn(typography.body, "max-w-2xl px-6 pb-8 text-muted lg:px-8 lg:pl-[4.75rem]")}>
           {item.answer}
         </p>
       </div>

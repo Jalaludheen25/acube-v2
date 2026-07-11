@@ -6,6 +6,7 @@ import { useMediaQuery, usePrefersReducedMotion } from "@/hooks";
 import { aboutStory } from "@/constants";
 import { cn, container } from "@/lib";
 
+import { AboutHeroChips } from "./AboutHeroChips";
 import { AboutHeroText } from "./AboutHeroText";
 import { useAboutFrameSequence } from "./useAboutFrameSequence";
 
@@ -46,7 +47,7 @@ export function AboutHero() {
     <section
       id={PIN_TARGET_ID}
       aria-label="About ACUBE — our story"
-      className="theme-dark relative isolate flex h-dvh flex-col overflow-hidden lg:flex-row"
+      className="theme-dark relative isolate flex h-dvh flex-col overflow-hidden bg-ink-black lg:flex-row"
     >
       <div
         ref={containerRef}
@@ -65,6 +66,9 @@ export function AboutHero() {
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-black/35 via-transparent to-ink-black/10"
         />
+
+        {/* Floating glass chips in the frame's negative space (lg+). */}
+        <AboutHeroChips />
       </div>
 
       <div className={cn(container.content, "relative flex flex-1 items-center py-12 lg:w-[40%] lg:py-0")}>

@@ -46,6 +46,23 @@ export function WhyAcube({ as = "h2" }: WhyAcubeProps) {
     >
       <RevealRoot>
         <Atmosphere tone="dark" />
+
+        {/* Floating brand cubes — layered 3D depth (lg+). */}
+        <div aria-hidden className="pointer-events-none absolute left-[4%] top-[30rem] [perspective:900px] max-lg:hidden">
+          <div className="relative size-10 [transform-style:preserve-3d] motion-safe:[animation:cube-drift_15s_ease-in-out_infinite]">
+            <span className="absolute inset-0 border border-celadon/25 bg-celadon/5 [transform:translateZ(1.25rem)]" />
+            <span className="absolute inset-0 border border-champagne/25 bg-champagne/5 [transform:rotateY(90deg)_translateZ(1.25rem)]" />
+            <span className="absolute inset-0 border border-blushed-brick/25 bg-blushed-brick/5 [transform:rotateX(90deg)_translateZ(1.25rem)]" />
+          </div>
+        </div>
+        <div aria-hidden className="pointer-events-none absolute right-[10%] top-[60rem] [perspective:900px] max-lg:hidden">
+          <div className="relative size-14 [transform-style:preserve-3d] motion-safe:[animation:cube-drift_12s_ease-in-out_infinite] motion-safe:[animation-delay:-5s]">
+            <span className="absolute inset-0 border border-celadon/30 bg-celadon/10 [transform:translateZ(1.75rem)]" />
+            <span className="absolute inset-0 border border-champagne/30 bg-champagne/10 [transform:rotateY(90deg)_translateZ(1.75rem)]" />
+            <span className="absolute inset-0 border border-blushed-brick/30 bg-blushed-brick/10 [transform:rotateX(90deg)_translateZ(1.75rem)]" />
+          </div>
+        </div>
+
         <div className={cn(container.content, "relative pb-24 max-lg:pt-0 lg:pt-12")}>
           <div
             aria-hidden
@@ -53,7 +70,7 @@ export function WhyAcube({ as = "h2" }: WhyAcubeProps) {
             className="blob bg-grad-celadon pointer-events-none absolute -right-32 top-10 size-96 opacity-15 blur-3xl"
           />
 
-          {/* Intro + image */}
+          {/* Intro + image (slight parallax for layered depth). */}
           <div className="lg:grid lg:grid-cols-[3fr_2fr] lg:items-center lg:gap-16">
             <SectionIntro
               as={as}
@@ -63,18 +80,20 @@ export function WhyAcube({ as = "h2" }: WhyAcubeProps) {
               split
               lede={why.intro}
             />
-            <Figure
-              image={{
-                src: "/images/why-partnership.jpg",
-                alt: "A handshake between an ACUBE consultant and a client, with Dubai's skyline at sunset",
-                width: 1536,
-                height: 1024,
-              }}
-              fill
-              focus="center"
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="aspect-[3/4] shadow-3d-lg mt-12 lg:mt-0"
-            />
+            <div data-parallax="0.06" className="mt-12 lg:mt-0">
+              <Figure
+                image={{
+                  src: "/images/why-partnership.jpg",
+                  alt: "A handshake between an ACUBE consultant and a client, with Dubai's skyline at sunset",
+                  width: 1536,
+                  height: 1024,
+                }}
+                fill
+                focus="center"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="aspect-[3/4] shadow-3d-lg"
+              />
+            </div>
           </div>
 
           {/* Principle cards */}
