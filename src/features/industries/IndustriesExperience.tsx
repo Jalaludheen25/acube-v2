@@ -1,4 +1,4 @@
-import { RevealRoot } from "@/components/motion";
+import { FloatingCube, RevealRoot } from "@/components/motion";
 import { Atmosphere, SectionIntro } from "@/components/sections";
 import { Button } from "@/components/ui";
 import { industries } from "@/constants";
@@ -29,14 +29,16 @@ export function IndustriesExperience({ as = "h2" }: IndustriesExperienceProps) {
       <RevealRoot>
         <Atmosphere />
 
-        {/* Floating brand cube — quiet 3D depth in the corner (lg+). */}
-        <div aria-hidden className="pointer-events-none absolute right-[6%] top-24 [perspective:900px] max-lg:hidden">
-          <div className="relative size-12 [transform-style:preserve-3d] motion-safe:[animation:cube-drift_14s_ease-in-out_infinite]">
-            <span className="absolute inset-0 border border-celadon/30 bg-celadon/10 [transform:translateZ(1.5rem)]" />
-            <span className="absolute inset-0 border border-champagne/30 bg-champagne/10 [transform:rotateY(90deg)_translateZ(1.5rem)]" />
-            <span className="absolute inset-0 border border-blushed-brick/30 bg-blushed-brick/10 [transform:rotateX(90deg)_translateZ(1.5rem)]" />
-          </div>
+        {/* Warm counter-light + extra ray so the backdrop reads green/gold/red. */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+          <span className="absolute inset-0 bg-[radial-gradient(80%_60%_at_100%_100%,color-mix(in_srgb,var(--color-blushed-brick)_10%,transparent)_0%,transparent_55%)]" />
+          <span className="absolute -top-1/4 left-0 h-[150%] w-24 bg-gradient-to-b from-transparent via-celadon/10 to-transparent blur-xl motion-safe:[animation:light-ray_32s_linear_infinite] motion-safe:[animation-delay:-16s] max-md:hidden" />
         </div>
+
+        {/* Floating brand cubes — bold 3D presence at varied depths (lg+). */}
+        <FloatingCube size="lg" className="right-[5%] top-20 max-lg:hidden" duration="15s" />
+        <FloatingCube size="sm" className="left-[3%] top-[45%] max-lg:hidden" duration="19s" delay="-7s" />
+        <FloatingCube size="md" className="right-[12%] bottom-[12%] max-lg:hidden" duration="12s" delay="-4s" />
 
         <div className={cn(container.content, "relative pb-24 max-lg:pt-0 lg:py-32")}>
           <div className="flex flex-wrap items-end justify-between gap-8">
@@ -64,8 +66,8 @@ export function IndustriesExperience({ as = "h2" }: IndustriesExperienceProps) {
 
           <IndustryRoster className="mt-12" />
 
-          <div data-reveal className="mt-16 max-w-3xl border-t border-divider pt-12">
-            <p className={cn(typography.body, "text-muted")}>{industries.notListed}</p>
+          <div data-reveal-tilt className="mt-16 max-w-3xl border-t border-divider pt-12">
+            <p data-words-scrub className={cn(typography.body, "text-muted")}>{industries.notListed}</p>
             <Button
               href={industries.cta.href}
               variant="primary"

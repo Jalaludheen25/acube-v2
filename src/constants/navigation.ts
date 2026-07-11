@@ -7,12 +7,12 @@ import type { NavGroup, NavItem } from "@/types";
 export const mainNav: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
+  { label: "Packages", href: "/packages" },
   { label: "About", href: "/about" },
   { label: "Industries", href: "/industries" },
   { label: "Why ACUBE", href: "/why-acube" },
-  { label: "Packages", href: "/packages" },
-  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 /** Footer navigation groups. */

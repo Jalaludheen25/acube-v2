@@ -1,3 +1,4 @@
+export * from "./FloatingCube";
 export * from "./FloatingParticles";
 export * from "./Magnetic";
 export * from "./Marquee";

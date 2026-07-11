@@ -62,6 +62,11 @@ function splitInto(el: HTMLElement, granularity: "chars" | "words"): HTMLElement
  *   - [data-spine-x]         → scrubbed horizontal draw (connector lines)
  *
  * All values come from design tokens. Everything reverts on unmount.
+ *
+ * GOTCHA: reveal targets must NOT sit inside a TiltCard's transformed
+ * subtree (will-change-transform + preserve-3d) — their ScrollTriggers
+ * never fire there (observed on the Packages comparison). Put the reveal
+ * attribute on an ancestor outside the TiltCard instead.
  */
 export function RevealRoot({ children, className }: RevealRootProps) {
   const ref = useRef<HTMLDivElement>(null);
